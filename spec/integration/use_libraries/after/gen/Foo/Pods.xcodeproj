@@ -1,0 +1,753 @@
+Build Configurations:
+  - Debug:
+    Build Settings:
+      ALWAYS_SEARCH_USER_PATHS: NO
+      CLANG_ANALYZER_NONNULL: YES
+      CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION: YES_AGGRESSIVE
+      CLANG_CXX_LANGUAGE_STANDARD: "gnu++14"
+      CLANG_CXX_LIBRARY: "libc++"
+      CLANG_ENABLE_MODULES: YES
+      CLANG_ENABLE_OBJC_ARC: YES
+      CLANG_ENABLE_OBJC_WEAK: YES
+      CLANG_WARN__DUPLICATE_METHOD_MATCH: YES
+      CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING: YES
+      CLANG_WARN_BOOL_CONVERSION: YES
+      CLANG_WARN_COMMA: YES
+      CLANG_WARN_CONSTANT_CONVERSION: YES
+      CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS: YES
+      CLANG_WARN_DIRECT_OBJC_ISA_USAGE: YES_ERROR
+      CLANG_WARN_DOCUMENTATION_COMMENTS: YES
+      CLANG_WARN_EMPTY_BODY: YES
+      CLANG_WARN_ENUM_CONVERSION: YES
+      CLANG_WARN_INFINITE_RECURSION: YES
+      CLANG_WARN_INT_CONVERSION: YES
+      CLANG_WARN_NON_LITERAL_NULL_CONVERSION: YES
+      CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF: YES
+      CLANG_WARN_OBJC_LITERAL_CONVERSION: YES
+      CLANG_WARN_OBJC_ROOT_CLASS: YES_ERROR
+      CLANG_WARN_RANGE_LOOP_ANALYSIS: YES
+      CLANG_WARN_STRICT_PROTOTYPES: YES
+      CLANG_WARN_SUSPICIOUS_MOVE: YES
+      CLANG_WARN_UNGUARDED_AVAILABILITY: YES_AGGRESSIVE
+      CLANG_WARN_UNREACHABLE_CODE: YES
+      CODE_SIGNING_ALLOWED: NO
+      CODE_SIGNING_REQUIRED: NO
+      COPY_PHASE_STRIP: NO
+      DEBUG_INFORMATION_FORMAT: dwarf
+      ENABLE_STRICT_OBJC_MSGSEND: YES
+      ENABLE_TESTABILITY: YES
+      GCC_C_LANGUAGE_STANDARD: gnu11
+      GCC_DYNAMIC_NO_PIC: NO
+      GCC_NO_COMMON_BLOCKS: YES
+      GCC_OPTIMIZATION_LEVEL: '0'
+      GCC_PREPROCESSOR_DEFINITIONS:
+        - "$(inherited)"
+        - DEBUG=1
+        - POD_CONFIGURATION_DEBUG=1
+      GCC_WARN_64_TO_32_BIT_CONVERSION: YES
+      GCC_WARN_ABOUT_RETURN_TYPE: YES_ERROR
+      GCC_WARN_UNDECLARED_SELECTOR: YES
+      GCC_WARN_UNINITIALIZED_AUTOS: YES_AGGRESSIVE
+      GCC_WARN_UNUSED_FUNCTION: YES
+      GCC_WARN_UNUSED_VARIABLE: YES
+      IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+      MACOSX_DEPLOYMENT_TARGET: '10.10'
+      MTL_ENABLE_DEBUG_INFO: YES
+      ONLY_ACTIVE_ARCH: YES
+      PRODUCT_NAME: "$(TARGET_NAME)"
+      STRIP_INSTALLED_PRODUCT: NO
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+      SYMROOT: "${SRCROOT}/../build"
+      TVOS_DEPLOYMENT_TARGET: '11.0'
+      WATCHOS_DEPLOYMENT_TARGET: '4.0'
+  - Release:
+    Build Settings:
+      ALWAYS_SEARCH_USER_PATHS: NO
+      CLANG_ANALYZER_NONNULL: YES
+      CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION: YES_AGGRESSIVE
+      CLANG_CXX_LANGUAGE_STANDARD: "gnu++14"
+      CLANG_CXX_LIBRARY: "libc++"
+      CLANG_ENABLE_MODULES: YES
+      CLANG_ENABLE_OBJC_ARC: YES
+      CLANG_ENABLE_OBJC_WEAK: YES
+      CLANG_WARN__DUPLICATE_METHOD_MATCH: YES
+      CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING: YES
+      CLANG_WARN_BOOL_CONVERSION: YES
+      CLANG_WARN_COMMA: YES
+      CLANG_WARN_CONSTANT_CONVERSION: YES
+      CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS: YES
+      CLANG_WARN_DIRECT_OBJC_ISA_USAGE: YES_ERROR
+      CLANG_WARN_DOCUMENTATION_COMMENTS: YES
+      CLANG_WARN_EMPTY_BODY: YES
+      CLANG_WARN_ENUM_CONVERSION: YES
+      CLANG_WARN_INFINITE_RECURSION: YES
+      CLANG_WARN_INT_CONVERSION: YES
+      CLANG_WARN_NON_LITERAL_NULL_CONVERSION: YES
+      CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF: YES
+      CLANG_WARN_OBJC_LITERAL_CONVERSION: YES
+      CLANG_WARN_OBJC_ROOT_CLASS: YES_ERROR
+      CLANG_WARN_RANGE_LOOP_ANALYSIS: YES
+      CLANG_WARN_STRICT_PROTOTYPES: YES
+      CLANG_WARN_SUSPICIOUS_MOVE: YES
+      CLANG_WARN_UNGUARDED_AVAILABILITY: YES_AGGRESSIVE
+      CLANG_WARN_UNREACHABLE_CODE: YES
+      CODE_SIGNING_ALLOWED: NO
+      CODE_SIGNING_REQUIRED: NO
+      COPY_PHASE_STRIP: NO
+      DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+      ENABLE_NS_ASSERTIONS: NO
+      ENABLE_STRICT_OBJC_MSGSEND: YES
+      GCC_C_LANGUAGE_STANDARD: gnu11
+      GCC_NO_COMMON_BLOCKS: YES
+      GCC_PREPROCESSOR_DEFINITIONS:
+        - "$(inherited)"
+        - POD_CONFIGURATION_RELEASE=1
+      GCC_WARN_64_TO_32_BIT_CONVERSION: YES
+      GCC_WARN_ABOUT_RETURN_TYPE: YES_ERROR
+      GCC_WARN_UNDECLARED_SELECTOR: YES
+      GCC_WARN_UNINITIALIZED_AUTOS: YES_AGGRESSIVE
+      GCC_WARN_UNUSED_FUNCTION: YES
+      GCC_WARN_UNUSED_VARIABLE: YES
+      IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+      MACOSX_DEPLOYMENT_TARGET: '10.10'
+      MTL_ENABLE_DEBUG_INFO: NO
+      PRODUCT_NAME: "$(TARGET_NAME)"
+      STRIP_INSTALLED_PRODUCT: NO
+      SYMROOT: "${SRCROOT}/../build"
+      TVOS_DEPLOYMENT_TARGET: '11.0'
+      WATCHOS_DEPLOYMENT_TARGET: '4.0'
+
+File References:
+  - Development Pods:
+    - Foo:
+      - Foo.m
+      - Pod:
+        - Foo.podspec
+      - Support Files:
+        - Foo-iOS-dummy.m
+        - Foo-iOS-prefix.pch
+        - Foo-iOS-Unit-Tests-frameworks.sh
+        - Foo-iOS-Unit-Tests-Info.plist
+        - Foo-iOS-Unit-Tests-prefix.pch
+        - Foo-iOS-Unit-Tests-resources.sh
+        - Foo-iOS.unit.xcconfig
+        - Foo-iOS.xcconfig
+        - Foo-macOS-dummy.m
+        - Foo-macOS-prefix.pch
+        - Foo-macOS-Unit-Tests-frameworks.sh
+        - Foo-macOS-Unit-Tests-Info.plist
+        - Foo-macOS-Unit-Tests-prefix.pch
+        - Foo-macOS-Unit-Tests-resources.sh
+        - Foo-macOS.unit.xcconfig
+        - Foo-macOS.xcconfig
+        - Foo-tvOS-dummy.m
+        - Foo-tvOS-prefix.pch
+        - Foo-tvOS-Unit-Tests-frameworks.sh
+        - Foo-tvOS-Unit-Tests-Info.plist
+        - Foo-tvOS-Unit-Tests-prefix.pch
+        - Foo-tvOS-Unit-Tests-resources.sh
+        - Foo-tvOS.unit.xcconfig
+        - Foo-tvOS.xcconfig
+        - Foo-watchOS-dummy.m
+        - Foo-watchOS-prefix.pch
+        - Foo-watchOS-Unit-Tests-frameworks.sh
+        - Foo-watchOS-Unit-Tests-Info.plist
+        - Foo-watchOS-Unit-Tests-prefix.pch
+        - Foo-watchOS-Unit-Tests-resources.sh
+        - Foo-watchOS.unit.xcconfig
+        - Foo-watchOS.xcconfig
+      - Tests:
+        - FooTests.m
+  - Frameworks:
+    - iOS:
+      - Foundation.framework
+    - OS X:
+      - Cocoa.framework
+    - tvOS:
+      - Foundation.framework
+    - watchOS:
+      - Foundation.framework
+  - Podfile.yaml
+  - Products:
+    - Foo-iOS-Unit-Tests
+    - Foo-macOS-Unit-Tests
+    - Foo-tvOS-Unit-Tests
+    - Foo-watchOS-Unit-Tests
+    - libFoo-iOS.a
+    - libFoo-macOS.a
+    - libFoo-tvOS.a
+    - libFoo-watchOS.a
+    - libPods-App-iOS.a
+    - libPods-App-macOS.a
+    - libPods-App-tvOS.a
+    - libPods-App-watchOS.a
+  - Targets Support Files:
+    - Pods-App-iOS:
+      - Pods-App-iOS-acknowledgements.markdown
+      - Pods-App-iOS-acknowledgements.plist
+      - Pods-App-iOS-dummy.m
+      - Pods-App-iOS-frameworks.sh
+      - Pods-App-iOS-resources.sh
+      - Pods-App-iOS.debug.xcconfig
+      - Pods-App-iOS.release.xcconfig
+    - Pods-App-macOS:
+      - Pods-App-macOS-acknowledgements.markdown
+      - Pods-App-macOS-acknowledgements.plist
+      - Pods-App-macOS-dummy.m
+      - Pods-App-macOS-frameworks.sh
+      - Pods-App-macOS-resources.sh
+      - Pods-App-macOS.debug.xcconfig
+      - Pods-App-macOS.release.xcconfig
+    - Pods-App-tvOS:
+      - Pods-App-tvOS-acknowledgements.markdown
+      - Pods-App-tvOS-acknowledgements.plist
+      - Pods-App-tvOS-dummy.m
+      - Pods-App-tvOS-frameworks.sh
+      - Pods-App-tvOS-resources.sh
+      - Pods-App-tvOS.debug.xcconfig
+      - Pods-App-tvOS.release.xcconfig
+    - Pods-App-watchOS:
+      - Pods-App-watchOS-acknowledgements.markdown
+      - Pods-App-watchOS-acknowledgements.plist
+      - Pods-App-watchOS-dummy.m
+      - Pods-App-watchOS-frameworks.sh
+      - Pods-App-watchOS-resources.sh
+      - Pods-App-watchOS.debug.xcconfig
+      - Pods-App-watchOS.release.xcconfig
+
+Targets:
+  - Foo-iOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Foo-iOS.xcconfig
+        Build Settings:
+          CODE_SIGN_IDENTITY: iPhone Developer
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          GCC_PREFIX_HEADER: Target Support Files/Foo-iOS/Foo-iOS-prefix.pch
+          IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_MODULE_NAME: Foo
+          PRODUCT_NAME: Foo-iOS
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: iphoneos
+          SKIP_INSTALL: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          TARGETED_DEVICE_FAMILY: 1,2
+      - Release:
+        Base Configuration: Foo-iOS.xcconfig
+        Build Settings:
+          CODE_SIGN_IDENTITY: iPhone Developer
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          GCC_PREFIX_HEADER: Target Support Files/Foo-iOS/Foo-iOS-prefix.pch
+          IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_MODULE_NAME: Foo
+          PRODUCT_NAME: Foo-iOS
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: iphoneos
+          SKIP_INSTALL: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          TARGETED_DEVICE_FAMILY: 1,2
+          VALIDATE_PRODUCT: YES
+    Build Phases:
+      - Frameworks:
+        []
+      - Sources:
+        - Foo-iOS-dummy.m
+        - Foo.m
+  - Foo-iOS-Unit-Tests:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Foo-iOS.unit.xcconfig
+        Build Settings:
+          CODE_SIGN_IDENTITY: iPhone Developer
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          GCC_PREFIX_HEADER: Target Support Files/Foo-iOS/Foo-iOS-Unit-Tests-prefix.pch
+          INFOPLIST_FILE: Target Support Files/Foo-iOS/Foo-iOS-Unit-Tests-Info.plist
+          IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_NAME: Foo-iOS-Unit-Tests
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: iphoneos
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+      - Release:
+        Base Configuration: Foo-iOS.unit.xcconfig
+        Build Settings:
+          CODE_SIGN_IDENTITY: iPhone Developer
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          GCC_PREFIX_HEADER: Target Support Files/Foo-iOS/Foo-iOS-Unit-Tests-prefix.pch
+          INFOPLIST_FILE: Target Support Files/Foo-iOS/Foo-iOS-Unit-Tests-Info.plist
+          IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_NAME: Foo-iOS-Unit-Tests
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: iphoneos
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          VALIDATE_PRODUCT: YES
+    Build Phases:
+      - "[CP] Copy Pods Resources":
+        []
+      - "[CP] Embed Pods Frameworks":
+        []
+      - Frameworks:
+        - Foundation.framework
+      - Sources:
+        - FooTests.m
+  - Foo-macOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Foo-macOS.xcconfig
+        Build Settings:
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: "-"
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          EXECUTABLE_PREFIX: lib
+          GCC_PREFIX_HEADER: Target Support Files/Foo-macOS/Foo-macOS-prefix.pch
+          MACOSX_DEPLOYMENT_TARGET: '10.10'
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_MODULE_NAME: Foo
+          PRODUCT_NAME: Foo-macOS
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: macosx
+          SKIP_INSTALL: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+      - Release:
+        Base Configuration: Foo-macOS.xcconfig
+        Build Settings:
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: "-"
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          EXECUTABLE_PREFIX: lib
+          GCC_PREFIX_HEADER: Target Support Files/Foo-macOS/Foo-macOS-prefix.pch
+          MACOSX_DEPLOYMENT_TARGET: '10.10'
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_MODULE_NAME: Foo
+          PRODUCT_NAME: Foo-macOS
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: macosx
+          SKIP_INSTALL: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+    Build Phases:
+      - Frameworks:
+        []
+      - Sources:
+        - Foo-macOS-dummy.m
+        - Foo.m
+  - Foo-macOS-Unit-Tests:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Foo-macOS.unit.xcconfig
+        Build Settings:
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: ''
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          GCC_PREFIX_HEADER: Target Support Files/Foo-macOS/Foo-macOS-Unit-Tests-prefix.pch
+          INFOPLIST_FILE: Target Support Files/Foo-macOS/Foo-macOS-Unit-Tests-Info.plist
+          MACOSX_DEPLOYMENT_TARGET: '10.10'
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_NAME: Foo-macOS-Unit-Tests
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: macosx
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+      - Release:
+        Base Configuration: Foo-macOS.unit.xcconfig
+        Build Settings:
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: ''
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          GCC_PREFIX_HEADER: Target Support Files/Foo-macOS/Foo-macOS-Unit-Tests-prefix.pch
+          INFOPLIST_FILE: Target Support Files/Foo-macOS/Foo-macOS-Unit-Tests-Info.plist
+          MACOSX_DEPLOYMENT_TARGET: '10.10'
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_NAME: Foo-macOS-Unit-Tests
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: macosx
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+    Build Phases:
+      - "[CP] Copy Pods Resources":
+        []
+      - "[CP] Embed Pods Frameworks":
+        []
+      - Frameworks:
+        - Cocoa.framework
+      - Sources:
+        - FooTests.m
+  - Foo-tvOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Foo-tvOS.xcconfig
+        Build Settings:
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          GCC_PREFIX_HEADER: Target Support Files/Foo-tvOS/Foo-tvOS-prefix.pch
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_MODULE_NAME: Foo
+          PRODUCT_NAME: Foo-tvOS
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: appletvos
+          SKIP_INSTALL: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          TARGETED_DEVICE_FAMILY: '3'
+          TVOS_DEPLOYMENT_TARGET: '11.0'
+      - Release:
+        Base Configuration: Foo-tvOS.xcconfig
+        Build Settings:
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          GCC_PREFIX_HEADER: Target Support Files/Foo-tvOS/Foo-tvOS-prefix.pch
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_MODULE_NAME: Foo
+          PRODUCT_NAME: Foo-tvOS
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: appletvos
+          SKIP_INSTALL: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          TARGETED_DEVICE_FAMILY: '3'
+          TVOS_DEPLOYMENT_TARGET: '11.0'
+          VALIDATE_PRODUCT: YES
+    Build Phases:
+      - Frameworks:
+        []
+      - Sources:
+        - Foo-tvOS-dummy.m
+        - Foo.m
+  - Foo-tvOS-Unit-Tests:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Foo-tvOS.unit.xcconfig
+        Build Settings:
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          GCC_PREFIX_HEADER: Target Support Files/Foo-tvOS/Foo-tvOS-Unit-Tests-prefix.pch
+          INFOPLIST_FILE: Target Support Files/Foo-tvOS/Foo-tvOS-Unit-Tests-Info.plist
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_NAME: Foo-tvOS-Unit-Tests
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: appletvos
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          TVOS_DEPLOYMENT_TARGET: '11.0'
+      - Release:
+        Base Configuration: Foo-tvOS.unit.xcconfig
+        Build Settings:
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          GCC_PREFIX_HEADER: Target Support Files/Foo-tvOS/Foo-tvOS-Unit-Tests-prefix.pch
+          INFOPLIST_FILE: Target Support Files/Foo-tvOS/Foo-tvOS-Unit-Tests-Info.plist
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_NAME: Foo-tvOS-Unit-Tests
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: appletvos
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          TVOS_DEPLOYMENT_TARGET: '11.0'
+          VALIDATE_PRODUCT: YES
+    Build Phases:
+      - "[CP] Copy Pods Resources":
+        []
+      - "[CP] Embed Pods Frameworks":
+        []
+      - Frameworks:
+        - Foundation.framework
+      - Sources:
+        - FooTests.m
+  - Foo-watchOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Foo-watchOS.xcconfig
+        Build Settings:
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          GCC_PREFIX_HEADER: Target Support Files/Foo-watchOS/Foo-watchOS-prefix.pch
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_MODULE_NAME: Foo
+          PRODUCT_NAME: Foo-watchOS
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: watchos
+          SKIP_INSTALL: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          TARGETED_DEVICE_FAMILY: '4'
+          WATCHOS_DEPLOYMENT_TARGET: '4.0'
+      - Release:
+        Base Configuration: Foo-watchOS.xcconfig
+        Build Settings:
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          GCC_PREFIX_HEADER: Target Support Files/Foo-watchOS/Foo-watchOS-prefix.pch
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_MODULE_NAME: Foo
+          PRODUCT_NAME: Foo-watchOS
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: watchos
+          SKIP_INSTALL: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          TARGETED_DEVICE_FAMILY: '4'
+          VALIDATE_PRODUCT: YES
+          WATCHOS_DEPLOYMENT_TARGET: '4.0'
+    Build Phases:
+      - Frameworks:
+        []
+      - Sources:
+        - Foo-watchOS-dummy.m
+        - Foo.m
+  - Foo-watchOS-Unit-Tests:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Foo-watchOS.unit.xcconfig
+        Build Settings:
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          GCC_PREFIX_HEADER: Target Support Files/Foo-watchOS/Foo-watchOS-Unit-Tests-prefix.pch
+          INFOPLIST_FILE: Target Support Files/Foo-watchOS/Foo-watchOS-Unit-Tests-Info.plist
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_NAME: Foo-watchOS-Unit-Tests
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: watchos
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          WATCHOS_DEPLOYMENT_TARGET: '4.0'
+      - Release:
+        Base Configuration: Foo-watchOS.unit.xcconfig
+        Build Settings:
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          GCC_PREFIX_HEADER: Target Support Files/Foo-watchOS/Foo-watchOS-Unit-Tests-prefix.pch
+          INFOPLIST_FILE: Target Support Files/Foo-watchOS/Foo-watchOS-Unit-Tests-Info.plist
+          OTHER_LIBTOOLFLAGS: ''
+          PRIVATE_HEADERS_FOLDER_PATH: ''
+          PRODUCT_NAME: Foo-watchOS-Unit-Tests
+          PUBLIC_HEADERS_FOLDER_PATH: ''
+          SDKROOT: watchos
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          VALIDATE_PRODUCT: YES
+          WATCHOS_DEPLOYMENT_TARGET: '4.0'
+    Build Phases:
+      - "[CP] Copy Pods Resources":
+        []
+      - "[CP] Embed Pods Frameworks":
+        []
+      - Frameworks:
+        - Foundation.framework
+      - Sources:
+        - FooTests.m
+  - Pods-App-iOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Pods-App-iOS.debug.xcconfig
+        Build Settings:
+          ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          CODE_SIGN_IDENTITY: iPhone Developer
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+          MACH_O_TYPE: staticlib
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PODS_ROOT: "$(SRCROOT)"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: iphoneos
+          SKIP_INSTALL: YES
+          TARGETED_DEVICE_FAMILY: 1,2
+      - Release:
+        Base Configuration: Pods-App-iOS.release.xcconfig
+        Build Settings:
+          ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          CODE_SIGN_IDENTITY: iPhone Developer
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+          MACH_O_TYPE: staticlib
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PODS_ROOT: "$(SRCROOT)"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: iphoneos
+          SKIP_INSTALL: YES
+          TARGETED_DEVICE_FAMILY: 1,2
+          VALIDATE_PRODUCT: YES
+    Build Phases:
+      - Frameworks:
+        []
+      - Sources:
+        - Pods-App-iOS-dummy.m
+  - Pods-App-macOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Pods-App-macOS.debug.xcconfig
+        Build Settings:
+          ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: "-"
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          EXECUTABLE_PREFIX: lib
+          MACH_O_TYPE: staticlib
+          MACOSX_DEPLOYMENT_TARGET: '10.10'
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PODS_ROOT: "$(SRCROOT)"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: macosx
+          SKIP_INSTALL: YES
+      - Release:
+        Base Configuration: Pods-App-macOS.release.xcconfig
+        Build Settings:
+          ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: "-"
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          EXECUTABLE_PREFIX: lib
+          MACH_O_TYPE: staticlib
+          MACOSX_DEPLOYMENT_TARGET: '10.10'
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PODS_ROOT: "$(SRCROOT)"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: macosx
+          SKIP_INSTALL: YES
+    Build Phases:
+      - Frameworks:
+        []
+      - Sources:
+        - Pods-App-macOS-dummy.m
+  - Pods-App-tvOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Pods-App-tvOS.debug.xcconfig
+        Build Settings:
+          ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          MACH_O_TYPE: staticlib
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PODS_ROOT: "$(SRCROOT)"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: appletvos
+          SKIP_INSTALL: YES
+          TARGETED_DEVICE_FAMILY: '3'
+          TVOS_DEPLOYMENT_TARGET: '11.0'
+      - Release:
+        Base Configuration: Pods-App-tvOS.release.xcconfig
+        Build Settings:
+          ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          MACH_O_TYPE: staticlib
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PODS_ROOT: "$(SRCROOT)"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: appletvos
+          SKIP_INSTALL: YES
+          TARGETED_DEVICE_FAMILY: '3'
+          TVOS_DEPLOYMENT_TARGET: '11.0'
+          VALIDATE_PRODUCT: YES
+    Build Phases:
+      - Frameworks:
+        []
+      - Sources:
+        - Pods-App-tvOS-dummy.m
+  - Pods-App-watchOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Pods-App-watchOS.debug.xcconfig
+        Build Settings:
+          ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          MACH_O_TYPE: staticlib
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PODS_ROOT: "$(SRCROOT)"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: watchos
+          SKIP_INSTALL: YES
+          TARGETED_DEVICE_FAMILY: '4'
+          WATCHOS_DEPLOYMENT_TARGET: '4.0'
+      - Release:
+        Base Configuration: Pods-App-watchOS.release.xcconfig
+        Build Settings:
+          ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          MACH_O_TYPE: staticlib
+          OTHER_LDFLAGS: ''
+          OTHER_LIBTOOLFLAGS: ''
+          PODS_ROOT: "$(SRCROOT)"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: watchos
+          SKIP_INSTALL: YES
+          TARGETED_DEVICE_FAMILY: '4'
+          VALIDATE_PRODUCT: YES
+          WATCHOS_DEPLOYMENT_TARGET: '4.0'
+    Build Phases:
+      - Frameworks:
+        []
+      - Sources:
+        - Pods-App-watchOS-dummy.m

@@ -1,0 +1,24 @@
+PODS:
+  - A (1.0.0.LOCAL)
+  - B (1.0.0.LOCAL):
+    - A
+  - C (1.0.0.LOCAL):
+    - A (= 1.0.0.LOCAL)
+    - B
+  - C/Tests (1.0.0.LOCAL):
+    - A (= 1.0.0.LOCAL)
+    - B
+
+DEPENDENCIES:
+  - A (from `../../Frameworks/a/A.podspec`)
+  - B (from `../../Frameworks/b/B.podspec`)
+  - C (from `../../Frameworks/c/C.podspec`)
+  - C/Tests (from `../../Frameworks/c/C.podspec`)
+
+EXTERNAL SOURCES:
+  A:
+    :path: "../../Frameworks/a/A.podspec"
+  B:
+    :path: "../../Frameworks/b/B.podspec"
+  C:
+    :path: "../../Frameworks/c/C.podspec"

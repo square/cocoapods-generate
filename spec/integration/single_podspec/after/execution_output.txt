@@ -1,0 +1,31 @@
+CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP_XCODEBUILD=TRUE CP_REPOS_DIR=./spec/integration/specs-repos ./bin/cocoapods-gen --verbose --no-ansi 2>&1
+[pod gen] Running with `pod gen` configuration {
+  use_podfile: false,
+  use_lockfile: false,
+  use_lockfile_versions: false,
+  use_libraries: false,
+  gen_directory: ./spec/integration/tmp/single_podspec/transformed/gen,
+  auto_open: false,
+  clean: false,
+  podspec_paths: [],
+  podspecs: [#<Pod::Specification name="Foo">],
+  sources: ["https://github.com/CocoaPods/Specs.git", "https://github.com/Private/SpecsForks.git"],
+  repo_update: false,
+  use_default_plugins: false,
+  deterministic_uuids: false,
+  share_schemes_for_development_pods: true,
+  warn_for_multiple_pod_sources: false }
+
+Generating Foo in `gen/Foo`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Fetching podspec for `Foo` from `../../Foo.podspec`
+Installing Foo (1.0.0)
+
+[!] Please close any current Xcode sessions and use `Foo.xcworkspace` for this project from now on.
+Pod installation complete! There are 2 dependencies from the Podfile and 1 total pod installed.
+
+Performing post-installation steps
+    Open `gen/Foo/Foo.xcworkspace` to work on Foo

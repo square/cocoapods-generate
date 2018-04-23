@@ -1,0 +1,2 @@
+description: generates a workspace for pods in a monorepo
+args: 'Frameworks/*/*.podspec'

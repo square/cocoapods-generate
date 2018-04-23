@@ -1,0 +1,8 @@
+---
+podspec_paths:
+- Foo.podspec
+clean: true
+app_host_source_dir: AppHost
+sources:
+- "https://github.com/Private/SpecsForks.git"
+- "https://github.com/CocoaPods/Specs.git"

@@ -1,0 +1,14 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.1
+
+Metrics:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: true
+  Max: 120
+
+Style/MultilineBlockChain:
+  Enabled: false

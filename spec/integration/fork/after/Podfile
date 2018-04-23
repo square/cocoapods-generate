@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'App' do
+  pod 'Foo', path: 'Foo.podspec'
+end
+
+target 'DummyTarget' do
+  pod 'Forkable', source: 'https://github.com/Private/SpecsForks.git'
+  pod 'UsesForkable', source: 'https://github.com/Private/SpecsForks.git'
+end

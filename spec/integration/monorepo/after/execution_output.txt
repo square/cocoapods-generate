@@ -1,0 +1,148 @@
+CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP_XCODEBUILD=TRUE CP_REPOS_DIR=./spec/integration/specs-repos ./bin/cocoapods-gen Frameworks/*/*.podspec --verbose --no-ansi 2>&1
+[pod gen] Running with `pod gen` configuration {
+  podfile_path: ./spec/integration/tmp/monorepo/transformed/Podfile,
+  podfile: Podfile,
+  use_podfile: true,
+  lockfile: #<Pod::Lockfile>,
+  use_lockfile: true,
+  use_lockfile_versions: true,
+  use_libraries: false,
+  gen_directory: ./spec/integration/tmp/monorepo/transformed/gen,
+  auto_open: false,
+  clean: false,
+  podspec_paths: [#<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/a/A.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/b/B.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/c/C.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/d/D.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/e/E.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/f/F.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/g/G.podspec>],
+  podspecs: [#<Pod::Specification name="A">, #<Pod::Specification name="B">, #<Pod::Specification name="C">, #<Pod::Specification name="D">, #<Pod::Specification name="E">, #<Pod::Specification name="F">, #<Pod::Specification name="G">],
+  sources: ["https://github.com/CocoaPods/Specs.git"],
+  repo_update: false,
+  use_default_plugins: false,
+  deterministic_uuids: false,
+  share_schemes_for_development_pods: true,
+  warn_for_multiple_pod_sources: false }
+
+Generating A in `gen/A`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
+Installing A (1.0.0.LOCAL)
+
+[!] Please close any current Xcode sessions and use `A.xcworkspace` for this project from now on.
+Pod installation complete! There are 2 dependencies from the Podfile and 1 total pod installed.
+
+Performing post-installation steps
+    Open `gen/A/A.xcworkspace` to work on A
+
+Generating B in `gen/B`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
+Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
+Installing A (1.0.0.LOCAL)
+Installing B (1.0.0.LOCAL)
+
+[!] Please close any current Xcode sessions and use `B.xcworkspace` for this project from now on.
+Pod installation complete! There are 3 dependencies from the Podfile and 2 total pods installed.
+
+Performing post-installation steps
+    Open `gen/B/B.xcworkspace` to work on B
+
+Generating C in `gen/C`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
+Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
+Fetching podspec for `C` from `../../Frameworks/c/C.podspec`
+Installing A (1.0.0.LOCAL)
+Installing B (1.0.0.LOCAL)
+Installing C (1.0.0.LOCAL)
+
+[!] Please close any current Xcode sessions and use `C.xcworkspace` for this project from now on.
+Pod installation complete! There are 4 dependencies from the Podfile and 3 total pods installed.
+
+Performing post-installation steps
+    Open `gen/C/C.xcworkspace` to work on C
+
+Generating D in `gen/D`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
+Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
+Fetching podspec for `C` from `../../Frameworks/c/C.podspec`
+Fetching podspec for `D` from `../../Frameworks/d/D.podspec`
+Fetching podspec for `E` from `../../Frameworks/e/E.podspec`
+Installing A (1.0.0.LOCAL)
+Installing B (1.0.0.LOCAL)
+Installing C (1.0.0.LOCAL)
+Installing D (1.0.0.LOCAL)
+Installing E (1.0.0.LOCAL)
+Installing Public (3.0.0)
+
+[!] Please close any current Xcode sessions and use `D.xcworkspace` for this project from now on.
+Pod installation complete! There are 7 dependencies from the Podfile and 6 total pods installed.
+
+Performing post-installation steps
+    Open `gen/D/D.xcworkspace` to work on D
+
+Generating E in `gen/E`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
+Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
+Fetching podspec for `C` from `../../Frameworks/c/C.podspec`
+Fetching podspec for `E` from `../../Frameworks/e/E.podspec`
+Installing A (1.0.0.LOCAL)
+Installing B (1.0.0.LOCAL)
+Installing C (1.0.0.LOCAL)
+Installing E (1.0.0.LOCAL)
+
+[!] Please close any current Xcode sessions and use `E.xcworkspace` for this project from now on.
+Pod installation complete! There are 5 dependencies from the Podfile and 4 total pods installed.
+
+Performing post-installation steps
+    Open `gen/E/E.xcworkspace` to work on E
+
+Generating F in `gen/F`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
+Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
+Fetching podspec for `C` from `../../Frameworks/c/C.podspec`
+Fetching podspec for `F` from `../../Frameworks/f/F.podspec`
+Installing A (1.0.0.LOCAL)
+Installing B (1.0.0.LOCAL)
+Installing C (1.0.0.LOCAL)
+Installing F (1.0.0.LOCAL)
+Installing OnlyPre (1.0.0.pre.1)
+
+[!] Please close any current Xcode sessions and use `F.xcworkspace` for this project from now on.
+Pod installation complete! There are 6 dependencies from the Podfile and 5 total pods installed.
+
+Performing post-installation steps
+    Open `gen/F/F.xcworkspace` to work on F
+
+Generating G in `gen/G`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Fetching podspec for `G` from `../../Frameworks/g/G.podspec`
+Installing G (1.0.0.LOCAL)
+Installing OnlyPre (1.0.0.pre.1)
+Installing Public (3.0.0)
+
+[!] Please close any current Xcode sessions and use `G.xcworkspace` for this project from now on.
+Pod installation complete! There are 4 dependencies from the Podfile and 3 total pods installed.
+
+Performing post-installation steps
+    Open `gen/G/G.xcworkspace` to work on G

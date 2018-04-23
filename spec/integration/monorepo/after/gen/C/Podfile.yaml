@@ -1,0 +1,35 @@
+---
+installation_method:
+  name: cocoapods
+  options:
+    :deterministic_uuids: false
+    :share_schemes_for_development_pods: true
+    :warn_for_multiple_pod_sources: false
+workspace: C.xcworkspace
+sources:
+  - https://github.com/CocoaPods/Specs.git
+plugins:
+  cocoapods-generate:
+    {}
+target_definitions:
+  - abstract: true
+    children:
+      - abstract: true
+        dependencies:
+          - A:
+            - :path: "../../Frameworks/a/A.podspec"
+          - B:
+            - :path: "../../Frameworks/b/B.podspec"
+        name: Transitive Dependencies
+      - name: App-iOS
+      - name: App-macOS
+      - name: App-tvOS
+      - name: App-watchOS
+    dependencies:
+      - C:
+        - :path: "../../Frameworks/c/C.podspec"
+      - C/Tests:
+        - :path: "../../Frameworks/c/C.podspec"
+    name: Pods
+    user_project_path: C.xcodeproj
+    uses_frameworks: true

@@ -1,0 +1,36 @@
+PODS:
+  - A (1.0.0.LOCAL)
+  - B (1.0.0.LOCAL):
+    - A
+  - C (1.0.0.LOCAL):
+    - A (= 1.0.0.LOCAL)
+    - B
+  - F (1.0.0.LOCAL):
+    - C
+    - OnlyPre
+  - F/Tests (1.0.0.LOCAL):
+    - C
+    - OnlyPre
+  - OnlyPre (1.0.0.pre.1)
+
+DEPENDENCIES:
+  - A (from `../../Frameworks/a/A.podspec`)
+  - B (from `../../Frameworks/b/B.podspec`)
+  - C (from `../../Frameworks/c/C.podspec`)
+  - F (from `../../Frameworks/f/F.podspec`)
+  - F/Tests (from `../../Frameworks/f/F.podspec`)
+  - OnlyPre (= 1.0.0.pre.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - OnlyPre
+
+EXTERNAL SOURCES:
+  A:
+    :path: "../../Frameworks/a/A.podspec"
+  B:
+    :path: "../../Frameworks/b/B.podspec"
+  C:
+    :path: "../../Frameworks/c/C.podspec"
+  F:
+    :path: "../../Frameworks/f/F.podspec"

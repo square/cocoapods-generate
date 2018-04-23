@@ -1,0 +1,21 @@
+PODS:
+  - Foo (1.0.0):
+    - UsesForkable
+  - Foo/Tests (1.0.0):
+    - UsesForkable
+  - Forkable (1.0.0-internal.3)
+  - UsesForkable (1.0.0):
+    - Forkable (= 1.0.0-internal.3)
+
+DEPENDENCIES:
+  - Foo (from `../../Foo.podspec`)
+  - Foo/Tests (from `../../Foo.podspec`)
+
+SPEC REPOS:
+  https://github.com/Private/SpecsForks.git:
+    - Forkable
+    - UsesForkable
+
+EXTERNAL SOURCES:
+  Foo:
+    :path: "../../Foo.podspec"
