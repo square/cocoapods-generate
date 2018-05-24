@@ -1,7 +1,9 @@
 # `cocoapods-generate`
 
-This is a [CocoaPods](https://cocoapods.org/) plugin that allows you to easily create a scratch workspace from a podspec.
-Whether you want to completely remove all Xcode projects from your library's repository or you want to be able to focus on a small peice of a monorepo, a single `pod gen` command will build up a workspace suitable for writing, running, testing, and debugging in Xcode.
+A [CocoaPods](https://cocoapods.org/) plugin that allows you to easily generate a workspace from a podspec.
+
+Whether you want to completely remove all Xcode projects from your library's repository or you want to be able to focus on a small piece of a monorepo, a single `pod gen` command will build up a workspace suitable for writing, running, testing, and debugging in Xcode.
+
 When you're done working, you don't have to do anything -- and that means no merge conflicts, no managing Xcode projects, and no tearing down a sample app setup. `pod gen` manages all that for you.
 
 ## Installation
@@ -100,9 +102,11 @@ use_libraries: true
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/rake spec` to run the tests.
+
 You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
+
 To release a new version, update the version number in `VERSION`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
