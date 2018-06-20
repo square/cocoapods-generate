@@ -146,6 +146,8 @@ module Pod
             group = app_project.new_group(native_app_target.name, app_host_source_dir)
             source_file_refs = files.map { |source_file| group.new_file(source_file) }
             native_app_target.add_file_references(source_file_refs)
+          elsif Pod::Generator::AppTargetHelper.method(:add_app_project_import).arity == -5 # CocoaPods >= 1.6
+            Pod::Generator::AppTargetHelper.add_app_project_import(app_project, native_app_target, pod_target, pod_target.platform.name, native_app_target.name)
           else
             Pod::Generator::AppTargetHelper.add_app_project_import(app_project, native_app_target, pod_target, pod_target.platform.name, pod_target.requires_frameworks?, native_app_target.name)
           end
