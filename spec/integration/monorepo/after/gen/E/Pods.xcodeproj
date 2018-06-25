@@ -383,6 +383,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -410,6 +411,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -462,6 +464,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
       - Release:
@@ -491,6 +494,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -537,6 +541,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VERSION_INFO_PREFIX: ''
@@ -564,6 +569,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
@@ -614,6 +620,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -642,6 +649,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -692,6 +700,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -719,6 +728,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -772,6 +782,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
       - Release:
@@ -801,6 +812,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -848,6 +860,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VERSION_INFO_PREFIX: ''
@@ -875,6 +888,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
@@ -926,6 +940,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -954,6 +969,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -1005,6 +1021,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -1032,6 +1049,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -1086,6 +1104,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
       - Release:
@@ -1115,6 +1134,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -1163,6 +1183,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VERSION_INFO_PREFIX: ''
@@ -1190,6 +1211,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
@@ -1242,6 +1264,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -1270,6 +1293,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -1322,6 +1346,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -1349,6 +1374,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -1395,6 +1421,7 @@ Targets:
           PRODUCT_NAME: E-iOS-Unit-Tests
           SDKROOT: iphoneos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
       - Release:
         Base Configuration: E-iOS.unit.xcconfig
         Build Settings:
@@ -1410,6 +1437,7 @@ Targets:
           PRODUCT_NAME: E-iOS-Unit-Tests
           SDKROOT: iphoneos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           VALIDATE_PRODUCT: YES
     Build Phases:
       - "[CP] Copy Pods Resources":
@@ -1453,6 +1481,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
       - Release:
@@ -1482,6 +1511,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -1525,6 +1555,7 @@ Targets:
           PRODUCT_NAME: E-macOS-Unit-Tests
           SDKROOT: macosx
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
       - Release:
         Base Configuration: E-macOS.unit.xcconfig
         Build Settings:
@@ -1539,6 +1570,7 @@ Targets:
           PRODUCT_NAME: E-macOS-Unit-Tests
           SDKROOT: macosx
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
     Build Phases:
       - "[CP] Copy Pods Resources":
         []
@@ -1577,6 +1609,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VERSION_INFO_PREFIX: ''
@@ -1604,6 +1637,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
@@ -1649,6 +1683,7 @@ Targets:
           PRODUCT_NAME: E-tvOS-Unit-Tests
           SDKROOT: appletvos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           TVOS_DEPLOYMENT_TARGET: '9.0'
       - Release:
         Base Configuration: E-tvOS.unit.xcconfig
@@ -1663,6 +1698,7 @@ Targets:
           PRODUCT_NAME: E-tvOS-Unit-Tests
           SDKROOT: appletvos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
@@ -1704,6 +1740,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -1732,6 +1769,7 @@ Targets:
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -1777,6 +1815,7 @@ Targets:
           PRODUCT_NAME: E-watchOS-Unit-Tests
           SDKROOT: watchos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           WATCHOS_DEPLOYMENT_TARGET: '2.0'
       - Release:
         Base Configuration: E-watchOS.unit.xcconfig
@@ -1791,6 +1830,7 @@ Targets:
           PRODUCT_NAME: E-watchOS-Unit-Tests
           SDKROOT: watchos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           VALIDATE_PRODUCT: YES
           WATCHOS_DEPLOYMENT_TARGET: '2.0'
     Build Phases:

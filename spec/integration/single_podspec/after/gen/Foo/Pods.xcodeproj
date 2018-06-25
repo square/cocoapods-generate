@@ -266,6 +266,7 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -292,6 +293,7 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -323,6 +325,7 @@ Targets:
           PRODUCT_NAME: Foo-iOS-Unit-Tests
           SDKROOT: iphoneos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
       - Release:
         Base Configuration: Foo-iOS.unit.xcconfig
         Build Settings:
@@ -338,6 +341,7 @@ Targets:
           PRODUCT_NAME: Foo-iOS-Unit-Tests
           SDKROOT: iphoneos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           VALIDATE_PRODUCT: YES
     Build Phases:
       - "[CP] Copy Pods Resources":
@@ -377,6 +381,7 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
       - Release:
@@ -405,6 +410,7 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -433,6 +439,7 @@ Targets:
           PRODUCT_NAME: Foo-macOS-Unit-Tests
           SDKROOT: macosx
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
       - Release:
         Base Configuration: Foo-macOS.unit.xcconfig
         Build Settings:
@@ -447,6 +454,7 @@ Targets:
           PRODUCT_NAME: Foo-macOS-Unit-Tests
           SDKROOT: macosx
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
     Build Phases:
       - "[CP] Copy Pods Resources":
         []
@@ -481,6 +489,7 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '11.0'
           VERSION_INFO_PREFIX: ''
@@ -507,6 +516,7 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '11.0'
           VALIDATE_PRODUCT: YES
@@ -537,6 +547,7 @@ Targets:
           PRODUCT_NAME: Foo-tvOS-Unit-Tests
           SDKROOT: appletvos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           TVOS_DEPLOYMENT_TARGET: '11.0'
       - Release:
         Base Configuration: Foo-tvOS.unit.xcconfig
@@ -551,6 +562,7 @@ Targets:
           PRODUCT_NAME: Foo-tvOS-Unit-Tests
           SDKROOT: appletvos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           TVOS_DEPLOYMENT_TARGET: '11.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
@@ -588,6 +600,7 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -615,6 +628,7 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -645,6 +659,7 @@ Targets:
           PRODUCT_NAME: Foo-watchOS-Unit-Tests
           SDKROOT: watchos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           WATCHOS_DEPLOYMENT_TARGET: '4.0'
       - Release:
         Base Configuration: Foo-watchOS.unit.xcconfig
@@ -659,6 +674,7 @@ Targets:
           PRODUCT_NAME: Foo-watchOS-Unit-Tests
           SDKROOT: watchos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '3.2'
           VALIDATE_PRODUCT: YES
           WATCHOS_DEPLOYMENT_TARGET: '4.0'
     Build Phases:

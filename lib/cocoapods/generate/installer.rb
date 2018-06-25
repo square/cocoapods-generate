@@ -109,7 +109,11 @@ module Pod
         spec.available_platforms.map do |platform|
           consumer = spec.consumer(platform)
           target_name = "App-#{Platform.string_name(consumer.platform_name)}"
-          Pod::Generator::AppTargetHelper.add_app_target(app_project, consumer.platform_name, deployment_target(consumer), target_name)
+          native_app_target = Pod::Generator::AppTargetHelper.add_app_target(app_project, consumer.platform_name, deployment_target(consumer), target_name)
+          # Temporarily set Swift version to pass validator checks for pods which do not specify Swift version.
+          # It will then be re-set again within #perform_post_install_steps.
+          Pod::Generator::AppTargetHelper.add_swift_version(native_app_target, Pod::Validator::DEFAULT_SWIFT_VERSION)
+          native_app_target
         end
             .tap do
               app_project.recreate_user_schemes do |scheme, target|
