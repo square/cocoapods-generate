@@ -148,6 +148,7 @@ Targets:
           LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: iphoneos
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
       - Release:
         Base Configuration: Pods-App-iOS.release.xcconfig
@@ -159,6 +160,7 @@ Targets:
           LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: iphoneos
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
     Build Phases:
@@ -184,6 +186,7 @@ Targets:
           MACOSX_DEPLOYMENT_TARGET: '10.10'
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: macosx
+          SWIFT_VERSION: '3.2'
       - Release:
         Base Configuration: Pods-App-macOS.release.xcconfig
         Build Settings:
@@ -195,6 +198,7 @@ Targets:
           MACOSX_DEPLOYMENT_TARGET: '10.10'
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: macosx
+          SWIFT_VERSION: '3.2'
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         []
@@ -213,6 +217,7 @@ Targets:
           LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: appletvos
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '11.0'
       - Release:
@@ -223,6 +228,7 @@ Targets:
           LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: appletvos
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '11.0'
           VALIDATE_PRODUCT: YES
@@ -243,6 +249,7 @@ Targets:
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: watchos
           SKIP_INSTALL: YES
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           WATCHOS_DEPLOYMENT_TARGET: '4.0'
       - Release:
@@ -252,6 +259,7 @@ Targets:
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: watchos
           SKIP_INSTALL: YES
+          SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           WATCHOS_DEPLOYMENT_TARGET: '4.0'
