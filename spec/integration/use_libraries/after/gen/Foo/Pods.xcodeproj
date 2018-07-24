@@ -126,34 +126,42 @@ File References:
       - Support Files:
         - Foo-iOS-dummy.m
         - Foo-iOS-prefix.pch
+        - Foo-iOS-umbrella.h
         - Foo-iOS-Unit-Tests-frameworks.sh
         - Foo-iOS-Unit-Tests-Info.plist
         - Foo-iOS-Unit-Tests-prefix.pch
         - Foo-iOS-Unit-Tests-resources.sh
+        - Foo-iOS.modulemap
         - Foo-iOS.unit.xcconfig
         - Foo-iOS.xcconfig
         - Foo-macOS-dummy.m
         - Foo-macOS-prefix.pch
+        - Foo-macOS-umbrella.h
         - Foo-macOS-Unit-Tests-frameworks.sh
         - Foo-macOS-Unit-Tests-Info.plist
         - Foo-macOS-Unit-Tests-prefix.pch
         - Foo-macOS-Unit-Tests-resources.sh
+        - Foo-macOS.modulemap
         - Foo-macOS.unit.xcconfig
         - Foo-macOS.xcconfig
         - Foo-tvOS-dummy.m
         - Foo-tvOS-prefix.pch
+        - Foo-tvOS-umbrella.h
         - Foo-tvOS-Unit-Tests-frameworks.sh
         - Foo-tvOS-Unit-Tests-Info.plist
         - Foo-tvOS-Unit-Tests-prefix.pch
         - Foo-tvOS-Unit-Tests-resources.sh
+        - Foo-tvOS.modulemap
         - Foo-tvOS.unit.xcconfig
         - Foo-tvOS.xcconfig
         - Foo-watchOS-dummy.m
         - Foo-watchOS-prefix.pch
+        - Foo-watchOS-umbrella.h
         - Foo-watchOS-Unit-Tests-frameworks.sh
         - Foo-watchOS-Unit-Tests-Info.plist
         - Foo-watchOS-Unit-Tests-prefix.pch
         - Foo-watchOS-Unit-Tests-resources.sh
+        - Foo-watchOS.modulemap
         - Foo-watchOS.unit.xcconfig
         - Foo-watchOS.xcconfig
       - Tests:
@@ -227,6 +235,7 @@ Targets:
           "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
           GCC_PREFIX_HEADER: Target Support Files/Foo-iOS/Foo-iOS-prefix.pch
           IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+          MODULEMAP_FILE: Headers/Public/Foo/Foo-iOS.modulemap
           OTHER_LDFLAGS: ''
           OTHER_LIBTOOLFLAGS: ''
           PRIVATE_HEADERS_FOLDER_PATH: ''
@@ -247,6 +256,7 @@ Targets:
           "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
           GCC_PREFIX_HEADER: Target Support Files/Foo-iOS/Foo-iOS-prefix.pch
           IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+          MODULEMAP_FILE: Headers/Public/Foo/Foo-iOS.modulemap
           OTHER_LDFLAGS: ''
           OTHER_LIBTOOLFLAGS: ''
           PRIVATE_HEADERS_FOLDER_PATH: ''
@@ -262,6 +272,10 @@ Targets:
     Build Phases:
       - Frameworks:
         []
+      - Headers:
+        - Foo-iOS-umbrella.h:
+          ATTRIBUTES:
+            - Project
       - Sources:
         - Foo-iOS-dummy.m
         - Foo.m
@@ -328,6 +342,7 @@ Targets:
           EXECUTABLE_PREFIX: lib
           GCC_PREFIX_HEADER: Target Support Files/Foo-macOS/Foo-macOS-prefix.pch
           MACOSX_DEPLOYMENT_TARGET: '10.10'
+          MODULEMAP_FILE: Headers/Public/Foo/Foo-macOS.modulemap
           OTHER_LDFLAGS: ''
           OTHER_LIBTOOLFLAGS: ''
           PRIVATE_HEADERS_FOLDER_PATH: ''
@@ -349,6 +364,7 @@ Targets:
           EXECUTABLE_PREFIX: lib
           GCC_PREFIX_HEADER: Target Support Files/Foo-macOS/Foo-macOS-prefix.pch
           MACOSX_DEPLOYMENT_TARGET: '10.10'
+          MODULEMAP_FILE: Headers/Public/Foo/Foo-macOS.modulemap
           OTHER_LDFLAGS: ''
           OTHER_LIBTOOLFLAGS: ''
           PRIVATE_HEADERS_FOLDER_PATH: ''
@@ -362,6 +378,10 @@ Targets:
     Build Phases:
       - Frameworks:
         []
+      - Headers:
+        - Foo-macOS-umbrella.h:
+          ATTRIBUTES:
+            - Project
       - Sources:
         - Foo-macOS-dummy.m
         - Foo.m
@@ -421,6 +441,7 @@ Targets:
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
           "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
           GCC_PREFIX_HEADER: Target Support Files/Foo-tvOS/Foo-tvOS-prefix.pch
+          MODULEMAP_FILE: Headers/Public/Foo/Foo-tvOS.modulemap
           OTHER_LDFLAGS: ''
           OTHER_LIBTOOLFLAGS: ''
           PRIVATE_HEADERS_FOLDER_PATH: ''
@@ -440,6 +461,7 @@ Targets:
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
           "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
           GCC_PREFIX_HEADER: Target Support Files/Foo-tvOS/Foo-tvOS-prefix.pch
+          MODULEMAP_FILE: Headers/Public/Foo/Foo-tvOS.modulemap
           OTHER_LDFLAGS: ''
           OTHER_LIBTOOLFLAGS: ''
           PRIVATE_HEADERS_FOLDER_PATH: ''
@@ -456,6 +478,10 @@ Targets:
     Build Phases:
       - Frameworks:
         []
+      - Headers:
+        - Foo-tvOS-umbrella.h:
+          ATTRIBUTES:
+            - Project
       - Sources:
         - Foo-tvOS-dummy.m
         - Foo.m
@@ -516,6 +542,7 @@ Targets:
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
           "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
           GCC_PREFIX_HEADER: Target Support Files/Foo-watchOS/Foo-watchOS-prefix.pch
+          MODULEMAP_FILE: Headers/Public/Foo/Foo-watchOS.modulemap
           OTHER_LDFLAGS: ''
           OTHER_LIBTOOLFLAGS: ''
           PRIVATE_HEADERS_FOLDER_PATH: ''
@@ -535,6 +562,7 @@ Targets:
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
           "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
           GCC_PREFIX_HEADER: Target Support Files/Foo-watchOS/Foo-watchOS-prefix.pch
+          MODULEMAP_FILE: Headers/Public/Foo/Foo-watchOS.modulemap
           OTHER_LDFLAGS: ''
           OTHER_LIBTOOLFLAGS: ''
           PRIVATE_HEADERS_FOLDER_PATH: ''
@@ -551,6 +579,10 @@ Targets:
     Build Phases:
       - Frameworks:
         []
+      - Headers:
+        - Foo-watchOS-umbrella.h:
+          ATTRIBUTES:
+            - Project
       - Sources:
         - Foo-watchOS-dummy.m
         - Foo.m
