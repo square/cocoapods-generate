@@ -17,7 +17,8 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   use_default_plugins: false,
   deterministic_uuids: false,
   share_schemes_for_development_pods: true,
-  warn_for_multiple_pod_sources: false }
+  warn_for_multiple_pod_sources: false,
+  use_modular_headers: false }
 
 Generating A in `gen/A`
     Creating stub application

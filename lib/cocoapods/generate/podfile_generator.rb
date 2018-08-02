@@ -123,9 +123,16 @@ module Pod
       #         whether all pods should use modular headers
       #
       def use_modular_headers?
-        return false unless configuration.use_podfile?
-        target_definition_list.all? do |target_definition|
-          target_definition.use_modular_headers_hash['all']
+        if configuration.use_podfile? && configuration.use_modular_headers?
+          raise Informative, 'Conflicting `use_modular_headers` option. Cannot specify both `--use-modular-headers` and `--use-podfile`.'
+        end
+
+        if configuration.use_podfile?
+          target_definition_list.all? do |target_definition|
+            target_definition.use_modular_headers_hash['all']
+          end
+        else
+          configuration.use_modular_headers?
         end
       end
 
@@ -257,7 +264,7 @@ module Pod
       # @param  [String] pod_name
       #
       def modular_headers?(pod_name)
-        return false unless configuration.use_podfile?
+        return true if configuration.use_modular_headers?
         target_definitions_for_pod(pod_name).all? do |target_definition|
           target_definition.build_pod_as_module?(pod_name)
         end

@@ -23,6 +23,7 @@ RSpec.describe Pod::Generate::Configuration do
         use_libraries: false,
         use_lockfile: false,
         use_lockfile_versions: false,
+        use_modular_headers: false,
         use_podfile: false,
         warn_for_multiple_pod_sources: false
       )
@@ -46,7 +47,8 @@ RSpec.describe Pod::Generate::Configuration do
               use_default_plugins: false,
               deterministic_uuids: false,
               share_schemes_for_development_pods: true,
-              warn_for_multiple_pod_sources: false }
+              warn_for_multiple_pod_sources: false,
+              use_modular_headers: false }
         TO_S
   end
 

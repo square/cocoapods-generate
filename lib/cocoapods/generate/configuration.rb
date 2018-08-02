@@ -150,6 +150,7 @@ module Pod
       option :deterministic_uuids, BOOLEAN, 'false', 'Whether installation should use deterministic UUIDs for pods projects', nil, nil, coerce_to_bool
       option :share_schemes_for_development_pods, BOOLEAN, 'true', 'Whether installation should share schemes for development pods', nil, nil, coerce_to_bool
       option :warn_for_multiple_pod_sources, BOOLEAN, 'false', 'Whether installation should warn when a pod is found in multiple sources', nil, nil, coerce_to_bool
+      option :use_modular_headers, BOOLEAN, 'false', 'Whether the target should be generated as a clang module, treating dependencies as modules, as if `use_modular_headers!` were specified. Will error if both this option and a podfile are specified', nil, nil, coerce_to_bool
 
       options.freeze
       options.each do |o|

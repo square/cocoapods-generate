@@ -4,7 +4,8 @@ RSpec.describe Pod::Generate::PodfileGenerator do
   let(:podfile) { Pod::Podfile.new {} }
   let(:lockfile_specs) { [] }
   let(:lockfile) { Pod::Lockfile.generate(podfile, lockfile_specs, {}) }
-  let(:config_options) { { podfile: podfile, lockfile: lockfile, use_podfile: !!podfile, use_lockfile_versions: !!lockfile } }
+  let(:use_modular_headers) { false }
+  let(:config_options) { { podfile: podfile, lockfile: lockfile, use_podfile: !!podfile, use_lockfile_versions: !!lockfile, use_modular_headers: use_modular_headers } }
   let(:config) { Pod::Generate::Configuration.new(**config_options) }
 
   subject(:podfile_generator) { described_class.new(config) }
@@ -247,6 +248,15 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         expected.target_definitions['Pods'].send(:internal_hash)['inhibit_warnings']['for_pods'] = %w[A A B]
 
         expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+      end
+    end
+
+    context 'when use_modular_headers! and use_podfile is specified' do
+      let(:use_modular_headers) { true }
+
+      it 'raises an exception' do
+        expect(config_options[:use_podfile]).to eq(true)
+        expect { podfile_generator.use_modular_headers? }.to raise_error Pod::Informative, a_string_including('Conflicting `use_modular_headers` option. Cannot specify both `--use-modular-headers` and `--use-podfile`.')
       end
     end
 

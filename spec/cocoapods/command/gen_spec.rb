@@ -82,6 +82,11 @@ RSpec.describe Pod::Command::Gen, :tmpdir do
                                                          for development pods
                   --warn-for-multiple-pod-sources        Whether installation should warn when a pod
                                                          is found in multiple sources
+                  --use-modular-headers                  Whether the target should be generated as a
+                                                         clang module, treating dependencies as
+                                                         modules, as if `use_modular_headers!` were
+                                                         specified. Will error if both this option
+                                                         and a podfile are specified
             HELP
     end
   end
