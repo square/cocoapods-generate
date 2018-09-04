@@ -51,7 +51,7 @@ module Pod
 
           self.defined_in_file = dir.join('Podfile.yaml')
 
-          test_specs = spec.recursive_subspecs.select(&:test_specification)
+          test_specs = spec.recursive_subspecs.select(&:test_specification?)
 
           # Stick all of the transitive dependencies in an abstract target.
           # This allows us to force CocoaPods to use the versions / sources / external sources
