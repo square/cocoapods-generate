@@ -145,7 +145,7 @@ module Pod
 
           if (app_host_source_dir = configuration.app_host_source_dir)
             files = Pathname.glob(app_host_source_dir + '**/*')
-                            .map { |f| f.relative_path_from(app_host_source_dir) }
+                            .map { |f| f.relative_path_from(app_host_source_dir) }.sort
             app_host_source_dir = app_host_source_dir.relative_path_from(installer.sandbox.root)
             group = app_project.new_group(native_app_target.name, app_host_source_dir)
             source_file_refs = files.map { |source_file| group.new_file(source_file) }
