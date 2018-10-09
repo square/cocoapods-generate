@@ -105,6 +105,7 @@ module Pod
       #
       def create_app_project
         app_project = open_app_project(recreate: true)
+        library_product_types = [:framework, :dynamic_library, :static_library]
 
         spec.available_platforms.map do |platform|
           consumer = spec.consumer(platform)
@@ -117,7 +118,17 @@ module Pod
         end
             .tap do
               app_project.recreate_user_schemes do |scheme, target|
-                scheme.set_launch_target(target)
+                next unless target.respond_to?(:symbol_type)
+                next unless library_product_types.include? target.symbol_type
+                installation_result = results_by_native_target[target]
+                next unless installation_result
+                installation_result.test_native_targets.each do |test_native_target|
+                  scheme.add_test_target(test_native_target)
+                end
+
+                installation_result.app_native_targets.each do |add_build_target|
+                  scheme.add_build_target(add_build_target)
+                end
               end
             end
             .each do |target|
