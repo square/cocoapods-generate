@@ -30,8 +30,6 @@ Build Configurations:
       CLANG_WARN_SUSPICIOUS_MOVE: YES
       CLANG_WARN_UNGUARDED_AVAILABILITY: YES_AGGRESSIVE
       CLANG_WARN_UNREACHABLE_CODE: YES
-      CODE_SIGNING_ALLOWED: NO
-      CODE_SIGNING_REQUIRED: NO
       COPY_PHASE_STRIP: NO
       DEBUG_INFORMATION_FORMAT: dwarf
       ENABLE_STRICT_OBJC_MSGSEND: YES
@@ -52,7 +50,8 @@ Build Configurations:
       GCC_WARN_UNUSED_VARIABLE: YES
       IPHONEOS_DEPLOYMENT_TARGET: '9.0'
       MACOSX_DEPLOYMENT_TARGET: '10.10'
-      MTL_ENABLE_DEBUG_INFO: YES
+      MTL_ENABLE_DEBUG_INFO: INCLUDE_SOURCE
+      MTL_FAST_MATH: YES
       ONLY_ACTIVE_ARCH: YES
       PRODUCT_NAME: "$(TARGET_NAME)"
       STRIP_INSTALLED_PRODUCT: NO
@@ -91,8 +90,6 @@ Build Configurations:
       CLANG_WARN_SUSPICIOUS_MOVE: YES
       CLANG_WARN_UNGUARDED_AVAILABILITY: YES_AGGRESSIVE
       CLANG_WARN_UNREACHABLE_CODE: YES
-      CODE_SIGNING_ALLOWED: NO
-      CODE_SIGNING_REQUIRED: NO
       COPY_PHASE_STRIP: NO
       DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
       ENABLE_NS_ASSERTIONS: NO
@@ -111,6 +108,7 @@ Build Configurations:
       IPHONEOS_DEPLOYMENT_TARGET: '9.0'
       MACOSX_DEPLOYMENT_TARGET: '10.10'
       MTL_ENABLE_DEBUG_INFO: NO
+      MTL_FAST_MATH: YES
       PRODUCT_NAME: "$(TARGET_NAME)"
       STRIP_INSTALLED_PRODUCT: NO
       SYMROOT: "${SRCROOT}/../build"
@@ -133,7 +131,7 @@ File References:
         - Foo-iOS-Unit-Tests-prefix.pch
         - Foo-iOS-Unit-Tests-resources.sh
         - Foo-iOS.modulemap
-        - Foo-iOS.unit.xcconfig
+        - Foo-iOS.unit-tests.xcconfig
         - Foo-iOS.xcconfig
         - Foo-macOS-dummy.m
         - Foo-macOS-Info.plist
@@ -144,7 +142,7 @@ File References:
         - Foo-macOS-Unit-Tests-prefix.pch
         - Foo-macOS-Unit-Tests-resources.sh
         - Foo-macOS.modulemap
-        - Foo-macOS.unit.xcconfig
+        - Foo-macOS.unit-tests.xcconfig
         - Foo-macOS.xcconfig
         - Foo-tvOS-dummy.m
         - Foo-tvOS-Info.plist
@@ -155,7 +153,7 @@ File References:
         - Foo-tvOS-Unit-Tests-prefix.pch
         - Foo-tvOS-Unit-Tests-resources.sh
         - Foo-tvOS.modulemap
-        - Foo-tvOS.unit.xcconfig
+        - Foo-tvOS.unit-tests.xcconfig
         - Foo-tvOS.xcconfig
         - Foo-watchOS-dummy.m
         - Foo-watchOS-Info.plist
@@ -166,7 +164,7 @@ File References:
         - Foo-watchOS-Unit-Tests-prefix.pch
         - Foo-watchOS-Unit-Tests-resources.sh
         - Foo-watchOS.modulemap
-        - Foo-watchOS.unit.xcconfig
+        - Foo-watchOS.unit-tests.xcconfig
         - Foo-watchOS.xcconfig
       - Tests:
         - FooTests.m
@@ -201,7 +199,6 @@ File References:
       - Pods-App-iOS-dummy.m
       - Pods-App-iOS-frameworks.sh
       - Pods-App-iOS-Info.plist
-      - Pods-App-iOS-resources.sh
       - Pods-App-iOS-umbrella.h
       - Pods-App-iOS.debug.xcconfig
       - Pods-App-iOS.modulemap
@@ -212,7 +209,6 @@ File References:
       - Pods-App-macOS-dummy.m
       - Pods-App-macOS-frameworks.sh
       - Pods-App-macOS-Info.plist
-      - Pods-App-macOS-resources.sh
       - Pods-App-macOS-umbrella.h
       - Pods-App-macOS.debug.xcconfig
       - Pods-App-macOS.modulemap
@@ -223,7 +219,6 @@ File References:
       - Pods-App-tvOS-dummy.m
       - Pods-App-tvOS-frameworks.sh
       - Pods-App-tvOS-Info.plist
-      - Pods-App-tvOS-resources.sh
       - Pods-App-tvOS-umbrella.h
       - Pods-App-tvOS.debug.xcconfig
       - Pods-App-tvOS.modulemap
@@ -234,7 +229,6 @@ File References:
       - Pods-App-watchOS-dummy.m
       - Pods-App-watchOS-frameworks.sh
       - Pods-App-watchOS-Info.plist
-      - Pods-App-watchOS-resources.sh
       - Pods-App-watchOS-umbrella.h
       - Pods-App-watchOS.debug.xcconfig
       - Pods-App-watchOS.modulemap
@@ -305,13 +299,15 @@ Targets:
         - Foo-iOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Foo-iOS-dummy.m
         - Foo.m
   - Foo-iOS-Unit-Tests:
     Build Configurations:
       - Debug:
-        Base Configuration: Foo-iOS.unit.xcconfig
+        Base Configuration: Foo-iOS.unit-tests.xcconfig
         Build Settings:
           CODE_SIGN_IDENTITY: iPhone Developer
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -327,7 +323,7 @@ Targets:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_VERSION: '3.2'
       - Release:
-        Base Configuration: Foo-iOS.unit.xcconfig
+        Base Configuration: Foo-iOS.unit-tests.xcconfig
         Build Settings:
           CODE_SIGN_IDENTITY: iPhone Developer
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -351,6 +347,8 @@ Targets:
       - Frameworks:
         - Foo.framework
         - Foundation.framework
+      - Resources:
+        []
       - Sources:
         - FooTests.m
   - Foo-macOS:
@@ -358,6 +356,7 @@ Targets:
       - Debug:
         Base Configuration: Foo-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -387,6 +386,7 @@ Targets:
       - Release:
         Base Configuration: Foo-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -420,14 +420,17 @@ Targets:
         - Foo-macOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Foo-macOS-dummy.m
         - Foo.m
   - Foo-macOS-Unit-Tests:
     Build Configurations:
       - Debug:
-        Base Configuration: Foo-macOS.unit.xcconfig
+        Base Configuration: Foo-macOS.unit-tests.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -441,8 +444,9 @@ Targets:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_VERSION: '3.2'
       - Release:
-        Base Configuration: Foo-macOS.unit.xcconfig
+        Base Configuration: Foo-macOS.unit-tests.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -463,6 +467,8 @@ Targets:
       - Frameworks:
         - Cocoa.framework
         - Foo.framework
+      - Resources:
+        []
       - Sources:
         - FooTests.m
   - Foo-tvOS:
@@ -529,13 +535,15 @@ Targets:
         - Foo-tvOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Foo-tvOS-dummy.m
         - Foo.m
   - Foo-tvOS-Unit-Tests:
     Build Configurations:
       - Debug:
-        Base Configuration: Foo-tvOS.unit.xcconfig
+        Base Configuration: Foo-tvOS.unit-tests.xcconfig
         Build Settings:
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
@@ -550,7 +558,7 @@ Targets:
           SWIFT_VERSION: '3.2'
           TVOS_DEPLOYMENT_TARGET: '11.0'
       - Release:
-        Base Configuration: Foo-tvOS.unit.xcconfig
+        Base Configuration: Foo-tvOS.unit-tests.xcconfig
         Build Settings:
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
@@ -573,6 +581,8 @@ Targets:
       - Frameworks:
         - Foo.framework
         - Foundation.framework
+      - Resources:
+        []
       - Sources:
         - FooTests.m
   - Foo-watchOS:
@@ -641,13 +651,15 @@ Targets:
         - Foo-watchOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Foo-watchOS-dummy.m
         - Foo.m
   - Foo-watchOS-Unit-Tests:
     Build Configurations:
       - Debug:
-        Base Configuration: Foo-watchOS.unit.xcconfig
+        Base Configuration: Foo-watchOS.unit-tests.xcconfig
         Build Settings:
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
@@ -662,7 +674,7 @@ Targets:
           SWIFT_VERSION: '3.2'
           WATCHOS_DEPLOYMENT_TARGET: '4.0'
       - Release:
-        Base Configuration: Foo-watchOS.unit.xcconfig
+        Base Configuration: Foo-watchOS.unit-tests.xcconfig
         Build Settings:
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
@@ -685,6 +697,8 @@ Targets:
       - Frameworks:
         - Foo.framework
         - Foundation.framework
+      - Resources:
+        []
       - Sources:
         - FooTests.m
   - Pods-App-iOS:
@@ -755,6 +769,8 @@ Targets:
         - Pods-App-iOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Pods-App-iOS-dummy.m
   - Pods-App-macOS:
@@ -763,6 +779,7 @@ Targets:
         Base Configuration: Pods-App-macOS.debug.xcconfig
         Build Settings:
           ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -794,6 +811,7 @@ Targets:
         Base Configuration: Pods-App-macOS.release.xcconfig
         Build Settings:
           ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -828,6 +846,8 @@ Targets:
         - Pods-App-macOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Pods-App-macOS-dummy.m
   - Pods-App-tvOS:
@@ -898,6 +918,8 @@ Targets:
         - Pods-App-tvOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Pods-App-tvOS-dummy.m
   - Pods-App-watchOS:
@@ -970,5 +992,7 @@ Targets:
         - Pods-App-watchOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Pods-App-watchOS-dummy.m

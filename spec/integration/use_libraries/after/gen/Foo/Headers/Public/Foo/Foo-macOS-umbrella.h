@@ -1,16 +1,1 @@
-#ifdef __OBJC__
-#import <Cocoa/Cocoa.h>
-#else
-#ifndef FOUNDATION_EXPORT
-#if defined(__cplusplus)
-#define FOUNDATION_EXPORT extern "C"
-#else
-#define FOUNDATION_EXPORT extern
-#endif
-#endif
-#endif
-
-
-FOUNDATION_EXPORT double FooVersionNumber;
-FOUNDATION_EXPORT const unsigned char FooVersionString[];
-
+/Users/segiddins/Development/Square/cocoapods-generate/spec/integration/tmp/use_libraries/transformed/gen/Foo/Target Support Files/Foo-macOS/Foo-macOS-umbrella.h

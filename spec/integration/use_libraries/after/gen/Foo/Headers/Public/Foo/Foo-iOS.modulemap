@@ -1,9 +1,1 @@
-module Foo {
-  umbrella header "Foo-iOS-umbrella.h"
-  exclude header "Foo-macOS-umbrella.h"
-  exclude header "Foo-tvOS-umbrella.h"
-  exclude header "Foo-watchOS-umbrella.h"
-
-  export *
-  module * { export * }
-}
+/Users/segiddins/Development/Square/cocoapods-generate/spec/integration/tmp/use_libraries/transformed/gen/Foo/Target Support Files/Foo-iOS/Foo-iOS.modulemap
