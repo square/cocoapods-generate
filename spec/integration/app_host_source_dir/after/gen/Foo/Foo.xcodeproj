@@ -103,12 +103,20 @@ File References:
     - Info.plist
     - LaunchScreen.storyboard
     - main.m
+    - other.h
+    - Subdir
   - App-macOS:
     - main.m
+    - other.h
+    - Subdir
   - App-tvOS:
     - main.m
+    - other.h
+    - Subdir
   - App-watchOS:
     - main.m
+    - other.h
+    - Subdir
   - Frameworks:
     - iOS:
       - Foundation.framework
@@ -171,10 +179,13 @@ Targets:
       - Frameworks:
         - Foundation.framework
         - Pods_App_iOS.framework
+      - Headers:
+        - other.h
       - Resources:
         - LaunchScreen.storyboard
       - Sources:
         - main.m
+        - Subdir
   - App-macOS:
     Build Configurations:
       - Debug:
@@ -207,10 +218,13 @@ Targets:
       - Frameworks:
         - Cocoa.framework
         - Pods_App_macOS.framework
+      - Headers:
+        - other.h
       - Resources:
         []
       - Sources:
         - main.m
+        - Subdir
   - App-tvOS:
     Build Configurations:
       - Debug:
@@ -242,10 +256,13 @@ Targets:
       - Frameworks:
         - Foundation.framework
         - Pods_App_tvOS.framework
+      - Headers:
+        - other.h
       - Resources:
         []
       - Sources:
         - main.m
+        - Subdir
   - App-watchOS:
     Build Configurations:
       - Debug:
@@ -275,7 +292,10 @@ Targets:
       - Frameworks:
         - Foundation.framework
         - Pods_App_watchOS.framework
+      - Headers:
+        - other.h
       - Resources:
         []
       - Sources:
         - main.m
+        - Subdir
