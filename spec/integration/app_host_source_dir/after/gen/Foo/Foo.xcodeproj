@@ -103,20 +103,24 @@ File References:
     - Info.plist
     - LaunchScreen.storyboard
     - main.m
-    - other.h
-    - Subdir
+    - Subdir:
+      - other.h
+      - other.swift
   - App-macOS:
     - main.m
-    - other.h
-    - Subdir
+    - Subdir:
+      - other.h
+      - other.swift
   - App-tvOS:
     - main.m
-    - other.h
-    - Subdir
+    - Subdir:
+      - other.h
+      - other.swift
   - App-watchOS:
     - main.m
-    - other.h
-    - Subdir
+    - Subdir:
+      - other.h
+      - other.swift
   - Frameworks:
     - iOS:
       - Foundation.framework
@@ -185,7 +189,7 @@ Targets:
         - LaunchScreen.storyboard
       - Sources:
         - main.m
-        - Subdir
+        - other.swift
   - App-macOS:
     Build Configurations:
       - Debug:
@@ -224,7 +228,7 @@ Targets:
         []
       - Sources:
         - main.m
-        - Subdir
+        - other.swift
   - App-tvOS:
     Build Configurations:
       - Debug:
@@ -262,7 +266,7 @@ Targets:
         []
       - Sources:
         - main.m
-        - Subdir
+        - other.swift
   - App-watchOS:
     Build Configurations:
       - Debug:
@@ -298,4 +302,4 @@ Targets:
         []
       - Sources:
         - main.m
-        - Subdir
+        - other.swift
