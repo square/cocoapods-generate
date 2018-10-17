@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.private_header_files = 'Sources/Internal/**/*.h'
 
   s.test_spec 'Tests' do |ts|
-    ts.source_files = 'Tests/**/*.{h,m,swift'
+    ts.source_files = 'Tests/**/*.{h,m,swift}'
   end
 end

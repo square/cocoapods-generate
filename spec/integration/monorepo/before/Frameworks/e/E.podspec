@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
   s.dependency 'C', '1.0.0.LOCAL'
 
   s.test_spec 'Tests' do |ts|
-    ts.source_files = 'Tests/**/*.{h,m,swift'
+    ts.source_files = 'Tests/**/*.{h,m,swift}'
   end
 end

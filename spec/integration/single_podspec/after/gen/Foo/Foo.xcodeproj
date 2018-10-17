@@ -47,7 +47,8 @@ Build Configurations:
       GCC_WARN_UNINITIALIZED_AUTOS: YES_AGGRESSIVE
       GCC_WARN_UNUSED_FUNCTION: YES
       GCC_WARN_UNUSED_VARIABLE: YES
-      MTL_ENABLE_DEBUG_INFO: YES
+      MTL_ENABLE_DEBUG_INFO: INCLUDE_SOURCE
+      MTL_FAST_MATH: YES
       ONLY_ACTIVE_ARCH: YES
       PRODUCT_NAME: "$(TARGET_NAME)"
   - Release:
@@ -94,6 +95,7 @@ Build Configurations:
       GCC_WARN_UNUSED_FUNCTION: YES
       GCC_WARN_UNUSED_VARIABLE: YES
       MTL_ENABLE_DEBUG_INFO: NO
+      MTL_FAST_MATH: YES
       PRODUCT_NAME: "$(TARGET_NAME)"
 
 File References:
@@ -205,6 +207,8 @@ Targets:
       - Frameworks:
         - Cocoa.framework
         - Pods_App_macOS.framework
+      - Resources:
+        []
       - Sources:
         - main.m
   - App-tvOS:
@@ -238,6 +242,8 @@ Targets:
       - Frameworks:
         - Foundation.framework
         - Pods_App_tvOS.framework
+      - Resources:
+        []
       - Sources:
         - main.m
   - App-watchOS:
@@ -269,5 +275,7 @@ Targets:
       - Frameworks:
         - Foundation.framework
         - Pods_App_watchOS.framework
+      - Resources:
+        []
       - Sources:
         - main.m

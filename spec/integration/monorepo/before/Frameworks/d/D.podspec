@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.dependency 'Public'
 
   s.test_spec 'Tests' do |ts|
-    ts.source_files = 'Tests/**/*.{h,m,swift'
+    ts.source_files = 'Tests/**/*.{h,m,swift}'
 
     ts.dependency 'E'
   end

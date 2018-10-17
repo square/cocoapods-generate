@@ -47,7 +47,8 @@ Build Configurations:
       GCC_WARN_UNINITIALIZED_AUTOS: YES_AGGRESSIVE
       GCC_WARN_UNUSED_FUNCTION: YES
       GCC_WARN_UNUSED_VARIABLE: YES
-      MTL_ENABLE_DEBUG_INFO: YES
+      MTL_ENABLE_DEBUG_INFO: INCLUDE_SOURCE
+      MTL_FAST_MATH: YES
       ONLY_ACTIVE_ARCH: YES
       PRODUCT_NAME: "$(TARGET_NAME)"
   - Release:
@@ -94,6 +95,7 @@ Build Configurations:
       GCC_WARN_UNUSED_FUNCTION: YES
       GCC_WARN_UNUSED_VARIABLE: YES
       MTL_ENABLE_DEBUG_INFO: NO
+      MTL_FAST_MATH: YES
       PRODUCT_NAME: "$(TARGET_NAME)"
 
 File References:
@@ -101,12 +103,24 @@ File References:
     - Info.plist
     - LaunchScreen.storyboard
     - main.m
+    - Subdir:
+      - other.h
+      - other.swift
   - App-macOS:
     - main.m
+    - Subdir:
+      - other.h
+      - other.swift
   - App-tvOS:
     - main.m
+    - Subdir:
+      - other.h
+      - other.swift
   - App-watchOS:
     - main.m
+    - Subdir:
+      - other.h
+      - other.swift
   - Frameworks:
     - iOS:
       - Foundation.framework
@@ -169,10 +183,13 @@ Targets:
       - Frameworks:
         - Foundation.framework
         - Pods_App_iOS.framework
+      - Headers:
+        - other.h
       - Resources:
         - LaunchScreen.storyboard
       - Sources:
         - main.m
+        - other.swift
   - App-macOS:
     Build Configurations:
       - Debug:
@@ -205,8 +222,13 @@ Targets:
       - Frameworks:
         - Cocoa.framework
         - Pods_App_macOS.framework
+      - Headers:
+        - other.h
+      - Resources:
+        []
       - Sources:
         - main.m
+        - other.swift
   - App-tvOS:
     Build Configurations:
       - Debug:
@@ -238,8 +260,13 @@ Targets:
       - Frameworks:
         - Foundation.framework
         - Pods_App_tvOS.framework
+      - Headers:
+        - other.h
+      - Resources:
+        []
       - Sources:
         - main.m
+        - other.swift
   - App-watchOS:
     Build Configurations:
       - Debug:
@@ -269,5 +296,10 @@ Targets:
       - Frameworks:
         - Foundation.framework
         - Pods_App_watchOS.framework
+      - Headers:
+        - other.h
+      - Resources:
+        []
       - Sources:
         - main.m
+        - other.swift

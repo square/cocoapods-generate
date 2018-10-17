@@ -30,8 +30,6 @@ Build Configurations:
       CLANG_WARN_SUSPICIOUS_MOVE: YES
       CLANG_WARN_UNGUARDED_AVAILABILITY: YES_AGGRESSIVE
       CLANG_WARN_UNREACHABLE_CODE: YES
-      CODE_SIGNING_ALLOWED: NO
-      CODE_SIGNING_REQUIRED: NO
       COPY_PHASE_STRIP: NO
       DEBUG_INFORMATION_FORMAT: dwarf
       ENABLE_STRICT_OBJC_MSGSEND: YES
@@ -52,7 +50,8 @@ Build Configurations:
       GCC_WARN_UNUSED_VARIABLE: YES
       IPHONEOS_DEPLOYMENT_TARGET: '8.0'
       MACOSX_DEPLOYMENT_TARGET: ''
-      MTL_ENABLE_DEBUG_INFO: YES
+      MTL_ENABLE_DEBUG_INFO: INCLUDE_SOURCE
+      MTL_FAST_MATH: YES
       ONLY_ACTIVE_ARCH: YES
       PRODUCT_NAME: "$(TARGET_NAME)"
       STRIP_INSTALLED_PRODUCT: NO
@@ -91,8 +90,6 @@ Build Configurations:
       CLANG_WARN_SUSPICIOUS_MOVE: YES
       CLANG_WARN_UNGUARDED_AVAILABILITY: YES_AGGRESSIVE
       CLANG_WARN_UNREACHABLE_CODE: YES
-      CODE_SIGNING_ALLOWED: NO
-      CODE_SIGNING_REQUIRED: NO
       COPY_PHASE_STRIP: NO
       DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
       ENABLE_NS_ASSERTIONS: NO
@@ -111,6 +108,7 @@ Build Configurations:
       IPHONEOS_DEPLOYMENT_TARGET: '8.0'
       MACOSX_DEPLOYMENT_TARGET: ''
       MTL_ENABLE_DEBUG_INFO: NO
+      MTL_FAST_MATH: YES
       PRODUCT_NAME: "$(TARGET_NAME)"
       STRIP_INSTALLED_PRODUCT: NO
       SYMROOT: "${SRCROOT}/../build"
@@ -236,7 +234,7 @@ File References:
         - D-iOS-Unit-Tests-prefix.pch
         - D-iOS-Unit-Tests-resources.sh
         - D-iOS.modulemap
-        - D-iOS.unit.xcconfig
+        - D-iOS.unit-tests.xcconfig
         - D-iOS.xcconfig
         - D-macOS-dummy.m
         - D-macOS-Info.plist
@@ -247,7 +245,7 @@ File References:
         - D-macOS-Unit-Tests-prefix.pch
         - D-macOS-Unit-Tests-resources.sh
         - D-macOS.modulemap
-        - D-macOS.unit.xcconfig
+        - D-macOS.unit-tests.xcconfig
         - D-macOS.xcconfig
         - D-tvOS-dummy.m
         - D-tvOS-Info.plist
@@ -258,7 +256,7 @@ File References:
         - D-tvOS-Unit-Tests-prefix.pch
         - D-tvOS-Unit-Tests-resources.sh
         - D-tvOS.modulemap
-        - D-tvOS.unit.xcconfig
+        - D-tvOS.unit-tests.xcconfig
         - D-tvOS.xcconfig
         - D-watchOS-dummy.m
         - D-watchOS-Info.plist
@@ -269,8 +267,10 @@ File References:
         - D-watchOS-Unit-Tests-prefix.pch
         - D-watchOS-Unit-Tests-resources.sh
         - D-watchOS.modulemap
-        - D-watchOS.unit.xcconfig
+        - D-watchOS.unit-tests.xcconfig
         - D-watchOS.xcconfig
+      - Tests:
+        - d_tests.swift
     - E:
       - e.h
       - e.m
@@ -321,7 +321,11 @@ File References:
   - Podfile.yaml
   - Pods:
     - Public:
-      []
+      - Support Files:
+        - Public-iOS.xcconfig
+        - Public-macOS.xcconfig
+        - Public-tvOS.xcconfig
+        - Public-watchOS.xcconfig
   - Products:
     - A.framework
     - A.framework
@@ -358,7 +362,6 @@ File References:
       - Pods-App-iOS-dummy.m
       - Pods-App-iOS-frameworks.sh
       - Pods-App-iOS-Info.plist
-      - Pods-App-iOS-resources.sh
       - Pods-App-iOS-umbrella.h
       - Pods-App-iOS.debug.xcconfig
       - Pods-App-iOS.modulemap
@@ -369,7 +372,6 @@ File References:
       - Pods-App-macOS-dummy.m
       - Pods-App-macOS-frameworks.sh
       - Pods-App-macOS-Info.plist
-      - Pods-App-macOS-resources.sh
       - Pods-App-macOS-umbrella.h
       - Pods-App-macOS.debug.xcconfig
       - Pods-App-macOS.modulemap
@@ -380,7 +382,6 @@ File References:
       - Pods-App-tvOS-dummy.m
       - Pods-App-tvOS-frameworks.sh
       - Pods-App-tvOS-Info.plist
-      - Pods-App-tvOS-resources.sh
       - Pods-App-tvOS-umbrella.h
       - Pods-App-tvOS.debug.xcconfig
       - Pods-App-tvOS.modulemap
@@ -391,7 +392,6 @@ File References:
       - Pods-App-watchOS-dummy.m
       - Pods-App-watchOS-frameworks.sh
       - Pods-App-watchOS-Info.plist
-      - Pods-App-watchOS-resources.sh
       - Pods-App-watchOS-umbrella.h
       - Pods-App-watchOS.debug.xcconfig
       - Pods-App-watchOS.modulemap
@@ -451,7 +451,8 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
@@ -470,6 +471,8 @@ Targets:
         - a_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - A-iOS-dummy.m
         - a.m:
@@ -481,6 +484,7 @@ Targets:
       - Debug:
         Base Configuration: A-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -511,6 +515,7 @@ Targets:
       - Release:
         Base Configuration: A-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -534,7 +539,8 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -551,6 +557,8 @@ Targets:
         - a_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - A-macOS-dummy.m
         - a.m:
@@ -609,7 +617,8 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
@@ -629,6 +638,8 @@ Targets:
         - a_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - A-tvOS-dummy.m
         - a.m:
@@ -689,7 +700,8 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
@@ -709,6 +721,8 @@ Targets:
         - a_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - A-watchOS-dummy.m
         - a.m:
@@ -768,7 +782,8 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
@@ -788,6 +803,8 @@ Targets:
         - b_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - B-iOS-dummy.m
         - b.m:
@@ -799,6 +816,7 @@ Targets:
       - Debug:
         Base Configuration: B-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -829,6 +847,7 @@ Targets:
       - Release:
         Base Configuration: B-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -852,7 +871,8 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -870,6 +890,8 @@ Targets:
         - b_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - B-macOS-dummy.m
         - b.m:
@@ -928,7 +950,8 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
@@ -949,6 +972,8 @@ Targets:
         - b_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - B-tvOS-dummy.m
         - b.m:
@@ -1009,7 +1034,8 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
@@ -1030,6 +1056,8 @@ Targets:
         - b_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - B-watchOS-dummy.m
         - b.m:
@@ -1089,7 +1117,8 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
@@ -1110,6 +1139,8 @@ Targets:
         - c_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - C-iOS-dummy.m
         - c.m:
@@ -1121,6 +1152,7 @@ Targets:
       - Debug:
         Base Configuration: C-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -1151,6 +1183,7 @@ Targets:
       - Release:
         Base Configuration: C-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -1174,7 +1207,8 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -1193,6 +1227,8 @@ Targets:
         - c_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - C-macOS-dummy.m
         - c.m:
@@ -1251,7 +1287,8 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
@@ -1273,6 +1310,8 @@ Targets:
         - c_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - C-tvOS-dummy.m
         - c.m:
@@ -1333,7 +1372,8 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
@@ -1355,6 +1395,8 @@ Targets:
         - c_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - C-watchOS-dummy.m
         - c.m:
@@ -1414,7 +1456,8 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
@@ -1423,7 +1466,6 @@ Targets:
     Build Phases:
       - Frameworks:
         - A.framework
-        - B.framework
         - C.framework
         - Foundation.framework
       - Headers:
@@ -1436,6 +1478,8 @@ Targets:
         - d_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - D-iOS-dummy.m
         - d.m:
@@ -1445,7 +1489,7 @@ Targets:
   - D-iOS-Unit-Tests:
     Build Configurations:
       - Debug:
-        Base Configuration: D-iOS.unit.xcconfig
+        Base Configuration: D-iOS.unit-tests.xcconfig
         Build Settings:
           CODE_SIGN_IDENTITY: iPhone Developer
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -1462,9 +1506,10 @@ Targets:
           PRODUCT_NAME: D-iOS-Unit-Tests
           SDKROOT: iphoneos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
           SWIFT_VERSION: '3.2'
       - Release:
-        Base Configuration: D-iOS.unit.xcconfig
+        Base Configuration: D-iOS.unit-tests.xcconfig
         Build Settings:
           CODE_SIGN_IDENTITY: iPhone Developer
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -1478,6 +1523,8 @@ Targets:
           PRODUCT_NAME: D-iOS-Unit-Tests
           SDKROOT: iphoneos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           VALIDATE_PRODUCT: YES
     Build Phases:
@@ -1486,19 +1533,20 @@ Targets:
       - "[CP] Embed Pods Frameworks":
         []
       - Frameworks:
-        - A.framework
-        - B.framework
-        - C.framework
         - D.framework
         - E.framework
         - Foundation.framework
-      - Sources:
+      - Resources:
         []
+      - Sources:
+        - d_tests.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
   - D-macOS:
     Build Configurations:
       - Debug:
         Base Configuration: D-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -1529,6 +1577,7 @@ Targets:
       - Release:
         Base Configuration: D-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -1552,14 +1601,14 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
       - Frameworks:
         - A.framework
-        - B.framework
         - C.framework
         - Cocoa.framework
       - Headers:
@@ -1572,6 +1621,8 @@ Targets:
         - d_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - D-macOS-dummy.m
         - d.m:
@@ -1581,8 +1632,9 @@ Targets:
   - D-macOS-Unit-Tests:
     Build Configurations:
       - Debug:
-        Base Configuration: D-macOS.unit.xcconfig
+        Base Configuration: D-macOS.unit-tests.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -1597,10 +1649,12 @@ Targets:
           PRODUCT_NAME: D-macOS-Unit-Tests
           SDKROOT: macosx
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
           SWIFT_VERSION: '3.2'
       - Release:
-        Base Configuration: D-macOS.unit.xcconfig
+        Base Configuration: D-macOS.unit-tests.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -1612,6 +1666,8 @@ Targets:
           PRODUCT_NAME: D-macOS-Unit-Tests
           SDKROOT: macosx
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
     Build Phases:
       - "[CP] Copy Pods Resources":
@@ -1619,14 +1675,14 @@ Targets:
       - "[CP] Embed Pods Frameworks":
         []
       - Frameworks:
-        - A.framework
-        - B.framework
-        - C.framework
         - Cocoa.framework
         - D.framework
         - E.framework
-      - Sources:
+      - Resources:
         []
+      - Sources:
+        - d_tests.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
   - D-tvOS:
     Build Configurations:
       - Debug:
@@ -1679,7 +1735,8 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
@@ -1689,7 +1746,6 @@ Targets:
     Build Phases:
       - Frameworks:
         - A.framework
-        - B.framework
         - C.framework
         - Foundation.framework
       - Headers:
@@ -1702,6 +1758,8 @@ Targets:
         - d_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - D-tvOS-dummy.m
         - d.m:
@@ -1711,7 +1769,7 @@ Targets:
   - D-tvOS-Unit-Tests:
     Build Configurations:
       - Debug:
-        Base Configuration: D-tvOS.unit.xcconfig
+        Base Configuration: D-tvOS.unit-tests.xcconfig
         Build Settings:
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
@@ -1726,10 +1784,11 @@ Targets:
           PRODUCT_NAME: D-tvOS-Unit-Tests
           SDKROOT: appletvos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
           SWIFT_VERSION: '3.2'
           TVOS_DEPLOYMENT_TARGET: '9.0'
       - Release:
-        Base Configuration: D-tvOS.unit.xcconfig
+        Base Configuration: D-tvOS.unit-tests.xcconfig
         Build Settings:
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
@@ -1741,6 +1800,8 @@ Targets:
           PRODUCT_NAME: D-tvOS-Unit-Tests
           SDKROOT: appletvos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
@@ -1750,14 +1811,14 @@ Targets:
       - "[CP] Embed Pods Frameworks":
         []
       - Frameworks:
-        - A.framework
-        - B.framework
-        - C.framework
         - D.framework
         - E.framework
         - Foundation.framework
-      - Sources:
+      - Resources:
         []
+      - Sources:
+        - d_tests.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
   - D-watchOS:
     Build Configurations:
       - Debug:
@@ -1812,7 +1873,8 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
@@ -1822,7 +1884,6 @@ Targets:
     Build Phases:
       - Frameworks:
         - A.framework
-        - B.framework
         - C.framework
         - Foundation.framework
       - Headers:
@@ -1835,6 +1896,8 @@ Targets:
         - d_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - D-watchOS-dummy.m
         - d.m:
@@ -1844,7 +1907,7 @@ Targets:
   - D-watchOS-Unit-Tests:
     Build Configurations:
       - Debug:
-        Base Configuration: D-watchOS.unit.xcconfig
+        Base Configuration: D-watchOS.unit-tests.xcconfig
         Build Settings:
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
@@ -1859,10 +1922,11 @@ Targets:
           PRODUCT_NAME: D-watchOS-Unit-Tests
           SDKROOT: watchos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
           SWIFT_VERSION: '3.2'
           WATCHOS_DEPLOYMENT_TARGET: '2.0'
       - Release:
-        Base Configuration: D-watchOS.unit.xcconfig
+        Base Configuration: D-watchOS.unit-tests.xcconfig
         Build Settings:
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
           "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
@@ -1874,6 +1938,8 @@ Targets:
           PRODUCT_NAME: D-watchOS-Unit-Tests
           SDKROOT: watchos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           VALIDATE_PRODUCT: YES
           WATCHOS_DEPLOYMENT_TARGET: '2.0'
@@ -1883,14 +1949,14 @@ Targets:
       - "[CP] Embed Pods Frameworks":
         []
       - Frameworks:
-        - A.framework
-        - B.framework
-        - C.framework
         - D.framework
         - E.framework
         - Foundation.framework
-      - Sources:
+      - Resources:
         []
+      - Sources:
+        - d_tests.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
   - E-iOS:
     Build Configurations:
       - Debug:
@@ -1944,7 +2010,8 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
@@ -1953,7 +2020,6 @@ Targets:
     Build Phases:
       - Frameworks:
         - A.framework
-        - B.framework
         - C.framework
         - Foundation.framework
       - Headers:
@@ -1966,6 +2032,8 @@ Targets:
         - e_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - E-iOS-dummy.m
         - e.m:
@@ -1977,6 +2045,7 @@ Targets:
       - Debug:
         Base Configuration: E-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -2007,6 +2076,7 @@ Targets:
       - Release:
         Base Configuration: E-macOS.xcconfig
         Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -2030,14 +2100,14 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
       - Frameworks:
         - A.framework
-        - B.framework
         - C.framework
         - Cocoa.framework
       - Headers:
@@ -2050,6 +2120,8 @@ Targets:
         - e_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - E-macOS-dummy.m
         - e.m:
@@ -2108,7 +2180,8 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
@@ -2118,7 +2191,6 @@ Targets:
     Build Phases:
       - Frameworks:
         - A.framework
-        - B.framework
         - C.framework
         - Foundation.framework
       - Headers:
@@ -2131,6 +2203,8 @@ Targets:
         - e_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - E-tvOS-dummy.m
         - e.m:
@@ -2191,7 +2265,8 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           SWIFT_VERSION: '3.2'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
@@ -2201,7 +2276,6 @@ Targets:
     Build Phases:
       - Frameworks:
         - A.framework
-        - B.framework
         - C.framework
         - Foundation.framework
       - Headers:
@@ -2214,6 +2288,8 @@ Targets:
         - e_Internal.h:
           ATTRIBUTES:
             - Private
+      - Resources:
+        []
       - Sources:
         - E-watchOS-dummy.m
         - e.m:
@@ -2279,7 +2355,8 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -2291,6 +2368,8 @@ Targets:
         - Pods-App-iOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Pods-App-iOS-dummy.m
   - Pods-App-macOS:
@@ -2299,6 +2378,7 @@ Targets:
         Base Configuration: Pods-App-macOS.debug.xcconfig
         Build Settings:
           ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -2332,6 +2412,7 @@ Targets:
         Base Configuration: Pods-App-macOS.release.xcconfig
         Build Settings:
           ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: NO
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: ''
           "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
@@ -2357,7 +2438,8 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: macosx
           SKIP_INSTALL: YES
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -2367,6 +2449,8 @@ Targets:
         - Pods-App-macOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Pods-App-macOS-dummy.m
   - Pods-App-tvOS:
@@ -2427,7 +2511,8 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: appletvos
           SKIP_INSTALL: YES
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: ''
           VALIDATE_PRODUCT: YES
@@ -2440,6 +2525,8 @@ Targets:
         - Pods-App-tvOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Pods-App-tvOS-dummy.m
   - Pods-App-watchOS:
@@ -2502,7 +2589,8 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: watchos
           SKIP_INSTALL: YES
-          SWIFT_OPTIMIZATION_LEVEL: "-Owholemodule"
+          SWIFT_COMPILATION_MODE: wholemodule
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -2515,53 +2603,100 @@ Targets:
         - Pods-App-watchOS-umbrella.h:
           ATTRIBUTES:
             - Public
+      - Resources:
+        []
       - Sources:
         - Pods-App-watchOS-dummy.m
   - Public-iOS:
     Build Configurations:
       - Debug:
+        Base Configuration: Public-iOS.xcconfig
         Build Settings:
-          ARCHS: ''
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CODE_SIGN_IDENTITY: iPhone Developer
+          IPHONEOS_DEPLOYMENT_TARGET: '8.0'
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          SDKROOT: iphoneos
+          TARGETED_DEVICE_FAMILY: 1,2
       - Release:
+        Base Configuration: Public-iOS.xcconfig
         Build Settings:
-          ARCHS: ''
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CODE_SIGN_IDENTITY: iPhone Developer
+          IPHONEOS_DEPLOYMENT_TARGET: '8.0'
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          SDKROOT: iphoneos
+          TARGETED_DEVICE_FAMILY: 1,2
+          VALIDATE_PRODUCT: YES
     Build Phases:
       []
   - Public-macOS:
     Build Configurations:
       - Debug:
+        Base Configuration: Public-macOS.xcconfig
         Build Settings:
-          ARCHS: ''
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: "-"
+          COMBINE_HIDPI_IMAGES: YES
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+          MACOSX_DEPLOYMENT_TARGET: '10.6'
+          SDKROOT: macosx
       - Release:
+        Base Configuration: Public-macOS.xcconfig
         Build Settings:
-          ARCHS: ''
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: "-"
+          COMBINE_HIDPI_IMAGES: YES
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+          MACOSX_DEPLOYMENT_TARGET: '10.6'
+          SDKROOT: macosx
     Build Phases:
       []
   - Public-tvOS:
     Build Configurations:
       - Debug:
+        Base Configuration: Public-tvOS.xcconfig
         Build Settings:
-          ARCHS: ''
-          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
+          ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME: LaunchImage
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          SDKROOT: appletvos
+          TARGETED_DEVICE_FAMILY: '3'
+          TVOS_DEPLOYMENT_TARGET: '9.0'
       - Release:
+        Base Configuration: Public-tvOS.xcconfig
         Build Settings:
-          ARCHS: ''
-          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
+          ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME: LaunchImage
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          SDKROOT: appletvos
+          TARGETED_DEVICE_FAMILY: '3'
+          TVOS_DEPLOYMENT_TARGET: '9.0'
+          VALIDATE_PRODUCT: YES
     Build Phases:
       []
   - Public-watchOS:
     Build Configurations:
       - Debug:
+        Base Configuration: Public-watchOS.xcconfig
         Build Settings:
-          ARCHS: ''
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          SDKROOT: watchos
+          SKIP_INSTALL: YES
+          TARGETED_DEVICE_FAMILY: '4'
+          WATCHOS_DEPLOYMENT_TARGET: '2.0'
       - Release:
+        Base Configuration: Public-watchOS.xcconfig
         Build Settings:
-          ARCHS: ''
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          SDKROOT: watchos
+          SKIP_INSTALL: YES
+          TARGETED_DEVICE_FAMILY: '4'
+          VALIDATE_PRODUCT: YES
+          WATCHOS_DEPLOYMENT_TARGET: '2.0'
     Build Phases:
       []

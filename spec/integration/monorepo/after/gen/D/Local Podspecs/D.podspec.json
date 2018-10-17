@@ -32,7 +32,7 @@
     {
       "name": "Tests",
       "test_type": "unit",
-      "source_files": "Tests/**/*.{h,m,swift",
+      "source_files": "Tests/**/*.{h,m,swift}",
       "dependencies": {
         "E": [
 
