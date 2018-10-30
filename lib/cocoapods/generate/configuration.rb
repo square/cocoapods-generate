@@ -81,6 +81,33 @@ module Pod
       end
       private_constant :ArrayOf
 
+      # @visibility private
+      #
+      # Implements `===` to do type checking against a hash.
+      #
+      class HashOf
+        attr_reader :key_types, :value_types
+
+        def initialize(keys:, values:)
+          @key_types = keys
+          @value_types = values
+        end
+
+        def to_s
+          "Hash<#{key_types.join('|')} => #{value_types.join('|')}}>"
+        end
+
+        # @return [Boolean] whether the given object is a hash with elements all of the given types
+        #
+        def ===(other)
+          other.is_a?(Hash) && other.all? do |key, value|
+            key_types.any? { |t| t === key } &&
+              value_types.any? { |t| t === value }
+          end
+        end
+      end
+      private_constant :HashOf
+
       coerce_to_bool = lambda do |value|
         if value.is_a?(String)
           value =
@@ -108,6 +135,13 @@ module Pod
       option :podfile_path, [String, Pathname], 'pod_config.podfile_path', 'Path to podfile to use', 'PATH', ->(path) { 'file does not exist' unless path.file? }, coerce_to_pathname
       option :podfile, [Podfile], 'Podfile.from_file(podfile_path) if (podfile_path && File.file?(File.expand_path(podfile_path)))'
       option :use_podfile, BOOLEAN, '!!podfile', 'Whether restrictions should be copied from the podfile', nil, nil, coerce_to_bool
+      option :use_podfile_plugins, BOOLEAN, 'use_podfile', 'Whether plugins should be copied from the podfile', nil, nil, coerce_to_bool
+      option :podfile_plugins, HashOf.new(keys: [String], values: [NilClass, HashOf.new(keys: [String], values: [String, Hash, Array])]),
+             '(use_podfile && podfile) ? podfile.plugins : {}',
+             nil,
+             nil,
+             nil,
+             ->(hash) { Hash[hash] }
 
       option :lockfile, [Pod::Lockfile], 'pod_config.lockfile', nil
       option :use_lockfile, BOOLEAN, '!!lockfile', 'Whether the lockfile should be used to discover transitive dependencies', nil, nil, coerce_to_bool

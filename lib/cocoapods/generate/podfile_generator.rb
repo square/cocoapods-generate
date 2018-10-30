@@ -42,6 +42,10 @@ module Pod
                    share_schemes_for_development_pods: generator.configuration.share_schemes_for_development_pods?,
                    warn_for_multiple_pod_sources: generator.configuration.warn_for_multiple_pod_sources?
 
+          generator.configuration.podfile_plugins.each do |name, options|
+            plugin(*[name, options].compact)
+          end
+
           use_frameworks!(generator.configuration.use_frameworks?)
 
           # Explicitly set sources

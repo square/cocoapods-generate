@@ -54,6 +54,8 @@ RSpec.describe Pod::Command::Gen, :tmpdir do
                   --podfile-path=PATH                    Path to podfile to use
                   --use-podfile                          Whether restrictions should be copied from
                                                          the podfile
+                  --use-podfile-plugins                  Whether plugins should be copied from the
+                                                         podfile
                   --use-lockfile                         Whether the lockfile should be used to
                                                          discover transitive dependencies
                   --use-lockfile-versions                Whether versions from the lockfile should

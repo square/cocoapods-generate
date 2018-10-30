@@ -1,6 +1,8 @@
 CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP_XCODEBUILD=TRUE CP_REPOS_DIR=./spec/integration/specs-repos ./bin/cocoapods-gen --verbose --no-ansi 2>&1
 [pod gen] Running with `pod gen` configuration {
   use_podfile: false,
+  use_podfile_plugins: false,
+  podfile_plugins: {},
   use_lockfile: false,
   use_lockfile_versions: false,
   use_libraries: false,

@@ -3,6 +3,8 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   podfile_path: ./spec/integration/tmp/monorepo/transformed/Podfile,
   podfile: Podfile,
   use_podfile: true,
+  use_podfile_plugins: true,
+  podfile_plugins: {},
   lockfile: #<Pod::Lockfile>,
   use_lockfile: true,
   use_lockfile_versions: true,
