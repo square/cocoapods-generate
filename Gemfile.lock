@@ -34,7 +34,7 @@ GIT
 PATH
   remote: .
   specs:
-    cocoapods-generate (1.1.1)
+    cocoapods-generate (1.2.0)
 
 GEM
   remote: https://rubygems.org/

@@ -13,6 +13,7 @@ RSpec.describe Pod::Generate::Configuration do
         clean: false,
         deterministic_uuids: false,
         gen_directory: Pathname('gen').expand_path,
+        podfile_plugins: {},
         pod_config: Pod::Config.instance,
         podspec_paths: [Pathname('.')],
         podspecs: [Pod::StandardError.new('no specs found in `.`')],
@@ -21,10 +22,11 @@ RSpec.describe Pod::Generate::Configuration do
         sources: %w[https://github.com/CocoaPods/Specs.git https://github.com/Private/SpecsForks.git],
         use_default_plugins: false,
         use_libraries: false,
-        use_lockfile: false,
         use_lockfile_versions: false,
+        use_lockfile: false,
         use_modular_headers: false,
         use_podfile: false,
+        use_podfile_plugins: false,
         warn_for_multiple_pod_sources: false
       )
     end
@@ -34,6 +36,8 @@ RSpec.describe Pod::Generate::Configuration do
     it { should eq <<-TO_S.strip_heredoc.chomp }
             `pod gen` configuration {
               use_podfile: false,
+              use_podfile_plugins: false,
+              podfile_plugins: {},
               use_lockfile: false,
               use_lockfile_versions: false,
               use_libraries: false,
@@ -62,9 +66,9 @@ RSpec.describe Pod::Generate::Configuration do
     after { FileUtils.rm_f podspec_path }
 
     context 'with invalid types' do
-      let(:kwargs) { { use_podfile: [] } }
+      let(:kwargs) { { use_podfile_plugins: [] } }
 
-      it { should eq ['[] invalid for use_podfile, got type Array, expected object of type TrueClass|FalseClass'] }
+      it { should eq ['[] invalid for use_podfile_plugins, got type Array, expected object of type TrueClass|FalseClass'] }
     end
 
     context 'with invalid types in an array' do
@@ -88,6 +92,7 @@ RSpec.describe Pod::Generate::Configuration do
           "#{object.inspect} invalid for pod_config, got type Object, expected object of type Pod::Config",
           "Error computing podfile_path, undefined method `podfile_path' for #{object.inspect}",
           'Error computing podfile, no implicit conversion of NoMethodError into String',
+          "Error computing podfile_plugins, undefined method `plugins' for #<TypeError: no implicit conversion of NoMethodError into String>",
           "Error computing lockfile, undefined method `lockfile' for #{object.inspect}",
           "Error computing sources, undefined method `target_definition_list' for #<TypeError: no implicit conversion of NoMethodError into String>"
         ]

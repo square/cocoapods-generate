@@ -155,7 +155,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       let(:podfile) do
         Pod::Podfile.new do
           self.defined_in_file = Pathname('Podfile').expand_path
-          plugin 'not-used'
+          plugin 'plugin5', foo: { 'bar' => %w[3], 'baz' => %w[1 2] }, qux: '5'
           pod 'A', path: 'Frameworks/A/A.podspec'
           pod 'B', path: 'Frameworks/B/B.podspec'
           pod 'C', path: 'Frameworks/C/C.podspec'
@@ -171,6 +171,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           project 'A.xcodeproj'
 
           plugin 'cocoapods-generate'
+          plugin 'plugin5', foo: { 'bar' => %w[3], 'baz' => %w[1 2] }, qux: '5'
 
           source 'https://github.com/CocoaPods/Specs.git'
 
@@ -202,7 +203,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       let(:podfile) do
         Pod::Podfile.new do
           self.defined_in_file = Pathname('Podfile').expand_path
-          plugin 'not-used'
+          plugin 'plugin-used'
           target 'X' do
             pod 'A', path: 'Frameworks/A/A.podspec', modular_headers: true, inhibit_warnings: true
             pod 'B', path: 'Frameworks/B/B.podspec', modular_headers: true, inhibit_warnings: true
@@ -220,6 +221,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           project 'A.xcodeproj'
 
           plugin 'cocoapods-generate'
+          plugin 'plugin-used'
 
           source 'https://github.com/CocoaPods/Specs.git'
 
