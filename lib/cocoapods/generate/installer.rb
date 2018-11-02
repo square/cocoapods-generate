@@ -105,7 +105,6 @@ module Pod
       #
       def create_app_project
         app_project = open_app_project(recreate: true)
-        library_product_types = [:framework, :dynamic_library, :static_library]
 
         spec.available_platforms.map do |platform|
           consumer = spec.consumer(platform)
@@ -206,9 +205,11 @@ module Pod
       end
 
       def installation_result_from_target(target)
-        return nil unless target.respond_to?(:symbol_type)
-        return nil unless library_product_types.include? target.symbol_type
-        return results_by_native_target[target]
+        return unless target.respond_to?(:symbol_type)
+        library_product_types = [:framework, :dynamic_library, :static_library]
+        return unless library_product_types.include? target.symbol_type
+
+        results_by_native_target[target]
       end
 
       def remove_script_phase_from_target(native_target, script_phase_name)
