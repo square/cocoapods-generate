@@ -1,6 +1,0 @@
-module C [system] {
-  umbrella header "C-umbrella.h"
-
-  export *
-  module * { export * }
-}

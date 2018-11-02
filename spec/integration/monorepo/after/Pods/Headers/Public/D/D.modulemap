@@ -1,6 +1,0 @@
-module D [system] {
-  umbrella header "D-umbrella.h"
-
-  export *
-  module * { export * }
-}

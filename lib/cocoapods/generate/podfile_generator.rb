@@ -68,10 +68,10 @@ module Pod
           # By using an abstract target,
           abstract_target 'Transitive Dependencies' do
             pods_for_transitive_dependencies = [spec.name]
-                                                   .concat(test_specs.map(&:name))
-                                                   .concat(test_specs.flat_map { |ts| ts.dependencies.flat_map(&:name) })
-                                                   .concat(app_specs.map(&:name))
-                                                   .concat(app_specs.flat_map { |as| as.dependencies.flat_map(&:name) })
+                                               .concat(test_specs.map(&:name))
+                                               .concat(test_specs.flat_map { |ts| ts.dependencies.flat_map(&:name) })
+                                               .concat(app_specs.map(&:name))
+                                               .concat(app_specs.flat_map { |as| as.dependencies.flat_map(&:name) })
 
             dependencies = generator
                            .transitive_dependencies_by_pod
@@ -115,7 +115,7 @@ module Pod
           # it will be inherited by the concrete target definitions below
           pod_options = generator.dependency_compilation_kwargs(spec.name)
           pod_options[:path] = spec.defined_in_file.relative_path_from(dir).to_s
-          {testspecs: test_specs, appspecs: app_specs}.each do |key, specs|
+          { testspecs: test_specs, appspecs: app_specs }.each do |key, specs|
             pod_options[key] = specs.map { |s| s.name.sub(%r{^#{Regexp.escape spec.root.name}/}, '') }.sort unless specs.empty?
           end
 

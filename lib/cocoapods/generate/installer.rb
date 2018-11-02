@@ -206,7 +206,7 @@ module Pod
 
       def installation_result_from_target(target)
         return unless target.respond_to?(:symbol_type)
-        library_product_types = [:framework, :dynamic_library, :static_library]
+        library_product_types = %i[framework dynamic_library static_library]
         return unless library_product_types.include? target.symbol_type
 
         results_by_native_target[target]

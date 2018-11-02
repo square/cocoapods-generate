@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   end
 
   s.app_spec 'App' do |as|
-      as.source_files = 'App/**/*.{h,m,swift}'
-      as.dependency 'A'
-    end
+    as.source_files = 'App/**/*.{h,m,swift}'
+    as.dependency 'A'
+  end
 end

@@ -303,6 +303,7 @@ File References:
         - E-watchOS.xcconfig
       - Tests:
         - e_tests.swift
+        - eTests.m
   - Frameworks:
     - A.framework
     - B.framework
@@ -441,9 +442,7 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -528,9 +527,7 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -605,9 +602,7 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
@@ -687,9 +682,7 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -768,9 +761,7 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -856,9 +847,7 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -934,9 +923,7 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
@@ -1017,9 +1004,7 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -1099,9 +1084,7 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -1188,9 +1171,7 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -1267,9 +1248,7 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
@@ -1351,9 +1330,7 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -1434,9 +1411,7 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -1543,8 +1518,7 @@ Targets:
           PRODUCT_NAME: E-iOS-Unit-Tests
           SDKROOT: iphoneos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
       - Release:
         Base Configuration: E-iOS.unit-tests.xcconfig
         Build Settings:
@@ -1560,9 +1534,7 @@ Targets:
           PRODUCT_NAME: E-iOS-Unit-Tests
           SDKROOT: iphoneos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
       - "[CP] Copy Pods Resources":
@@ -1576,6 +1548,8 @@ Targets:
         []
       - Sources:
         - e_tests.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+        - eTests.m:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
   - E-macOS:
     Build Configurations:
@@ -1636,9 +1610,7 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -1742,8 +1714,7 @@ Targets:
           PRODUCT_NAME: E-macOS-Unit-Tests
           SDKROOT: macosx
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
       - Release:
         Base Configuration: E-macOS.unit-tests.xcconfig
         Build Settings:
@@ -1759,9 +1730,7 @@ Targets:
           PRODUCT_NAME: E-macOS-Unit-Tests
           SDKROOT: macosx
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
     Build Phases:
       - "[CP] Copy Pods Resources":
         []
@@ -1774,6 +1743,8 @@ Targets:
         []
       - Sources:
         - e_tests.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+        - eTests.m:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
   - E-tvOS:
     Build Configurations:
@@ -1826,9 +1797,7 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
@@ -1934,8 +1903,7 @@ Targets:
           PRODUCT_NAME: E-tvOS-Unit-Tests
           SDKROOT: appletvos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TVOS_DEPLOYMENT_TARGET: '9.0'
       - Release:
         Base Configuration: E-tvOS.unit-tests.xcconfig
@@ -1950,9 +1918,7 @@ Targets:
           PRODUCT_NAME: E-tvOS-Unit-Tests
           SDKROOT: appletvos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
@@ -1967,6 +1933,8 @@ Targets:
         []
       - Sources:
         - e_tests.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+        - eTests.m:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
   - E-watchOS:
     Build Configurations:
@@ -2021,9 +1989,7 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -2127,8 +2093,7 @@ Targets:
           PRODUCT_NAME: E-watchOS-Unit-Tests
           SDKROOT: watchos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           WATCHOS_DEPLOYMENT_TARGET: '2.0'
       - Release:
         Base Configuration: E-watchOS.unit-tests.xcconfig
@@ -2143,9 +2108,7 @@ Targets:
           PRODUCT_NAME: E-watchOS-Unit-Tests
           SDKROOT: watchos
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           VALIDATE_PRODUCT: YES
           WATCHOS_DEPLOYMENT_TARGET: '2.0'
     Build Phases:
@@ -2160,6 +2123,8 @@ Targets:
         []
       - Sources:
         - e_tests.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+        - eTests.m:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
   - Pods-App-iOS:
     Build Configurations:
@@ -2218,8 +2183,6 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''
@@ -2299,8 +2262,6 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: macosx
           SKIP_INSTALL: YES
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
     Build Phases:
@@ -2370,8 +2331,6 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: appletvos
           SKIP_INSTALL: YES
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: ''
           VALIDATE_PRODUCT: YES
@@ -2446,8 +2405,6 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: watchos
           SKIP_INSTALL: YES
-          SWIFT_COMPILATION_MODE: wholemodule
-          SWIFT_OPTIMIZATION_LEVEL: "-O"
           TARGETED_DEVICE_FAMILY: '4'
           VALIDATE_PRODUCT: YES
           VERSION_INFO_PREFIX: ''

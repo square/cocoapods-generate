@@ -23,6 +23,6 @@ Pod::Spec.new do |s|
   end
 
   s.app_spec 'App' do |as|
-      as.source_files = 'App/**/*.{h,m,swift}'
-    end
+    as.source_files = 'App/**/*.{h,m,swift}'
+  end
 end

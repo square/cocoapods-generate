@@ -1,1 +1,1 @@
-/Users/segiddins/Development/Square/cocoapods-generate/spec/integration/tmp/use_libraries/transformed/gen/Foo/Target Support Files/Foo-macOS/Foo-macOS-umbrella.h
+/Users/derko/Development/cocoapods/cocoapods-generate/spec/integration/tmp/use_libraries/transformed/gen/Foo/Target Support Files/Foo-macOS/Foo-macOS-umbrella.h
