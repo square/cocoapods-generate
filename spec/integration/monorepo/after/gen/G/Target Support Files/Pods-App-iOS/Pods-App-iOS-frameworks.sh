@@ -153,9 +153,11 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/A-iOS/A.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/G-iOS/G.framework"
 fi
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/A-iOS/A.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/G-iOS/G.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

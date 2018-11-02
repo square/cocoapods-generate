@@ -56,6 +56,8 @@ Build Configurations:
       PRODUCT_NAME: "$(TARGET_NAME)"
       STRIP_INSTALLED_PRODUCT: NO
       SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+      SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+      SWIFT_VERSION: '4.2'
       SYMROOT: "${SRCROOT}/../build"
       TVOS_DEPLOYMENT_TARGET: ''
       WATCHOS_DEPLOYMENT_TARGET: ''
@@ -111,6 +113,9 @@ Build Configurations:
       MTL_FAST_MATH: YES
       PRODUCT_NAME: "$(TARGET_NAME)"
       STRIP_INSTALLED_PRODUCT: NO
+      SWIFT_COMPILATION_MODE: wholemodule
+      SWIFT_OPTIMIZATION_LEVEL: "-O"
+      SWIFT_VERSION: '4.2'
       SYMROOT: "${SRCROOT}/../build"
       TVOS_DEPLOYMENT_TARGET: ''
       WATCHOS_DEPLOYMENT_TARGET: ''
@@ -151,6 +156,17 @@ File References:
         - A-watchOS.modulemap
         - A-watchOS.xcconfig
     - B:
+      - App:
+        - B-iOS-App-Info.plist
+        - B-macOS-App-Info.plist
+        - B-tvOS-App-Info.plist
+        - B-watchOS-App-Info.plist
+        - b_main.swift
+        - LaunchScreen.storyboard
+        - main.m
+        - main.m
+        - main.m
+        - main.m
       - b.h
       - b.m
       - b.swift
@@ -159,6 +175,9 @@ File References:
       - Pod:
         - B.podspec
       - Support Files:
+        - B-iOS-App-frameworks.sh
+        - B-iOS-App-prefix.pch
+        - B-iOS-App-resources.sh
         - B-iOS-dummy.m
         - B-iOS-Info.plist
         - B-iOS-prefix.pch
@@ -167,9 +186,13 @@ File References:
         - B-iOS-Unit-Tests-Info.plist
         - B-iOS-Unit-Tests-prefix.pch
         - B-iOS-Unit-Tests-resources.sh
+        - B-iOS.app.xcconfig
         - B-iOS.modulemap
         - B-iOS.unit-tests.xcconfig
         - B-iOS.xcconfig
+        - B-macOS-App-frameworks.sh
+        - B-macOS-App-prefix.pch
+        - B-macOS-App-resources.sh
         - B-macOS-dummy.m
         - B-macOS-Info.plist
         - B-macOS-prefix.pch
@@ -178,9 +201,13 @@ File References:
         - B-macOS-Unit-Tests-Info.plist
         - B-macOS-Unit-Tests-prefix.pch
         - B-macOS-Unit-Tests-resources.sh
+        - B-macOS.app.xcconfig
         - B-macOS.modulemap
         - B-macOS.unit-tests.xcconfig
         - B-macOS.xcconfig
+        - B-tvOS-App-frameworks.sh
+        - B-tvOS-App-prefix.pch
+        - B-tvOS-App-resources.sh
         - B-tvOS-dummy.m
         - B-tvOS-Info.plist
         - B-tvOS-prefix.pch
@@ -189,9 +216,13 @@ File References:
         - B-tvOS-Unit-Tests-Info.plist
         - B-tvOS-Unit-Tests-prefix.pch
         - B-tvOS-Unit-Tests-resources.sh
+        - B-tvOS.app.xcconfig
         - B-tvOS.modulemap
         - B-tvOS.unit-tests.xcconfig
         - B-tvOS.xcconfig
+        - B-watchOS-App-frameworks.sh
+        - B-watchOS-App-prefix.pch
+        - B-watchOS-App-resources.sh
         - B-watchOS-dummy.m
         - B-watchOS-Info.plist
         - B-watchOS-prefix.pch
@@ -200,6 +231,7 @@ File References:
         - B-watchOS-Unit-Tests-Info.plist
         - B-watchOS-Unit-Tests-prefix.pch
         - B-watchOS-Unit-Tests-resources.sh
+        - B-watchOS.app.xcconfig
         - B-watchOS.modulemap
         - B-watchOS.unit-tests.xcconfig
         - B-watchOS.xcconfig
@@ -222,9 +254,13 @@ File References:
     - A.framework
     - A.framework
     - A.framework
+    - B-iOS-App.app
     - B-iOS-Unit-Tests
+    - B-macOS-App.app
     - B-macOS-Unit-Tests
+    - B-tvOS-App.app
     - B-tvOS-Unit-Tests
+    - B-watchOS-App.app
     - B-watchOS-Unit-Tests
     - B.framework
     - B.framework
@@ -302,8 +338,7 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: 1,2
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -387,8 +422,7 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
       - Release:
@@ -468,8 +502,7 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VERSION_INFO_PREFIX: ''
@@ -550,8 +583,7 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '4'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -633,8 +665,7 @@ Targets:
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: 1,2
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -690,6 +721,65 @@ Targets:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
         - b.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+  - B-iOS-App:
+    Build Configurations:
+      - Debug:
+        Base Configuration: B-iOS.app.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CODE_SIGN_IDENTITY: iPhone Developer
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          CURRENT_PROJECT_VERSION: '1'
+          GCC_PREFIX_HEADER: Target Support Files/B-iOS/B-iOS-App-prefix.pch
+          INFOPLIST_FILE: App/B-iOS-App-Info.plist
+          IPHONEOS_DEPLOYMENT_TARGET: '8.0'
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          PRODUCT_NAME: B-iOS-App
+          SDKROOT: iphoneos
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: 1,2
+      - Release:
+        Base Configuration: B-iOS.app.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CODE_SIGN_IDENTITY: iPhone Developer
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          CURRENT_PROJECT_VERSION: '1'
+          GCC_PREFIX_HEADER: Target Support Files/B-iOS/B-iOS-App-prefix.pch
+          INFOPLIST_FILE: App/B-iOS-App-Info.plist
+          IPHONEOS_DEPLOYMENT_TARGET: '8.0'
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          PRODUCT_NAME: B-iOS-App
+          SDKROOT: iphoneos
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: 1,2
+          VALIDATE_PRODUCT: YES
+    Build Phases:
+      - "[CP] Copy Pods Resources":
+        []
+      - "[CP] Embed Pods Frameworks":
+        []
+      - Frameworks:
+        - B.framework
+        - Foundation.framework
+      - Resources:
+        - LaunchScreen.storyboard
+      - Sources:
+        - b_main.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+        - main.m
   - B-iOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -773,8 +863,7 @@ Targets:
           SDKROOT: macosx
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
       - Release:
@@ -831,6 +920,64 @@ Targets:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
         - b.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+  - B-macOS-App:
+    Build Configurations:
+      - Debug:
+        Base Configuration: B-macOS.app.xcconfig
+        Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: ''
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          COMBINE_HIDPI_IMAGES: YES
+          CURRENT_PROJECT_VERSION: '1'
+          GCC_PREFIX_HEADER: Target Support Files/B-macOS/B-macOS-App-prefix.pch
+          INFOPLIST_FILE: App/B-macOS-App-Info.plist
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+          MACOSX_DEPLOYMENT_TARGET: '10.6'
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          PRODUCT_NAME: B-macOS-App
+          SDKROOT: macosx
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '4.0'
+      - Release:
+        Base Configuration: B-macOS.app.xcconfig
+        Build Settings:
+          ARCHS: "$(ARCHS_STANDARD_64_BIT)"
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: ''
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          COMBINE_HIDPI_IMAGES: YES
+          CURRENT_PROJECT_VERSION: '1'
+          GCC_PREFIX_HEADER: Target Support Files/B-macOS/B-macOS-App-prefix.pch
+          INFOPLIST_FILE: App/B-macOS-App-Info.plist
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+          MACOSX_DEPLOYMENT_TARGET: '10.6'
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          PRODUCT_NAME: B-macOS-App
+          SDKROOT: macosx
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '4.0'
+    Build Phases:
+      - "[CP] Copy Pods Resources":
+        []
+      - "[CP] Embed Pods Frameworks":
+        []
+      - Frameworks:
+        - B.framework
+        - Cocoa.framework
+      - Resources:
+        []
+      - Sources:
+        - b_main.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+        - main.m
   - B-macOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -908,8 +1055,7 @@ Targets:
           SDKROOT: appletvos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VERSION_INFO_PREFIX: ''
@@ -966,6 +1112,65 @@ Targets:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
         - b.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+  - B-tvOS-App:
+    Build Configurations:
+      - Debug:
+        Base Configuration: B-tvOS.app.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
+          ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME: LaunchImage
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          CURRENT_PROJECT_VERSION: '1'
+          GCC_PREFIX_HEADER: Target Support Files/B-tvOS/B-tvOS-App-prefix.pch
+          INFOPLIST_FILE: App/B-tvOS-App-Info.plist
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          PRODUCT_NAME: B-tvOS-App
+          SDKROOT: appletvos
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: '3'
+          TVOS_DEPLOYMENT_TARGET: '9.0'
+      - Release:
+        Base Configuration: B-tvOS.app.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
+          ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME: LaunchImage
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          CURRENT_PROJECT_VERSION: '1'
+          GCC_PREFIX_HEADER: Target Support Files/B-tvOS/B-tvOS-App-prefix.pch
+          INFOPLIST_FILE: App/B-tvOS-App-Info.plist
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          PRODUCT_NAME: B-tvOS-App
+          SDKROOT: appletvos
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: '3'
+          TVOS_DEPLOYMENT_TARGET: '9.0'
+          VALIDATE_PRODUCT: YES
+    Build Phases:
+      - "[CP] Copy Pods Resources":
+        []
+      - "[CP] Embed Pods Frameworks":
+        []
+      - Frameworks:
+        - B.framework
+        - Foundation.framework
+      - Resources:
+        []
+      - Sources:
+        - b_main.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+        - main.m
   - B-tvOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -1043,8 +1248,7 @@ Targets:
           SDKROOT: watchos
           SKIP_INSTALL: YES
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-          SWIFT_VERSION: '3.2'
+          SWIFT_VERSION: '4.0'
           TARGETED_DEVICE_FAMILY: '4'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -1102,6 +1306,63 @@ Targets:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
         - b.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+  - B-watchOS-App:
+    Build Configurations:
+      - Debug:
+        Base Configuration: B-watchOS.app.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          CURRENT_PROJECT_VERSION: '1'
+          GCC_PREFIX_HEADER: Target Support Files/B-watchOS/B-watchOS-App-prefix.pch
+          INFOPLIST_FILE: App/B-watchOS-App-Info.plist
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          PRODUCT_NAME: B-watchOS-App
+          SDKROOT: watchos
+          SKIP_INSTALL: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: '4'
+          WATCHOS_DEPLOYMENT_TARGET: '2.0'
+      - Release:
+        Base Configuration: B-watchOS.app.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
+          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
+          CODE_SIGNING_ALLOWED: YES
+          CODE_SIGNING_REQUIRED: YES
+          CURRENT_PROJECT_VERSION: '1'
+          GCC_PREFIX_HEADER: Target Support Files/B-watchOS/B-watchOS-App-prefix.pch
+          INFOPLIST_FILE: App/B-watchOS-App-Info.plist
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
+          PRODUCT_NAME: B-watchOS-App
+          SDKROOT: watchos
+          SKIP_INSTALL: YES
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: '4'
+          VALIDATE_PRODUCT: YES
+          WATCHOS_DEPLOYMENT_TARGET: '2.0'
+    Build Phases:
+      - "[CP] Copy Pods Resources":
+        []
+      - "[CP] Embed Pods Frameworks":
+        []
+      - Frameworks:
+        - B.framework
+        - Foundation.framework
+      - Resources:
+        []
+      - Sources:
+        - b_main.swift:
+          COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
+        - main.m
   - B-watchOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -1182,8 +1443,6 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: iphoneos
           SKIP_INSTALL: YES
-          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
           TARGETED_DEVICE_FAMILY: 1,2
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
@@ -1262,8 +1521,6 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: macosx
           SKIP_INSTALL: YES
-          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic
       - Release:
@@ -1338,8 +1595,6 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: appletvos
           SKIP_INSTALL: YES
-          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
           TARGETED_DEVICE_FAMILY: '3'
           TVOS_DEPLOYMENT_TARGET: ''
           VERSION_INFO_PREFIX: ''
@@ -1415,8 +1670,6 @@ Targets:
           PRODUCT_NAME: "$(TARGET_NAME:c99extidentifier)"
           SDKROOT: watchos
           SKIP_INSTALL: YES
-          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
           TARGETED_DEVICE_FAMILY: '4'
           VERSION_INFO_PREFIX: ''
           VERSIONING_SYSTEM: apple-generic

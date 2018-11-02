@@ -8,6 +8,9 @@ PODS:
   - E (1.0.0.LOCAL):
     - A
     - C (= 1.0.0.LOCAL)
+  - E/App (1.0.0.LOCAL):
+    - A
+    - C (= 1.0.0.LOCAL)
   - E/Tests (1.0.0.LOCAL):
     - A
     - C (= 1.0.0.LOCAL)
@@ -17,6 +20,7 @@ DEPENDENCIES:
   - B (from `../../Frameworks/b/B.podspec`)
   - C (from `../../Frameworks/c/C.podspec`)
   - E (from `../../Frameworks/e/E.podspec`)
+  - E/App (from `../../Frameworks/e/E.podspec`)
   - E/Tests (from `../../Frameworks/e/E.podspec`)
 
 EXTERNAL SOURCES:

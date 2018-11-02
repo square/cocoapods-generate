@@ -39,5 +39,11 @@
         ]
       }
     }
+  ],
+  "appspecs": [
+    {
+      "name": "App",
+      "source_files": "App/**/*.{h,m,swift}"
+    }
   ]
 }
