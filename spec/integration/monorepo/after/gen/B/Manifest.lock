@@ -2,12 +2,15 @@ PODS:
   - A (1.0.0.LOCAL)
   - B (1.0.0.LOCAL):
     - A
+  - B/App (1.0.0.LOCAL):
+    - A
   - B/Tests (1.0.0.LOCAL):
     - A
 
 DEPENDENCIES:
   - A (from `../../Frameworks/a/A.podspec`)
   - B (from `../../Frameworks/b/B.podspec`)
+  - B/App (from `../../Frameworks/b/B.podspec`)
   - B/Tests (from `../../Frameworks/b/B.podspec`)
 
 EXTERNAL SOURCES:

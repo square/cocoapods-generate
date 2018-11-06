@@ -18,4 +18,9 @@ Pod::Spec.new do |s|
   s.test_spec 'Tests' do |ts|
     ts.source_files = 'Tests/**/*.{h,m,swift}'
   end
+
+  s.app_spec 'App' do |as|
+    as.source_files = 'App/**/*.{h,m,swift}'
+    as.dependency 'A'
+  end
 end

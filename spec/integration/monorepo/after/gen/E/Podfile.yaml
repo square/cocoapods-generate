@@ -30,6 +30,8 @@ target_definitions:
     dependencies:
       - E:
         - :path: "../../Frameworks/e/E.podspec"
+      - E/App:
+        - :path: "../../Frameworks/e/E.podspec"
       - E/Tests:
         - :path: "../../Frameworks/e/E.podspec"
     name: Pods

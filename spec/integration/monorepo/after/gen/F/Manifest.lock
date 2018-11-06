@@ -8,6 +8,9 @@ PODS:
   - F (1.0.0.LOCAL):
     - C
     - OnlyPre
+  - F/App (1.0.0.LOCAL):
+    - C
+    - OnlyPre
   - F/Tests (1.0.0.LOCAL):
     - C
     - OnlyPre
@@ -18,6 +21,7 @@ DEPENDENCIES:
   - B (from `../../Frameworks/b/B.podspec`)
   - C (from `../../Frameworks/c/C.podspec`)
   - F (from `../../Frameworks/f/F.podspec`)
+  - F/App (from `../../Frameworks/f/F.podspec`)
   - F/Tests (from `../../Frameworks/f/F.podspec`)
   - OnlyPre (= 1.0.0.pre.1)
 

@@ -9,6 +9,10 @@ PODS:
     - A
     - C
     - Public
+  - D/App (1.0.0.LOCAL):
+    - A
+    - C
+    - Public
   - D/Tests (1.0.0.LOCAL):
     - A
     - C
@@ -24,6 +28,7 @@ DEPENDENCIES:
   - B (from `../../Frameworks/b/B.podspec`)
   - C (from `../../Frameworks/c/C.podspec`)
   - D (from `../../Frameworks/d/D.podspec`)
+  - D/App (from `../../Frameworks/d/D.podspec`)
   - D/Tests (from `../../Frameworks/d/D.podspec`)
   - E (from `../../Frameworks/e/E.podspec`)
   - Public (= 3.0.0)

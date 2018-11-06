@@ -16,6 +16,8 @@ target_definitions:
     children:
       - abstract: true
         dependencies:
+          - A:
+            - :path: "../../Frameworks/a/A.podspec"
           - OnlyPre:
             - "= 1.0.0.pre.1"
           - Public:
@@ -27,6 +29,8 @@ target_definitions:
       - name: App-watchOS
     dependencies:
       - G:
+        - :path: "../../Frameworks/g/G.podspec"
+      - G/App:
         - :path: "../../Frameworks/g/G.podspec"
       - G/Tests:
         - :path: "../../Frameworks/g/G.podspec"

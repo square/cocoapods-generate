@@ -117,7 +117,11 @@ module Pod
         end
             .tap do
               app_project.recreate_user_schemes do |scheme, target|
-                scheme.set_launch_target(target)
+                installation_result = installation_result_from_target(target)
+                next unless installation_result
+                installation_result.test_native_targets.each do |test_native_target|
+                  scheme.add_test_target(test_native_target)
+                end
               end
             end
             .each do |target|
@@ -194,6 +198,14 @@ module Pod
         end
 
         app_project.save
+      end
+
+      def installation_result_from_target(target)
+        return unless target.respond_to?(:symbol_type)
+        library_product_types = %i[framework dynamic_library static_library]
+        return unless library_product_types.include? target.symbol_type
+
+        results_by_native_target[target]
       end
 
       def remove_script_phase_from_target(native_target, script_phase_name)

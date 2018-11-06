@@ -153,9 +153,11 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/G-tvOS/G.framework"
 fi
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/G-tvOS/G.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

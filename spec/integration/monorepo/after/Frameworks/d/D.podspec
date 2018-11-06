@@ -21,4 +21,8 @@ Pod::Spec.new do |s|
 
     ts.dependency 'E'
   end
+
+  s.app_spec 'App' do |as|
+    as.source_files = 'App/**/*.{h,m,swift}'
+  end
 end

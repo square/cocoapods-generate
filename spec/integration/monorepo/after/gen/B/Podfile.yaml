@@ -26,6 +26,8 @@ target_definitions:
     dependencies:
       - B:
         - :path: "../../Frameworks/b/B.podspec"
+      - B/App:
+        - :path: "../../Frameworks/b/B.podspec"
       - B/Tests:
         - :path: "../../Frameworks/b/B.podspec"
     name: Pods
