@@ -83,6 +83,12 @@ RSpec.describe Pod::Generate::Configuration do
       it { should eq ['[] invalid for podspecs, no podspecs found'] }
     end
 
+    context 'pass validation with boolean nested in hash' do
+      let(:kwargs) { { podfile_plugins: { 'stuff' => { 'things' => true } } } }
+
+      it { should eq [] }
+    end
+
     context 'evaluating a default fails' do
       let(:object) { Object.new }
       let(:kwargs) { { pod_config: object } }
