@@ -136,7 +136,7 @@ module Pod
       option :podfile, [Podfile], 'Podfile.from_file(podfile_path) if (podfile_path && File.file?(File.expand_path(podfile_path)))'
       option :use_podfile, BOOLEAN, '!!podfile', 'Whether restrictions should be copied from the podfile', nil, nil, coerce_to_bool
       option :use_podfile_plugins, BOOLEAN, 'use_podfile', 'Whether plugins should be copied from the podfile', nil, nil, coerce_to_bool
-      option :podfile_plugins, HashOf.new(keys: [String], values: [NilClass, HashOf.new(keys: [String], values: [String, Hash, Array])]),
+      option :podfile_plugins, HashOf.new(keys: [String], values: [NilClass, HashOf.new(keys: [String], values: [TrueClass, FalseClass, NilClass, String, Hash, Array])]),
              '(use_podfile && podfile) ? podfile.plugins : {}',
              nil,
              nil,
