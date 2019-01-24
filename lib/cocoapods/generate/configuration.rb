@@ -149,6 +149,9 @@ module Pod
 
       option :use_libraries, BOOLEAN, 'false', 'Whether to use libraries instead of frameworks', nil, nil, coerce_to_bool
 
+      option :generate_multiple_pod_projects, BOOLEAN, 'false', 'Whether to generate multiple Xcode projects', nil, nil, coerce_to_bool
+      option :incremental_installation, BOOLEAN, 'false', 'Whether to use incremental installation', nil, nil, coerce_to_bool
+
       option :gen_directory, [String, Pathname], 'Pathname("gen").expand_path', 'Path to generate workspaces in', 'PATH', ->(path) { 'path is file' if path.file? }, coerce_to_pathname
       option :auto_open, BOOLEAN, 'false', 'Whether to automatically open the generated workspaces', nil, nil, coerce_to_bool
       option :clean, BOOLEAN, 'false', 'Whether to clean the generated directories before generating', nil, nil, coerce_to_bool

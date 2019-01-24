@@ -6,6 +6,8 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   use_lockfile: false,
   use_lockfile_versions: false,
   use_libraries: false,
+  generate_multiple_pod_projects: false,
+  incremental_installation: false,
   gen_directory: ./spec/integration/tmp/app_host_source_dir/transformed/gen,
   auto_open: false,
   clean: true,

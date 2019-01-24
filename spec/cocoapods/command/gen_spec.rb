@@ -62,6 +62,8 @@ RSpec.describe Pod::Command::Gen, :tmpdir do
                                                          be used
                   --use-libraries                        Whether to use libraries instead of
                                                          frameworks
+                  --generate-multiple-pod-projects       Whether to generate multiple Xcode projects
+                  --incremental-installation             Whether to use incremental installation
                   --gen-directory=PATH                   Path to generate workspaces in
                   --auto-open                            Whether to automatically open the generated
                                                          workspaces

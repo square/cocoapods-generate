@@ -37,10 +37,7 @@ module Pod
 
           plugin 'cocoapods-generate'
 
-          install! 'cocoapods',
-                   deterministic_uuids: generator.configuration.deterministic_uuids?,
-                   share_schemes_for_development_pods: generator.configuration.share_schemes_for_development_pods?,
-                   warn_for_multiple_pod_sources: generator.configuration.warn_for_multiple_pod_sources?
+          install! 'cocoapods', generator.installation_options
 
           generator.configuration.podfile_plugins.each do |name, options|
             plugin(*[name, options].compact)
@@ -259,6 +256,24 @@ module Pod
           next supported_swift_versions unless target_swift_versions
           Array(target_swift_versions) | Array(supported_swift_versions)
         end
+      end
+
+      def installation_options
+        installation_options = {
+          deterministic_uuids: configuration.deterministic_uuids?,
+          share_schemes_for_development_pods: configuration.share_schemes_for_development_pods?,
+          warn_for_multiple_pod_sources: configuration.warn_for_multiple_pod_sources?
+        }
+
+        if Pod::Installer::InstallationOptions.all_options.include?('generate_multiple_pod_projects')
+          installation_options[:generate_multiple_pod_projects] = configuration.generate_multiple_pod_projects?
+        end
+
+        if Pod::Installer::InstallationOptions.all_options.include?('incremental_installation')
+          installation_options[:incremental_installation] = configuration.incremental_installation?
+        end
+
+        installation_options
       end
 
       private
