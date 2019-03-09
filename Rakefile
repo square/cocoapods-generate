@@ -13,11 +13,13 @@ namespace :spec do
     t.rspec_opts = %w[--format progress]
   end
 
+  desc 'Run integration specs'
   task :integration do
     sh 'bundle', 'exec', 'bacon', 'spec/integration.rb', '-q'
   end
 
   namespace :integration do
+    desc 'Update integration spec fixtures'
     task :update do
       rm_rf 'spec/integration/tmp'
       sh('bin/rake', 'spec:integration') {}
@@ -32,6 +34,7 @@ namespace :spec do
   end
 end
 
+desc 'Update the cli usage in the readme'
 task :readme do
   contents = File.read('README.md')
 
@@ -41,6 +44,7 @@ task :readme do
   File.write 'README.md', contents
 end
 
+desc 'Run all specs'
 task spec: %w[spec:unit spec:integration]
 
 task default: %w[spec rubocop inch readme]
