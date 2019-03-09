@@ -229,10 +229,6 @@ File References:
         - F-watchOS-App-Info.plist
         - f_main.swift
         - LaunchScreen.storyboard
-        - main.m
-        - main.m
-        - main.m
-        - main.m
       - f.h
       - f.m
       - f.swift
@@ -338,13 +334,13 @@ File References:
     - C.framework
     - C.framework
     - C.framework
-    - F-iOS-App.app
+    - F-iOS-App
     - F-iOS-Unit-Tests
-    - F-macOS-App.app
+    - F-macOS-App
     - F-macOS-Unit-Tests
-    - F-tvOS-App.app
+    - F-tvOS-App
     - F-tvOS-Unit-Tests
-    - F-watchOS-App.app
+    - F-watchOS-App
     - F-watchOS-Unit-Tests
     - F.framework
     - F.framework
@@ -1503,7 +1499,6 @@ Targets:
       - Sources:
         - f_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - F-iOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -1698,7 +1693,6 @@ Targets:
       - Sources:
         - f_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - F-macOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -1888,7 +1882,6 @@ Targets:
       - Sources:
         - f_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - F-tvOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -2077,7 +2070,6 @@ Targets:
       - Sources:
         - f_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - F-watchOS-Unit-Tests:
     Build Configurations:
       - Debug:

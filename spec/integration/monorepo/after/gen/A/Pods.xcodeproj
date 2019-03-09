@@ -133,10 +133,6 @@ File References:
         - A-watchOS-App-Info.plist
         - a_main.swift
         - LaunchScreen.storyboard
-        - main.m
-        - main.m
-        - main.m
-        - main.m
       - Internal:
         - a_Internal.h
       - Pod:
@@ -217,13 +213,13 @@ File References:
       - Foundation.framework
   - Podfile.yaml
   - Products:
-    - A-iOS-App.app
+    - A-iOS-App
     - A-iOS-Unit-Tests
-    - A-macOS-App.app
+    - A-macOS-App
     - A-macOS-Unit-Tests
-    - A-tvOS-App.app
+    - A-tvOS-App
     - A-tvOS-Unit-Tests
-    - A-watchOS-App.app
+    - A-watchOS-App
     - A-watchOS-Unit-Tests
     - A.framework
     - A.framework
@@ -412,7 +408,6 @@ Targets:
       - Sources:
         - a_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - A-iOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -606,7 +601,6 @@ Targets:
       - Sources:
         - a_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - A-macOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -795,7 +789,6 @@ Targets:
       - Sources:
         - a_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - A-tvOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -983,7 +976,6 @@ Targets:
       - Sources:
         - a_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - A-watchOS-Unit-Tests:
     Build Configurations:
       - Debug:

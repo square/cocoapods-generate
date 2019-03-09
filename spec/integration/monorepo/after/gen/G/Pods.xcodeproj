@@ -163,10 +163,6 @@ File References:
         - G-watchOS-App-Info.plist
         - g_main.swift
         - LaunchScreen.storyboard
-        - main.m
-        - main.m
-        - main.m
-        - main.m
       - g.h
       - g.m
       - g.swift
@@ -268,13 +264,13 @@ File References:
     - A.framework
     - A.framework
     - A.framework
-    - G-iOS-App.app
+    - G-iOS-App
     - G-iOS-Unit-Tests
-    - G-macOS-App.app
+    - G-macOS-App
     - G-macOS-Unit-Tests
-    - G-tvOS-App.app
+    - G-tvOS-App
     - G-tvOS-Unit-Tests
-    - G-watchOS-App.app
+    - G-watchOS-App
     - G-watchOS-Unit-Tests
     - G.framework
     - G.framework
@@ -783,7 +779,6 @@ Targets:
       - Sources:
         - g_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - G-iOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -978,7 +973,6 @@ Targets:
       - Sources:
         - g_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - G-macOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -1168,7 +1162,6 @@ Targets:
       - Sources:
         - g_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - G-tvOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -1357,7 +1350,6 @@ Targets:
       - Sources:
         - g_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - G-watchOS-Unit-Tests:
     Build Configurations:
       - Debug:
