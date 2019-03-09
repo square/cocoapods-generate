@@ -48,7 +48,7 @@ module Pod
 
           use_frameworks!(generator.configuration.use_frameworks?)
 
-          if supported_swift_versions = generator.supported_swift_versions
+          if (supported_swift_versions = generator.supported_swift_versions)
             supports_swift_versions(supported_swift_versions)
           end
 
@@ -254,9 +254,9 @@ module Pod
         return unless configuration.use_podfile?
         return if target_definition_list.empty?
         return unless target_definition_list.first.respond_to?(:swift_version_requirements)
-        target_definition_list.reduce(nil) do | supported_swift_versions, target_definition|
+        target_definition_list.reduce(nil) do |supported_swift_versions, target_definition|
           target_swift_versions = target_definition.swift_version_requirements
-          next unless target_swift_versions || supported_swift_versions
+          next supported_swift_versions unless target_swift_versions
           Array(target_swift_versions) | Array(supported_swift_versions)
         end
       end

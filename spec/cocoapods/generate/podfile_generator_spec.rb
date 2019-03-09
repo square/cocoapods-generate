@@ -367,7 +367,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       let(:podfile) do
         Pod::Podfile.new do
           self.defined_in_file = Pathname('Podfile').expand_path
-          self.supports_swift_versions ['4.2', '5']
+          supports_swift_versions ['4.2', '5']
         end.tap { |pf| allow(pf).to receive(:checksum).and_return 'csum' }
       end
 
@@ -388,7 +388,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
 
           use_frameworks!
 
-          self.supports_swift_versions ['4.2', '5']
+          supports_swift_versions ['4.2', '5']
 
           pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
 
