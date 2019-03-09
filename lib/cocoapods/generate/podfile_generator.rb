@@ -48,6 +48,10 @@ module Pod
 
           use_frameworks!(generator.configuration.use_frameworks?)
 
+          if supported_swift_versions = generator.supported_swift_versions
+            supports_swift_versions(supported_swift_versions)
+          end
+
           # Explicitly set sources
           generator.configuration.sources.each do |source_url|
             source(source_url)
@@ -96,7 +100,7 @@ module Pod
             end
           end
 
-          # this block hash to come _before_ inhibit_all_warnings! / use_modular_headers!,
+          # this block has to come _before_ inhibit_all_warnings! / use_modular_headers!,
           # and the local `pod` declaration
           current_target_definition.instance_exec do
             transitive_dependencies = children.find { |c| c.name == 'Transitive Dependencies' }
@@ -244,6 +248,17 @@ module Pod
 
       def swift_version
         @swift_version ||= target_definition_list.map(&:swift_version).compact.max
+      end
+
+      def supported_swift_versions
+        return unless configuration.use_podfile?
+        return if target_definition_list.empty?
+        return unless target_definition_list.first.respond_to?(:swift_version_requirements)
+        target_definition_list.reduce(nil) do | supported_swift_versions, target_definition|
+          target_swift_versions = target_definition.swift_version_requirements
+          next unless target_swift_versions || supported_swift_versions
+          Array(target_swift_versions) | Array(supported_swift_versions)
+        end
       end
 
       private

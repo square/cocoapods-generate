@@ -362,5 +362,51 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
       end
     end
+
+    context 'when the podfile specifies multiple supported swift versions' do
+      let(:podfile) do
+        Pod::Podfile.new do
+          self.defined_in_file = Pathname('Podfile').expand_path
+          self.supports_swift_versions ['4.2', '5']
+        end.tap { |pf| allow(pf).to receive(:checksum).and_return 'csum' }
+      end
+
+      it 'generates the expected podfile' do
+        test = self
+        expected = Pod::Podfile.new do
+          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+
+          workspace 'A.xcworkspace'
+          project 'A.xcodeproj'
+
+          plugin 'cocoapods-generate'
+
+          install! 'cocoapods',
+                   deterministic_uuids: false,
+                   share_schemes_for_development_pods: true,
+                   warn_for_multiple_pod_sources: false
+
+          use_frameworks!
+
+          self.supports_swift_versions ['4.2', '5']
+
+          pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
+
+          abstract_target 'Transitive Dependencies' do
+          end
+
+          target 'App-iOS' do
+          end
+          target 'App-macOS' do
+          end
+          target 'App-tvOS' do
+          end
+          target 'App-watchOS' do
+          end
+        end
+
+        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+      end
+    end
   end
 end
