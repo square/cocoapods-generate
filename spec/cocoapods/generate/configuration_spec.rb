@@ -100,7 +100,7 @@ RSpec.describe Pod::Generate::Configuration do
           'Error computing podfile, no implicit conversion of NoMethodError into String',
           "Error computing podfile_plugins, undefined method `plugins' for #<TypeError: no implicit conversion of NoMethodError into String>",
           "Error computing lockfile, undefined method `lockfile' for #{object.inspect}",
-          "Error computing sources, undefined method `target_definition_list' for #<TypeError: no implicit conversion of NoMethodError into String>"
+          "Error computing sources, undefined method `installation_options' for #<TypeError: no implicit conversion of NoMethodError into String>"
         ]
       }
     end

@@ -48,6 +48,7 @@ RSpec.configure do |config|
     Pod::Config.instance = nil
 
     ENV['CP_REPOS_DIR'] = cocoapods_generate_specs_cp_repos_dir.to_s
+    ENV['CLAIDE_DISABLE_AUTO_WRAP'] = '1'
   end
 
   config.around(:each) do |test|

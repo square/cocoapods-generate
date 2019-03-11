@@ -229,10 +229,6 @@ File References:
         - E-watchOS-App-Info.plist
         - e_main.swift
         - LaunchScreen.storyboard
-        - main.m
-        - main.m
-        - main.m
-        - main.m
       - e.h
       - e.m
       - e.swift
@@ -331,13 +327,13 @@ File References:
     - C.framework
     - C.framework
     - C.framework
-    - E-iOS-App.app
+    - E-iOS-App
     - E-iOS-Unit-Tests
-    - E-macOS-App.app
+    - E-macOS-App
     - E-macOS-Unit-Tests
-    - E-tvOS-App.app
+    - E-tvOS-App
     - E-tvOS-Unit-Tests
-    - E-watchOS-App.app
+    - E-watchOS-App
     - E-watchOS-Unit-Tests
     - E.framework
     - E.framework
@@ -1497,7 +1493,6 @@ Targets:
       - Sources:
         - e_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - E-iOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -1693,7 +1688,6 @@ Targets:
       - Sources:
         - e_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - E-macOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -1884,7 +1878,6 @@ Targets:
       - Sources:
         - e_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - E-tvOS-Unit-Tests:
     Build Configurations:
       - Debug:
@@ -2074,7 +2067,6 @@ Targets:
       - Sources:
         - e_main.swift:
           COMPILER_FLAGS: "-DOS_OBJECT_USE_OBJC=0"
-        - main.m
   - E-watchOS-Unit-Tests:
     Build Configurations:
       - Debug:
