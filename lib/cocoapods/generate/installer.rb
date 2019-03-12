@@ -192,7 +192,13 @@ module Pod
           end
 
           # Share the pods xcscheme only if it exists. For pre-built vendored pods there is no xcscheme generated.
-          Xcodeproj::XCScheme.share_scheme(installer.pods_project.path, pod_target.label) if File.exist?(installer.pods_project.path + pod_target.label)
+          if installer.respond_to?(:generated_projects) # CocoaPods 1.7.0
+            installer.generated_projects.each do |project|
+              Xcodeproj::XCScheme.share_scheme(project.path, pod_target.label) if File.exist?(project.path + pod_target.label)
+            end
+          elsif File.exist?(installer.pods_project.path + pod_target.label)
+            Xcodeproj::XCScheme.share_scheme(installer.pods_project.path, pod_target.label)
+          end
 
           add_test_spec_schemes_to_app_scheme(installer, app_project)
         end

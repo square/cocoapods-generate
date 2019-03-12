@@ -132,6 +132,8 @@ RSpec.describe Pod::Generate::PodfileGenerator do
 
         install! 'cocoapods',
                  deterministic_uuids: false,
+                 generate_multiple_pod_projects: false,
+                 incremental_installation: false,
                  share_schemes_for_development_pods: true,
                  warn_for_multiple_pod_sources: false
 
@@ -177,6 +179,8 @@ RSpec.describe Pod::Generate::PodfileGenerator do
 
           install! 'cocoapods',
                    deterministic_uuids: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
@@ -227,6 +231,8 @@ RSpec.describe Pod::Generate::PodfileGenerator do
 
           install! 'cocoapods',
                    deterministic_uuids: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
@@ -287,6 +293,8 @@ RSpec.describe Pod::Generate::PodfileGenerator do
 
           install! 'cocoapods',
                    deterministic_uuids: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
@@ -335,6 +343,8 @@ RSpec.describe Pod::Generate::PodfileGenerator do
 
           install! 'cocoapods',
                    deterministic_uuids: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
@@ -383,6 +393,8 @@ RSpec.describe Pod::Generate::PodfileGenerator do
 
           install! 'cocoapods',
                    deterministic_uuids: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
