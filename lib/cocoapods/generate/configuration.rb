@@ -178,10 +178,16 @@ module Pod
       # installer options
       option :sources, ArrayOf.new(String),
              'if use_podfile && podfile then ::Pod::Installer::Analyzer.new(:sandbox, podfile).sources.map(&:url) else pod_config.sources_manager.all.map(&:url) end',
-             'The sources from which to pull dependant pods (defaults to all repos in the podfile if using the podfile, else all available repos). Can be a repo name or URL. Multiple sources must be comma-delimited.',
+             'The sources from which to pull dependent pods (defaults to all repos in the podfile if using the podfile, else all available repos). Can be a repo name or URL. Multiple sources must be comma-delimited.',
              'SOURCE1,SOURCE2',
              ->(_) { nil },
              ->(sources) { Array(sources).flat_map { |s| s.split(',') } }
+      option :local_sources, ArrayOf.new(String),
+             false,
+             'Paths from which to find local podspecs. Multiple local-sources must be comma-delimited.',
+             'SOURCE1,SOURCE2',
+             ->(_) { nil },
+             ->(local_sources) { Array(local_sources).flat_map { |s| s.split(',') } }
       option :repo_update, BOOLEAN, 'false', 'Force running `pod repo update` before install', nil, nil, coerce_to_bool
       option :use_default_plugins, BOOLEAN, 'false', 'Whether installation should activate default plugins', nil, nil, coerce_to_bool
       option :deterministic_uuids, BOOLEAN, 'false', 'Whether installation should use deterministic UUIDs for pods projects', nil, nil, coerce_to_bool

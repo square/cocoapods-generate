@@ -121,6 +121,24 @@ module Pod
           end
 
           pod spec.name, **pod_options
+
+          # Implement local-sources option to set up dependencies to podspecs in the local filesystem.
+          spec.dependencies.each do |dependency|
+            name = dependency.name.split('/')[0]
+            generator.configuration.local_sources.each do |path|
+              podspec_file = path + '/' + name + '.podspec'
+              if File.file?(podspec_file)
+                pod_options = generator.dependency_compilation_kwargs(name)
+                if podspec_file[0] == '/'
+                  pod_options[:path] =  podspec_file
+                else
+                  pod_options[:path] =  '../../' + podspec_file
+                end
+                pod name, **pod_options
+                break
+              end
+            end
+          end
         end
       end
 
