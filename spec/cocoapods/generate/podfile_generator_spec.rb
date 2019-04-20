@@ -108,6 +108,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         s.version = '1'
 
         s.dependency 'B'
+        s.dependency 'D'
 
         s.test_spec 'Tests' do |ts|
           ts.dependency 'C'
@@ -254,6 +255,61 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         expected.target_definitions['Transitive Dependencies'].send(:internal_hash).delete('inhibit_warnings')
         expected.target_definitions['Pods'].send(:internal_hash)['use_modular_headers']['for_pods'] = %w[A A B]
         expected.target_definitions['Pods'].send(:internal_hash)['inhibit_warnings']['for_pods'] = %w[A A B]
+
+        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+      end
+    end
+
+    context 'when local-sources are requested' do
+      let(:config_options) { super().merge(local_sources: ['./relative', '/absolute']) }
+      let(:podfile) do
+        Pod::Podfile.new do
+          self.defined_in_file = Pathname('Podfile').expand_path
+          plugin 'plugin-used'
+          target 'X' do
+            pod 'A', path: 'Frameworks/A/A.podspec'
+          end
+          target 'Y'
+        end.tap { |pf| allow(pf).to receive(:checksum).and_return 'csum' }
+      end
+
+      it 'generates the expected podfile' do
+        allow(File).to receive(:file?).and_call_original
+        allow(File).to receive(:file?).with('./relative/B.podspec') { true }
+        allow(File).to receive(:file?).with('/absolute/D.podspec') { true }
+        test = self
+        expected = Pod::Podfile.new do
+          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+
+          workspace 'A.xcworkspace'
+          project 'A.xcodeproj'
+
+          plugin 'cocoapods-generate'
+          plugin 'plugin-used'
+
+          source 'https://github.com/CocoaPods/Specs.git'
+
+          install! 'cocoapods',
+                   deterministic_uuids: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
+                   share_schemes_for_development_pods: true,
+                   warn_for_multiple_pod_sources: false
+
+          use_frameworks!
+
+          pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
+          pod 'B', path: '../.././relative/B.podspec'
+          pod 'D', path: '/absolute/D.podspec'
+
+          abstract_target 'Transitive Dependencies' do
+          end
+
+          target 'App-iOS'
+          target 'App-macOS'
+          target 'App-tvOS'
+          target 'App-watchOS'
+        end
 
         expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
       end

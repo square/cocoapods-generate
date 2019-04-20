@@ -62,6 +62,8 @@ Options:
                                            be used
     --use-libraries                        Whether to use libraries instead of
                                            frameworks
+    --generate-multiple-pod-projects       Whether to generate multiple Xcode projects
+    --incremental-installation             Whether to use incremental installation
     --gen-directory=PATH                   Path to generate workspaces in
     --auto-open                            Whether to automatically open the generated
                                            workspaces
@@ -73,9 +75,10 @@ Options:
                                            pods (defaults to all repos in the podfile
                                            if using the podfile, else all available
                                            repos). Can be a repo name or URL. Multiple
-                                           sources must be comma-delimited
+                                           sources must be comma-delimited.
     --local-sources=SOURCE1,SOURCE2        Paths from which to find local podspecs.
-                                           Multiple local-sources must be comma-delimited.
+                                           Multiple local-sources must be
+                                           comma-delimited.
     --repo-update                          Force running `pod repo update` before
                                            install
     --use-default-plugins                  Whether installation should activate

@@ -16,6 +16,7 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   podspec_paths: [],
   podspecs: [#<Pod::Specification name="Foo">],
   sources: ["https://github.com/CocoaPods/Specs.git", "https://github.com/Private/SpecsForks.git"],
+  local_sources: [],
   repo_update: false,
   use_default_plugins: false,
   deterministic_uuids: false,
