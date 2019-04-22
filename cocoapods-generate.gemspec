@@ -5,7 +5,8 @@ Gem::Specification.new do |spec|
   spec.version       = File.read(File.expand_path('VERSION', __dir__)).strip
   spec.authors       = ['Samuel Giddins']
   spec.email         = ['segiddins@squareup.com']
-  spec.homepage = 'https://github.com/square/cocoapods-generate'
+  spec.homepage      = 'https://github.com/square/cocoapods-generate'
+  spec.license       = 'MIT'
 
   spec.summary       = 'Generates Xcode workspaces from a podspec.'
   spec.description   = <<-DESCRIPTION.gsub(/^\s*/, '')
