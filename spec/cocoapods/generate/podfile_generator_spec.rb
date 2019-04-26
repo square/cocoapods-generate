@@ -277,6 +277,8 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         allow(File).to receive(:file?).and_call_original
         allow(File).to receive(:file?).with('./relative/B.podspec') { true }
         allow(File).to receive(:file?).with('/absolute/D.podspec') { true }
+        allow(Pod::Specification).to receive(:from_file).and_return(Pod::Specification.new { |s| s.name = 'Dummy' })
+        allow(Pod::Specification).to receive(:dependencies).and_return(nil)
         test = self
         expected = Pod::Podfile.new do
           self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')

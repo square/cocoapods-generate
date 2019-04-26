@@ -184,7 +184,7 @@ module Pod
              ->(sources) { Array(sources).flat_map { |s| s.split(',') } }
       option :local_sources, ArrayOf.new(String),
              [],
-             'Paths from which to find local podspecs. Multiple local-sources must be comma-delimited.',
+             'Paths from which to find local podspecs for transitive dependencies. Multiple local-sources must be comma-delimited.',
              'SOURCE1,SOURCE2',
              ->(_) { nil },
              ->(local_sources) { Array(local_sources).flat_map { |s| s.split(',') } }
