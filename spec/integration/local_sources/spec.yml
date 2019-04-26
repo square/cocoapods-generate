@@ -1,0 +1,2 @@
+description: generates a workspace for a pod with local podspec dependencies
+args: 'Frameworks/e/E.podspec --local-sources="Frameworks/a,Frameworks/b,Frameworks/c"'

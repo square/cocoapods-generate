@@ -1,0 +1,45 @@
+CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP_XCODEBUILD=TRUE CP_REPOS_DIR=./spec/integration/specs-repos ./bin/cocoapods-gen Frameworks/e/E.podspec --local-sources="Frameworks/a,Frameworks/b,Frameworks/c" --verbose --no-ansi 2>&1
+[pod gen] Running with `pod gen` configuration {
+  podfile_path: ./spec/integration/tmp/local_sources/transformed/Podfile,
+  podfile: Podfile,
+  use_podfile: true,
+  use_podfile_plugins: true,
+  podfile_plugins: {},
+  use_lockfile: false,
+  use_lockfile_versions: false,
+  use_libraries: false,
+  generate_multiple_pod_projects: false,
+  incremental_installation: false,
+  gen_directory: ./spec/integration/tmp/local_sources/transformed/gen,
+  auto_open: false,
+  clean: false,
+  podspec_paths: [#<Pathname:./spec/integration/tmp/local_sources/transformed/Frameworks/e/E.podspec>],
+  podspecs: [#<Pod::Specification name="E">],
+  sources: ["https://github.com/CocoaPods/Specs.git"],
+  local_sources: ["Frameworks/a", "Frameworks/b", "Frameworks/c"],
+  repo_update: false,
+  use_default_plugins: false,
+  deterministic_uuids: false,
+  share_schemes_for_development_pods: true,
+  warn_for_multiple_pod_sources: false,
+  use_modular_headers: false }
+
+Generating E in `gen/E`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
+Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
+Fetching podspec for `C` from `../../Frameworks/c/C.podspec`
+Fetching podspec for `E` from `../../Frameworks/e/E.podspec`
+Installing A (1.0.0.LOCAL)
+Installing B (1.0.0.LOCAL)
+Installing C (1.0.0.LOCAL)
+Installing E (1.0.0.LOCAL)
+
+[!] Please close any current Xcode sessions and use `E.xcworkspace` for this project from now on.
+Pod installation complete! There are 6 dependencies from the Podfile and 4 total pods installed.
+
+Performing post-installation steps
+    Open `gen/E/E.xcworkspace` to work on E
