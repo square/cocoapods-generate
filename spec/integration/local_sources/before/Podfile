@@ -10,8 +10,6 @@ install! 'cocoapods',
 target 'App' do
   platform :ios, '9.0'
 
-#  %w[a b c].each { |n| pod n.upcase, path: "Frameworks/#{n}/#{n.upcase}.podspec", testspecs: %w[Tests], appspecs: %w[App] }
-
   target 'AppTests' do
     inherit! :search_paths
 
