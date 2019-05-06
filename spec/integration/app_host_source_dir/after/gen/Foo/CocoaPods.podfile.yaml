@@ -12,6 +12,8 @@ sources:
   - https://github.com/CocoaPods/Specs.git
   - https://github.com/Private/SpecsForks.git
 plugins:
+  cocoapods-disable-podfile-validations:
+    no_abstract_only_pods: true
   cocoapods-generate:
     {}
 target_definitions:

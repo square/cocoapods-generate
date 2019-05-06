@@ -4,18 +4,6 @@ module Pod
     # given a configuration and a generated podfile.
     #
     class Installer
-      # A subclass of the CocoaPods installer that vends analyzer classes
-      # that skip validating podfiles
-      #
-      class InstallerNoValidatePodfile < ::Pod::Installer
-        def create_analyzer(*)
-          super.tap do |analyzer|
-            def analyzer.validate_podfile!; end
-          end
-        end
-      end
-      private_constant :InstallerNoValidatePodfile
-
       # @return [Configuration]
       #         the configuration to use when installing
       #
@@ -64,7 +52,7 @@ module Pod
           installer = nil
           UI.section 'Installing...' do
             configuration.pod_config.with_changes(installation_root: install_directory, podfile: podfile, lockfile: configuration.lockfile, sandbox: nil, sandbox_root: install_directory, podfile_path: podfile.defined_in_file, silent: !configuration.pod_config.verbose?, verbose: false, lockfile_path: nil) do
-              installer = InstallerNoValidatePodfile.new(configuration.pod_config.sandbox, podfile, configuration.lockfile)
+              installer = ::Pod::Installer.new(configuration.pod_config.sandbox, podfile, configuration.lockfile)
               installer.use_default_plugins = configuration.use_default_plugins
               installer.install!
             end

@@ -39,7 +39,7 @@ module Pod
 
           install! 'cocoapods', generator.installation_options
 
-          generator.configuration.podfile_plugins.each do |name, options|
+          generator.podfile_plugins.each do |name, options|
             plugin(*[name, options].compact)
           end
 
@@ -54,7 +54,7 @@ module Pod
             source(source_url)
           end
 
-          self.defined_in_file = dir.join('Podfile.yaml')
+          self.defined_in_file = dir.join('CocoaPods.podfile.yaml')
 
           test_specs = spec.recursive_subspecs.select(&:test_specification?)
           app_specs = if spec.respond_to?(:app_specification?)
@@ -274,6 +274,12 @@ module Pod
         end
 
         installation_options
+      end
+
+      def podfile_plugins
+        configuration.podfile_plugins.merge('cocoapods-disable-podfile-validations' => { 'no_abstract_only_pods' => true }) do |_key, old_value, new_value|
+          old_value.merge(new_value)
+        end
       end
 
       private

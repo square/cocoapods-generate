@@ -121,6 +121,7 @@ Build Configurations:
       WATCHOS_DEPLOYMENT_TARGET: '4.0'
 
 File References:
+  - CocoaPods.podfile.yaml
   - Development Pods:
     - Foo:
       - Foo.m
@@ -178,7 +179,6 @@ File References:
       - Foundation.framework
     - watchOS:
       - Foundation.framework
-  - Podfile.yaml
   - Products:
     - Foo-iOS-Unit-Tests
     - Foo-macOS-Unit-Tests

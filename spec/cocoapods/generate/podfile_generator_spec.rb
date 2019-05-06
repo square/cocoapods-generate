@@ -128,6 +128,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         workspace 'A.xcworkspace'
         project 'A.xcodeproj'
 
+        plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
         plugin 'cocoapods-generate'
 
         install! 'cocoapods',
@@ -172,6 +173,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
 
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
           plugin 'cocoapods-generate'
           plugin 'plugin5', foo: { 'bar' => %w[3], 'baz' => %w[1 2] }, qux: '5'
 
@@ -224,6 +226,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
 
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
           plugin 'cocoapods-generate'
           plugin 'plugin-used'
 
@@ -287,6 +290,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
 
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
           plugin 'cocoapods-generate'
 
           source 'https://github.com/CocoaPods/Specs.git'
@@ -339,6 +343,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
 
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
           plugin 'cocoapods-generate'
 
           install! 'cocoapods',
@@ -389,6 +394,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
 
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
           plugin 'cocoapods-generate'
 
           install! 'cocoapods',
