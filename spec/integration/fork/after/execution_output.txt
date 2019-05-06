@@ -29,7 +29,6 @@ Generating Foo in `gen/Foo`
     Writing Podfile
 
 Installing...
-Fetching podspec for `Foo` from `../../Foo.podspec`
 Installing Foo (1.0.0)
 Installing Forkable (1.0.0-internal.3)
 Installing UsesForkable (1.0.0)

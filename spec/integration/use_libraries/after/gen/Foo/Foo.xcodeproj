@@ -53,7 +53,7 @@ Build Configurations:
       PRODUCT_NAME: "$(TARGET_NAME)"
       SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
       SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-      SWIFT_VERSION: '4.2'
+      SWIFT_VERSION: '5.0'
   - Release:
     Build Settings:
       ALWAYS_SEARCH_USER_PATHS: NO
@@ -102,7 +102,7 @@ Build Configurations:
       PRODUCT_NAME: "$(TARGET_NAME)"
       SWIFT_COMPILATION_MODE: wholemodule
       SWIFT_OPTIMIZATION_LEVEL: "-O"
-      SWIFT_VERSION: '4.2'
+      SWIFT_VERSION: '5.0'
 
 File References:
   - App-iOS:
