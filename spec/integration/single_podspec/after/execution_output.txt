@@ -26,7 +26,6 @@ Generating Foo in `gen/Foo`
     Writing Podfile
 
 Installing...
-Fetching podspec for `Foo` from `../../Foo.podspec`
 Installing Foo (1.0.0)
 
 [!] Please close any current Xcode sessions and use `Foo.xcworkspace` for this project from now on.

@@ -12,6 +12,8 @@ sources:
   - https://github.com/CocoaPods/Specs.git
   - https://github.com/Private/SpecsForks.git
 plugins:
+  cocoapods-disable-podfile-validations:
+    no_abstract_only_pods: true
   cocoapods-generate:
     {}
 target_definitions:
@@ -29,9 +31,5 @@ target_definitions:
       - Foo/Tests:
         - :path: "../../Foo.podspec"
     name: Pods
-    use_modular_headers:
-      for_pods:
-        - Foo
-        - Foo
     user_project_path: Foo.xcodeproj
     uses_frameworks: true

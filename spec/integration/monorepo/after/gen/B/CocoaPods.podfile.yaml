@@ -7,31 +7,33 @@ installation_method:
     :incremental_installation: false
     :share_schemes_for_development_pods: true
     :warn_for_multiple_pod_sources: false
-workspace: Foo.xcworkspace
+workspace: B.xcworkspace
 sources:
   - https://github.com/CocoaPods/Specs.git
-  - https://github.com/Private/SpecsForks.git
 plugins:
+  cocoapods-disable-podfile-validations:
+    no_abstract_only_pods: true
   cocoapods-generate:
     {}
 target_definitions:
   - abstract: true
     children:
       - abstract: true
+        dependencies:
+          - A:
+            - :path: "../../Frameworks/a/A.podspec"
         name: Transitive Dependencies
       - name: App-iOS
       - name: App-macOS
       - name: App-tvOS
       - name: App-watchOS
     dependencies:
-      - Foo:
-        - :path: "../../Foo.podspec"
-      - Foo/Tests:
-        - :path: "../../Foo.podspec"
+      - B:
+        - :path: "../../Frameworks/b/B.podspec"
+      - B/App:
+        - :path: "../../Frameworks/b/B.podspec"
+      - B/Tests:
+        - :path: "../../Frameworks/b/B.podspec"
     name: Pods
-    use_modular_headers:
-      for_pods:
-        - Foo
-        - Foo
-    user_project_path: Foo.xcodeproj
-    uses_frameworks: false
+    user_project_path: B.xcodeproj
+    uses_frameworks: true

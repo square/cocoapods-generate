@@ -29,7 +29,6 @@ Generating A in `gen/A`
     Writing Podfile
 
 Installing...
-Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
 Installing A (1.0.0.LOCAL)
 
 [!] Please close any current Xcode sessions and use `A.xcworkspace` for this project from now on.
@@ -43,8 +42,6 @@ Generating B in `gen/B`
     Writing Podfile
 
 Installing...
-Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
-Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
 Installing A (1.0.0.LOCAL)
 Installing B (1.0.0.LOCAL)
 
@@ -59,9 +56,6 @@ Generating C in `gen/C`
     Writing Podfile
 
 Installing...
-Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
-Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
-Fetching podspec for `C` from `../../Frameworks/c/C.podspec`
 Installing A (1.0.0.LOCAL)
 Installing B (1.0.0.LOCAL)
 Installing C (1.0.0.LOCAL)
@@ -77,11 +71,6 @@ Generating D in `gen/D`
     Writing Podfile
 
 Installing...
-Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
-Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
-Fetching podspec for `C` from `../../Frameworks/c/C.podspec`
-Fetching podspec for `D` from `../../Frameworks/d/D.podspec`
-Fetching podspec for `E` from `../../Frameworks/e/E.podspec`
 Installing A (1.0.0.LOCAL)
 Installing B (1.0.0.LOCAL)
 Installing C (1.0.0.LOCAL)
@@ -100,10 +89,6 @@ Generating E in `gen/E`
     Writing Podfile
 
 Installing...
-Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
-Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
-Fetching podspec for `C` from `../../Frameworks/c/C.podspec`
-Fetching podspec for `E` from `../../Frameworks/e/E.podspec`
 Installing A (1.0.0.LOCAL)
 Installing B (1.0.0.LOCAL)
 Installing C (1.0.0.LOCAL)
@@ -120,10 +105,6 @@ Generating F in `gen/F`
     Writing Podfile
 
 Installing...
-Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
-Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
-Fetching podspec for `C` from `../../Frameworks/c/C.podspec`
-Fetching podspec for `F` from `../../Frameworks/f/F.podspec`
 Installing A (1.0.0.LOCAL)
 Installing B (1.0.0.LOCAL)
 Installing C (1.0.0.LOCAL)
@@ -141,8 +122,6 @@ Generating G in `gen/G`
     Writing Podfile
 
 Installing...
-Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
-Fetching podspec for `G` from `../../Frameworks/g/G.podspec`
 Installing A (1.0.0.LOCAL)
 Installing G (1.0.0.LOCAL)
 Installing OnlyPre (1.0.0.pre.1)
