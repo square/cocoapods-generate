@@ -11,6 +11,8 @@ workspace: E.xcworkspace
 sources:
   - https://github.com/CocoaPods/Specs.git
 plugins:
+  cocoapods-disable-podfile-validations:
+    no_abstract_only_pods: true
   cocoapods-generate:
     {}
 target_definitions:
