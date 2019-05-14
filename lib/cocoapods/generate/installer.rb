@@ -152,6 +152,14 @@ module Pod
                   end
 
                 next
+              elsif file.to_s.end_with?('-Bridging-Header.h')
+                native_app_target.build_configurations.each do |bc|
+                  if (old_bridging_header = bc.build_settings['SWIFT_OBJC_BRIDGING_HEADER'])
+                    raise Informative, "Conflicting Swift ObjC bridging headers specified, got #{old_bridging_header} and #{relative_path}. Only one `-Bridging-Header.h` file may be specified in the app host source dir."
+                  end
+
+                  bc.build_settings['SWIFT_OBJC_BRIDGING_HEADER'] = relative_path.to_s
+                end
               end
 
               group = groups[relative_path.dirname]

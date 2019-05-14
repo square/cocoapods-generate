@@ -1,0 +1,1 @@
+description: uses a custom swift objc bridging header when a -Bridging-Header.h file is in the app host source dir

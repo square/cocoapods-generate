@@ -1,0 +1,11 @@
+PODS:
+  - Foo (1.0.0)
+  - Foo/Tests (1.0.0)
+
+DEPENDENCIES:
+  - Foo (from `../../Foo.podspec`)
+  - Foo/Tests (from `../../Foo.podspec`)
+
+EXTERNAL SOURCES:
+  Foo:
+    :path: "../../Foo.podspec"
