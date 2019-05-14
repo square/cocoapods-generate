@@ -1,0 +1,18 @@
+# frozen_string_literal: true
+
+ENV['COCOAPODS_DISABLE_STATS'] = '1'
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+install! 'cocoapods',
+         integrate_targets: false
+
+target 'App' do
+  platform :ios, '9.0'
+
+  target 'AppTests' do
+    inherit! :search_paths
+
+    pod 'E', path: 'Frameworks/e/E.podspec', testspecs: %w[Tests]
+  end
+end

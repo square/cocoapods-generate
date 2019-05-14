@@ -17,6 +17,7 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   podspec_paths: [#<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/a/A.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/b/B.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/c/C.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/d/D.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/e/E.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/f/F.podspec>, #<Pathname:./spec/integration/tmp/monorepo/transformed/Frameworks/g/G.podspec>],
   podspecs: [#<Pod::Specification name="A">, #<Pod::Specification name="B">, #<Pod::Specification name="C">, #<Pod::Specification name="D">, #<Pod::Specification name="E">, #<Pod::Specification name="F">, #<Pod::Specification name="G">],
   sources: ["https://github.com/CocoaPods/Specs.git"],
+  local_sources: [],
   repo_update: false,
   use_default_plugins: false,
   deterministic_uuids: false,

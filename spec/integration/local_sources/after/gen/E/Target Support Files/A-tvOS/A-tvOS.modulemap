@@ -1,0 +1,6 @@
+framework module A {
+  umbrella header "A-tvOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
