@@ -34,7 +34,7 @@ GIT
 PATH
   remote: .
   specs:
-    cocoapods-generate (1.4.1)
+    cocoapods-generate (1.5.0)
       cocoapods-disable-podfile-validations (~> 0.1.1)
 
 GEM

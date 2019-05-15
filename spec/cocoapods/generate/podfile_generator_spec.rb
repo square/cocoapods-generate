@@ -289,6 +289,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
 
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
           plugin 'cocoapods-generate'
           plugin 'plugin-used'
 

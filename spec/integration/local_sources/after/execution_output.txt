@@ -29,10 +29,6 @@ Generating E in `gen/E`
     Writing Podfile
 
 Installing...
-Fetching podspec for `A` from `../../Frameworks/a/A.podspec`
-Fetching podspec for `B` from `../../Frameworks/b/B.podspec`
-Fetching podspec for `C` from `../../Frameworks/c/C.podspec`
-Fetching podspec for `E` from `../../Frameworks/e/E.podspec`
 Installing A (1.0.0.LOCAL)
 Installing B (1.0.0.LOCAL)
 Installing C (1.0.0.LOCAL)
