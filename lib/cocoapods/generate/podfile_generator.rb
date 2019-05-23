@@ -349,6 +349,7 @@ module Pod
       #
       def modular_headers?(pod_name)
         return true if configuration.use_modular_headers?
+        return false unless configuration.use_podfile?
         target_definitions_for_pod(pod_name).all? do |target_definition|
           target_definition.build_pod_as_module?(pod_name)
         end
