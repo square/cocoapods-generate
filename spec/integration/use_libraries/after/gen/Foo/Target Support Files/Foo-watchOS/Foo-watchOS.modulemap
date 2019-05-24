@@ -1,9 +1,0 @@
-module Foo {
-  umbrella header "Foo-watchOS-umbrella.h"
-  exclude header "Foo-iOS-umbrella.h"
-  exclude header "Foo-macOS-umbrella.h"
-  exclude header "Foo-tvOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -31,9 +31,5 @@ target_definitions:
       - Foo/Tests:
         - :path: "../../Foo.podspec"
     name: Pods
-    use_modular_headers:
-      for_pods:
-        - Foo
-        - Foo
     user_project_path: Foo.xcodeproj
     uses_frameworks: false
