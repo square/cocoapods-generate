@@ -79,6 +79,9 @@ Options:
     --local-sources=SOURCE1,SOURCE2        Paths from which to find local podspecs for
                                            transitive dependencies. Multiple
                                            local-sources must be comma-delimited.
+    --platforms=ios,macos                  Limit to specific platforms. Default is all
+                                           platforms supported by the podspec.
+                                           Multiple platforms must be comma-delimited.
     --repo-update                          Force running `pod repo update` before
                                            install
     --use-default-plugins                  Whether installation should activate

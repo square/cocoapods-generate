@@ -91,7 +91,11 @@ module Pod
 
           # Add platform-specific concrete targets that inherit the
           # `pod` declaration for the local pod.
-          spec.available_platforms.map(&:string_name).sort.each do |platform_name|
+          spec_platform_names = spec.available_platforms.map(&:string_name).flatten.each.reject do |platform_name|
+            !generator.configuration.platforms.nil? && !generator.configuration.platforms.include?(platform_name.downcase)
+          end
+
+          spec_platform_names.sort.each do |platform_name|
             target "App-#{platform_name}" do
               current_target_definition.swift_version = generator.swift_version if generator.swift_version
             end

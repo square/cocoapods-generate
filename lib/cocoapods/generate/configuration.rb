@@ -188,6 +188,15 @@ module Pod
              'SOURCE1,SOURCE2',
              ->(_) { nil },
              ->(local_sources) { Array(local_sources).flat_map { |s| s.split(',') } }
+      option :platforms, ArrayOf.new(String),
+             nil,
+             'Limit to specific platforms. Default is all platforms supported by the podspec. Multiple platforms must be comma-delimited.',
+             'ios,macos',
+             lambda { |platforms|
+               valid_platforms = Platform.all.map { |p| p.string_name.downcase }
+               valid_platforms unless (platforms - valid_platforms).empty?
+             }, # validates platforms is a subset of Platform.all
+             ->(platforms) { Array(platforms).flat_map { |s| s.split(',') } }
       option :repo_update, BOOLEAN, 'false', 'Force running `pod repo update` before install', nil, nil, coerce_to_bool
       option :use_default_plugins, BOOLEAN, 'false', 'Whether installation should activate default plugins', nil, nil, coerce_to_bool
       option :deterministic_uuids, BOOLEAN, 'false', 'Whether installation should use deterministic UUIDs for pods projects', nil, nil, coerce_to_bool

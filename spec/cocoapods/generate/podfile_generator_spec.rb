@@ -321,6 +321,57 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       end
     end
 
+    context 'when only ios platform is requested' do
+      let(:config_options) { super().merge(platforms: ['ios']) }
+      let(:podfile) do
+        Pod::Podfile.new do
+          self.defined_in_file = Pathname('Podfile').expand_path
+          plugin 'plugin-used'
+          target 'X' do
+            pod 'A', path: 'Frameworks/A/A.podspec'
+          end
+          target 'Y'
+        end.tap { |pf| allow(pf).to receive(:checksum).and_return 'csum' }
+      end
+
+      it 'generates the expected podfile' do
+        allow(File).to receive(:file?).and_call_original
+        allow(Pod::Specification).to receive(:from_file).and_return(Pod::Specification.new { |s| s.name = 'Dummy' })
+        allow(Pod::Specification).to receive(:dependencies).and_return(nil)
+        test = self
+        expected = Pod::Podfile.new do
+          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+
+          workspace 'A.xcworkspace'
+          project 'A.xcodeproj'
+
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
+          plugin 'cocoapods-generate'
+          plugin 'plugin-used'
+
+          source 'https://github.com/CocoaPods/Specs.git'
+
+          install! 'cocoapods',
+                   deterministic_uuids: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
+                   share_schemes_for_development_pods: true,
+                   warn_for_multiple_pod_sources: false
+
+          use_frameworks!
+
+          pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
+
+          abstract_target 'Transitive Dependencies' do
+          end
+
+          target 'App-iOS'
+        end
+
+        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+      end
+    end
+
     context 'when use_modular_headers! and use_podfile is specified' do
       let(:use_modular_headers) { true }
 
