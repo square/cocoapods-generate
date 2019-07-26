@@ -94,28 +94,34 @@ module Pod
       def create_app_project
         app_project = open_app_project(recreate: true)
 
-        spec.available_platforms.map do |platform|
-          consumer = spec.consumer(platform)
-          target_name = "App-#{Platform.string_name(consumer.platform_name)}"
-          native_app_target = Pod::Generator::AppTargetHelper.add_app_target(app_project, consumer.platform_name, deployment_target(consumer), target_name)
-          # Temporarily set Swift version to pass validator checks for pods which do not specify Swift version.
-          # It will then be re-set again within #perform_post_install_steps.
-          Pod::Generator::AppTargetHelper.add_swift_version(native_app_target, Pod::Validator::DEFAULT_SWIFT_VERSION)
-          native_app_target
+        spec_platforms = spec.available_platforms.flatten.reject do |platform|
+          !configuration.platforms.nil? && !configuration.platforms.include?(platform.string_name.downcase)
         end
-            .tap do
-              app_project.recreate_user_schemes do |scheme, target|
-                installation_result = installation_result_from_target(target)
-                next unless installation_result
-                installation_result.test_native_targets.each do |test_native_target|
-                  scheme.add_test_target(test_native_target)
-                end
+
+        Pod::Command::Gen.help! Pod::StandardError.new "No available platforms in #{spec.name}.podspec match requested platforms: #{configuration.platforms}" if spec_platforms.empty?
+
+        spec_platforms
+          .map do |platform|
+            consumer = spec.consumer(platform)
+            target_name = "App-#{Platform.string_name(consumer.platform_name)}"
+            native_app_target = Pod::Generator::AppTargetHelper.add_app_target(app_project, consumer.platform_name, deployment_target(consumer), target_name)
+            # Temporarily set Swift version to pass validator checks for pods which do not specify Swift version.
+            # It will then be re-set again within #perform_post_install_steps.
+            Pod::Generator::AppTargetHelper.add_swift_version(native_app_target, Pod::Validator::DEFAULT_SWIFT_VERSION)
+            native_app_target
+          end
+          .tap do
+            app_project.recreate_user_schemes do |scheme, target|
+              installation_result = installation_result_from_target(target)
+              next unless installation_result
+              installation_result.test_native_targets.each do |test_native_target|
+                scheme.add_test_target(test_native_target)
               end
             end
-            .each do |target|
-              Xcodeproj::XCScheme.share_scheme(app_project.path, target.name)
-            end
-
+          end
+          .each do |target|
+            Xcodeproj::XCScheme.share_scheme(app_project.path, target.name) if target
+          end
         app_project.save
       end
 

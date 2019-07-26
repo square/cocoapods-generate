@@ -95,6 +95,12 @@ RSpec.describe Pod::Generate::Configuration do
       it { should eq [] }
     end
 
+    context 'platform validation errors' do
+      let(:kwargs) { { platforms: ['invalid-os'] } }
+
+      it { should eq ['["invalid-os"] invalid for platforms, ios, macos, watchos, tvos'] }
+    end
+
     context 'evaluating a default fails' do
       let(:object) { Object.new }
       let(:kwargs) { { pod_config: object } }
