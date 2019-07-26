@@ -94,7 +94,7 @@ module Pod
       def create_app_project
         app_project = open_app_project(recreate: true)
 
-        spec_platforms = spec.available_platforms.flatten.each.reject do |platform|
+        spec_platforms = spec.available_platforms.flatten.reject do |platform|
           !configuration.platforms.nil? && !configuration.platforms.include?(platform.string_name.downcase)
         end
 
