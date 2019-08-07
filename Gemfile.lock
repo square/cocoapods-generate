@@ -137,7 +137,7 @@ GEM
       claide (>= 1.0.2, < 2.0)
       colored2 (~> 3.1)
       nanaimo (~> 0.2.6)
-    yard (0.9.12)
+    yard (0.9.20)
 
 PLATFORMS
   ruby
