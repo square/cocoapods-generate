@@ -6,7 +6,7 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gemspec
 
-gem 'clintegracon', '~> 0.8.1'
+gem 'clintegracon', '~> 0.9.0'
 gem 'cocoapods', '~> 1.6.a', github: 'CocoaPods/CocoaPods'
 gem 'cocoapods-core', github: 'CocoaPods/Core'
 gem 'inch_by_inch', '~> 1.0.1'
