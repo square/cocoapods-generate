@@ -26,7 +26,7 @@ DEPENDENCIES:
   - OnlyPre (= 1.0.0.pre.1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - OnlyPre
 
 EXTERNAL SOURCES:

@@ -42,4 +42,6 @@ target_definitions:
         - :path: "../../Frameworks/f/F.podspec"
     name: Pods
     user_project_path: F.xcodeproj
-    uses_frameworks: true
+    uses_frameworks:
+      :linkage: :dynamic
+      :packaging: :framework

@@ -130,34 +130,26 @@ File References:
       - Support Files:
         - Foo-iOS-dummy.m
         - Foo-iOS-prefix.pch
-        - Foo-iOS-Unit-Tests-frameworks.sh
         - Foo-iOS-Unit-Tests-Info.plist
         - Foo-iOS-Unit-Tests-prefix.pch
-        - Foo-iOS-Unit-Tests-resources.sh
         - Foo-iOS.unit-tests.xcconfig
         - Foo-iOS.xcconfig
         - Foo-macOS-dummy.m
         - Foo-macOS-prefix.pch
-        - Foo-macOS-Unit-Tests-frameworks.sh
         - Foo-macOS-Unit-Tests-Info.plist
         - Foo-macOS-Unit-Tests-prefix.pch
-        - Foo-macOS-Unit-Tests-resources.sh
         - Foo-macOS.unit-tests.xcconfig
         - Foo-macOS.xcconfig
         - Foo-tvOS-dummy.m
         - Foo-tvOS-prefix.pch
-        - Foo-tvOS-Unit-Tests-frameworks.sh
         - Foo-tvOS-Unit-Tests-Info.plist
         - Foo-tvOS-Unit-Tests-prefix.pch
-        - Foo-tvOS-Unit-Tests-resources.sh
         - Foo-tvOS.unit-tests.xcconfig
         - Foo-tvOS.xcconfig
         - Foo-watchOS-dummy.m
         - Foo-watchOS-prefix.pch
-        - Foo-watchOS-Unit-Tests-frameworks.sh
         - Foo-watchOS-Unit-Tests-Info.plist
         - Foo-watchOS-Unit-Tests-prefix.pch
-        - Foo-watchOS-Unit-Tests-resources.sh
         - Foo-watchOS.unit-tests.xcconfig
         - Foo-watchOS.xcconfig
       - Tests:
@@ -304,10 +296,6 @@ Targets:
           SWIFT_VERSION: '4.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
-      - "[CP] Embed Pods Frameworks":
-        []
       - Frameworks:
         - Foundation.framework
       - Resources:
@@ -409,10 +397,6 @@ Targets:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_VERSION: '4.0'
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
-      - "[CP] Embed Pods Frameworks":
-        []
       - Frameworks:
         - Cocoa.framework
       - Resources:
@@ -508,10 +492,6 @@ Targets:
           TVOS_DEPLOYMENT_TARGET: '11.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
-      - "[CP] Embed Pods Frameworks":
-        []
       - Frameworks:
         - Foundation.framework
       - Resources:
@@ -607,10 +587,6 @@ Targets:
           VALIDATE_PRODUCT: YES
           WATCHOS_DEPLOYMENT_TARGET: '4.0'
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
-      - "[CP] Embed Pods Frameworks":
-        []
       - Frameworks:
         - Foundation.framework
       - Resources:
