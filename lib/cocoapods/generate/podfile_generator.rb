@@ -43,7 +43,7 @@ module Pod
             plugin(*[name, options].compact)
           end
 
-          use_frameworks!(generator.configuration.use_frameworks?)
+          use_frameworks!(generator.use_frameworks_value)
 
           if (supported_swift_versions = generator.supported_swift_versions)
             supports_swift_versions(supported_swift_versions)
@@ -187,6 +187,27 @@ module Pod
         else
           configuration.use_modular_headers?
         end
+      end
+
+      # @return [Boolean, Hash]
+      #         the value to use for `use_frameworks!` DSL directive
+      #
+      def use_frameworks_value
+        return configuration.use_frameworks? unless configuration.use_podfile?
+        use_framework_values = target_definition_list.map do |target_definition|
+          if target_definition.respond_to?(:build_type) # CocoaPods >= 1.9
+            build_type = target_definition.build_type
+            if build_type.static_library?
+              false
+            else
+              { linkage: build_type == BuildType.dynamic_framework ? :dynamic : :static }
+            end
+          else
+            target_definition.uses_frameworks?
+          end
+        end.uniq
+        raise Informative, 'Multiple use_frameworks! values detected in user Podfile.' unless use_framework_values.count == 1
+        use_framework_values.first
       end
 
       # @return [Hash]

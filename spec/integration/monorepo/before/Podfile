@@ -4,6 +4,8 @@ ENV['COCOAPODS_DISABLE_STATS'] = '1'
 
 source 'https://github.com/CocoaPods/Specs.git'
 
+use_frameworks!
+
 install! 'cocoapods',
          integrate_targets: false
 

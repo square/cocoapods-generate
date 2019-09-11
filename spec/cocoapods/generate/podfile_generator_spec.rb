@@ -139,7 +139,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
                  share_schemes_for_development_pods: true,
                  warn_for_multiple_pod_sources: false
 
-        use_frameworks!
+        use_frameworks!(false)
 
         pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
 
@@ -187,7 +187,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
-          use_frameworks!
+          use_frameworks!(false)
 
           pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
 
@@ -240,7 +240,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
-          use_frameworks!
+          use_frameworks!(false)
 
           pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests], modular_headers: true, inhibit_warnings: true
 
@@ -302,7 +302,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
-          use_frameworks!
+          use_frameworks!(false)
 
           pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
           pod 'B', path: '../.././relative/B.podspec'
@@ -358,7 +358,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
-          use_frameworks!
+          use_frameworks!(false)
 
           pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
 
@@ -412,7 +412,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
-          use_frameworks!
+          use_frameworks!(false)
 
           inhibit_all_warnings!
           use_modular_headers!
@@ -463,7 +463,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
-          use_frameworks!
+          use_frameworks!(false)
 
           pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
 
@@ -514,9 +514,115 @@ RSpec.describe Pod::Generate::PodfileGenerator do
                    share_schemes_for_development_pods: true,
                    warn_for_multiple_pod_sources: false
 
-          use_frameworks!
+          use_frameworks!(false)
 
           supports_swift_versions ['4.2', '5']
+
+          pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
+
+          abstract_target 'Transitive Dependencies' do
+          end
+
+          target 'App-iOS' do
+          end
+          target 'App-macOS' do
+          end
+          target 'App-tvOS' do
+          end
+          target 'App-watchOS' do
+          end
+        end
+
+        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+      end
+    end
+
+    context 'when the podfile sets use_frameworks! as a boolean' do
+      let(:podfile) do
+        Pod::Podfile.new do
+          self.defined_in_file = Pathname('Podfile').expand_path
+          use_frameworks!(true)
+          target 'X' do
+            pod 'A', path: 'Frameworks/A/A.podspec'
+          end
+          target 'Y'
+        end.tap { |pf| allow(pf).to receive(:checksum).and_return 'csum' }
+      end
+
+      it 'generates the expected podfile' do
+        test = self
+        expected = Pod::Podfile.new do
+          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+
+          workspace 'A.xcworkspace'
+          project 'A.xcodeproj'
+
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
+          plugin 'cocoapods-generate'
+
+          source 'https://cdn.cocoapods.org/'
+
+          install! 'cocoapods',
+                   deterministic_uuids: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
+                   share_schemes_for_development_pods: true,
+                   warn_for_multiple_pod_sources: false
+
+          use_frameworks!(true)
+
+          pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
+
+          abstract_target 'Transitive Dependencies' do
+          end
+
+          target 'App-iOS' do
+          end
+          target 'App-macOS' do
+          end
+          target 'App-tvOS' do
+          end
+          target 'App-watchOS' do
+          end
+        end
+
+        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+      end
+    end
+
+    context 'when the podfile specifies use_frameworks! as a hash' do
+      let(:podfile) do
+        Pod::Podfile.new do
+          self.defined_in_file = Pathname('Podfile').expand_path
+          use_frameworks!(linkage: :static)
+          target 'X' do
+            pod 'A', path: 'Frameworks/A/A.podspec'
+          end
+          target 'Y'
+        end.tap { |pf| allow(pf).to receive(:checksum).and_return 'csum' }
+      end
+
+      it 'generates the expected podfile' do
+        test = self
+        expected = Pod::Podfile.new do
+          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+
+          workspace 'A.xcworkspace'
+          project 'A.xcodeproj'
+
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
+          plugin 'cocoapods-generate'
+
+          source 'https://cdn.cocoapods.org/'
+
+          install! 'cocoapods',
+                   deterministic_uuids: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
+                   share_schemes_for_development_pods: true,
+                   warn_for_multiple_pod_sources: false
+
+          use_frameworks!(linkage: :static)
 
           pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
 
