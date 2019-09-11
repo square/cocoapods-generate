@@ -240,7 +240,6 @@ File References:
       - Support Files:
         - D-iOS-App-frameworks.sh
         - D-iOS-App-prefix.pch
-        - D-iOS-App-resources.sh
         - D-iOS-dummy.m
         - D-iOS-Info.plist
         - D-iOS-prefix.pch
@@ -248,14 +247,12 @@ File References:
         - D-iOS-Unit-Tests-frameworks.sh
         - D-iOS-Unit-Tests-Info.plist
         - D-iOS-Unit-Tests-prefix.pch
-        - D-iOS-Unit-Tests-resources.sh
         - D-iOS.app.xcconfig
         - D-iOS.modulemap
         - D-iOS.unit-tests.xcconfig
         - D-iOS.xcconfig
         - D-macOS-App-frameworks.sh
         - D-macOS-App-prefix.pch
-        - D-macOS-App-resources.sh
         - D-macOS-dummy.m
         - D-macOS-Info.plist
         - D-macOS-prefix.pch
@@ -263,14 +260,12 @@ File References:
         - D-macOS-Unit-Tests-frameworks.sh
         - D-macOS-Unit-Tests-Info.plist
         - D-macOS-Unit-Tests-prefix.pch
-        - D-macOS-Unit-Tests-resources.sh
         - D-macOS.app.xcconfig
         - D-macOS.modulemap
         - D-macOS.unit-tests.xcconfig
         - D-macOS.xcconfig
         - D-tvOS-App-frameworks.sh
         - D-tvOS-App-prefix.pch
-        - D-tvOS-App-resources.sh
         - D-tvOS-dummy.m
         - D-tvOS-Info.plist
         - D-tvOS-prefix.pch
@@ -278,14 +273,12 @@ File References:
         - D-tvOS-Unit-Tests-frameworks.sh
         - D-tvOS-Unit-Tests-Info.plist
         - D-tvOS-Unit-Tests-prefix.pch
-        - D-tvOS-Unit-Tests-resources.sh
         - D-tvOS.app.xcconfig
         - D-tvOS.modulemap
         - D-tvOS.unit-tests.xcconfig
         - D-tvOS.xcconfig
         - D-watchOS-App-frameworks.sh
         - D-watchOS-App-prefix.pch
-        - D-watchOS-App-resources.sh
         - D-watchOS-dummy.m
         - D-watchOS-Info.plist
         - D-watchOS-prefix.pch
@@ -293,7 +286,6 @@ File References:
         - D-watchOS-Unit-Tests-frameworks.sh
         - D-watchOS-Unit-Tests-Info.plist
         - D-watchOS-Unit-Tests-prefix.pch
-        - D-watchOS-Unit-Tests-resources.sh
         - D-watchOS.app.xcconfig
         - D-watchOS.modulemap
         - D-watchOS.unit-tests.xcconfig
@@ -1487,9 +1479,6 @@ Targets:
         Build Settings:
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
           CODE_SIGN_IDENTITY: iPhone Developer
-          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
-          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
-          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
           CODE_SIGNING_ALLOWED: YES
           CODE_SIGNING_REQUIRED: YES
           CURRENT_PROJECT_VERSION: '1'
@@ -1508,9 +1497,6 @@ Targets:
         Build Settings:
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
           CODE_SIGN_IDENTITY: iPhone Developer
-          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
-          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
-          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
           CODE_SIGNING_ALLOWED: YES
           CODE_SIGNING_REQUIRED: YES
           CURRENT_PROJECT_VERSION: '1'
@@ -1526,10 +1512,24 @@ Targets:
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-iOS/A.framework"
+          - "${BUILT_PRODUCTS_DIR}/B-iOS/B.framework"
+          - "${BUILT_PRODUCTS_DIR}/C-iOS/C.framework"
+          - "${BUILT_PRODUCTS_DIR}/D-iOS/D.framework"
+          - "${PODS_ROOT}/Target Support Files/D-iOS/D-iOS-App-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/D.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/D-iOS/D-iOS-App-frameworks.sh\"\n"
       - Frameworks:
         - D.framework
         - Foundation.framework
@@ -1577,10 +1577,26 @@ Targets:
           SWIFT_VERSION: '4.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-iOS/A.framework"
+          - "${BUILT_PRODUCTS_DIR}/B-iOS/B.framework"
+          - "${BUILT_PRODUCTS_DIR}/C-iOS/C.framework"
+          - "${BUILT_PRODUCTS_DIR}/D-iOS/D.framework"
+          - "${BUILT_PRODUCTS_DIR}/E-iOS/E.framework"
+          - "${PODS_ROOT}/Target Support Files/D-iOS/D-iOS-Unit-Tests-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/D.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/E.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/D-iOS/D-iOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
         - D.framework
         - E.framework
@@ -1722,10 +1738,24 @@ Targets:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_VERSION: '4.0'
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-macOS/A.framework"
+          - "${BUILT_PRODUCTS_DIR}/B-macOS/B.framework"
+          - "${BUILT_PRODUCTS_DIR}/C-macOS/C.framework"
+          - "${BUILT_PRODUCTS_DIR}/D-macOS/D.framework"
+          - "${PODS_ROOT}/Target Support Files/D-macOS/D-macOS-App-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/D.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/D-macOS/D-macOS-App-frameworks.sh\"\n"
       - Frameworks:
         - Cocoa.framework
         - D.framework
@@ -1772,10 +1802,26 @@ Targets:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_VERSION: '4.0'
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-macOS/A.framework"
+          - "${BUILT_PRODUCTS_DIR}/B-macOS/B.framework"
+          - "${BUILT_PRODUCTS_DIR}/C-macOS/C.framework"
+          - "${BUILT_PRODUCTS_DIR}/D-macOS/D.framework"
+          - "${BUILT_PRODUCTS_DIR}/E-macOS/E.framework"
+          - "${PODS_ROOT}/Target Support Files/D-macOS/D-macOS-Unit-Tests-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/D.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/E.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/D-macOS/D-macOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
         - Cocoa.framework
         - D.framework
@@ -1913,10 +1959,24 @@ Targets:
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
+          - "${BUILT_PRODUCTS_DIR}/B-tvOS/B.framework"
+          - "${BUILT_PRODUCTS_DIR}/C-tvOS/C.framework"
+          - "${BUILT_PRODUCTS_DIR}/D-tvOS/D.framework"
+          - "${PODS_ROOT}/Target Support Files/D-tvOS/D-tvOS-App-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/D.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/D-tvOS/D-tvOS-App-frameworks.sh\"\n"
       - Frameworks:
         - D.framework
         - Foundation.framework
@@ -1962,10 +2022,26 @@ Targets:
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
+          - "${BUILT_PRODUCTS_DIR}/B-tvOS/B.framework"
+          - "${BUILT_PRODUCTS_DIR}/C-tvOS/C.framework"
+          - "${BUILT_PRODUCTS_DIR}/D-tvOS/D.framework"
+          - "${BUILT_PRODUCTS_DIR}/E-tvOS/E.framework"
+          - "${PODS_ROOT}/Target Support Files/D-tvOS/D-tvOS-Unit-Tests-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/D.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/E.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/D-tvOS/D-tvOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
         - D.framework
         - E.framework
@@ -2103,10 +2179,24 @@ Targets:
           VALIDATE_PRODUCT: YES
           WATCHOS_DEPLOYMENT_TARGET: '2.0'
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework"
+          - "${BUILT_PRODUCTS_DIR}/B-watchOS/B.framework"
+          - "${BUILT_PRODUCTS_DIR}/C-watchOS/C.framework"
+          - "${BUILT_PRODUCTS_DIR}/D-watchOS/D.framework"
+          - "${PODS_ROOT}/Target Support Files/D-watchOS/D-watchOS-App-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/D.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/D-watchOS/D-watchOS-App-frameworks.sh\"\n"
       - Frameworks:
         - D.framework
         - Foundation.framework
@@ -2152,10 +2242,26 @@ Targets:
           VALIDATE_PRODUCT: YES
           WATCHOS_DEPLOYMENT_TARGET: '2.0'
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework"
+          - "${BUILT_PRODUCTS_DIR}/B-watchOS/B.framework"
+          - "${BUILT_PRODUCTS_DIR}/C-watchOS/C.framework"
+          - "${BUILT_PRODUCTS_DIR}/D-watchOS/D.framework"
+          - "${BUILT_PRODUCTS_DIR}/E-watchOS/E.framework"
+          - "${PODS_ROOT}/Target Support Files/D-watchOS/D-watchOS-Unit-Tests-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/D.framework"
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/E.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/D-watchOS/D-watchOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
         - D.framework
         - E.framework

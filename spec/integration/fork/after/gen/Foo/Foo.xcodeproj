@@ -173,7 +173,17 @@ Targets:
           VALIDATE_PRODUCT: YES
     Build Phases:
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/Foo-iOS/Foo.framework"
+          - "${PODS_ROOT}/Target Support Files/Pods-App-iOS/Pods-App-iOS-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Foo.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-iOS/Pods-App-iOS-frameworks.sh\"\n"
       - Frameworks:
         - Foundation.framework
         - Pods_App_iOS.framework
@@ -209,7 +219,17 @@ Targets:
           SWIFT_VERSION: '4.0'
     Build Phases:
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/Foo-macOS/Foo.framework"
+          - "${PODS_ROOT}/Target Support Files/Pods-App-macOS/Pods-App-macOS-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Foo.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-macOS/Pods-App-macOS-frameworks.sh\"\n"
       - Frameworks:
         - Cocoa.framework
         - Pods_App_macOS.framework
@@ -244,7 +264,17 @@ Targets:
           VALIDATE_PRODUCT: YES
     Build Phases:
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/Foo-tvOS/Foo.framework"
+          - "${PODS_ROOT}/Target Support Files/Pods-App-tvOS/Pods-App-tvOS-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Foo.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-tvOS/Pods-App-tvOS-frameworks.sh\"\n"
       - Frameworks:
         - Foundation.framework
         - Pods_App_tvOS.framework
@@ -277,7 +307,17 @@ Targets:
           WATCHOS_DEPLOYMENT_TARGET: '4.0'
     Build Phases:
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/Foo-watchOS/Foo.framework"
+          - "${PODS_ROOT}/Target Support Files/Pods-App-watchOS/Pods-App-watchOS-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Foo.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-watchOS/Pods-App-watchOS-frameworks.sh\"\n"
       - Frameworks:
         - Foundation.framework
         - Pods_App_watchOS.framework

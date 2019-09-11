@@ -141,7 +141,6 @@ File References:
       - Support Files:
         - A-iOS-App-frameworks.sh
         - A-iOS-App-prefix.pch
-        - A-iOS-App-resources.sh
         - A-iOS-dummy.m
         - A-iOS-Info.plist
         - A-iOS-prefix.pch
@@ -149,14 +148,12 @@ File References:
         - A-iOS-Unit-Tests-frameworks.sh
         - A-iOS-Unit-Tests-Info.plist
         - A-iOS-Unit-Tests-prefix.pch
-        - A-iOS-Unit-Tests-resources.sh
         - A-iOS.app.xcconfig
         - A-iOS.modulemap
         - A-iOS.unit-tests.xcconfig
         - A-iOS.xcconfig
         - A-macOS-App-frameworks.sh
         - A-macOS-App-prefix.pch
-        - A-macOS-App-resources.sh
         - A-macOS-dummy.m
         - A-macOS-Info.plist
         - A-macOS-prefix.pch
@@ -164,14 +161,12 @@ File References:
         - A-macOS-Unit-Tests-frameworks.sh
         - A-macOS-Unit-Tests-Info.plist
         - A-macOS-Unit-Tests-prefix.pch
-        - A-macOS-Unit-Tests-resources.sh
         - A-macOS.app.xcconfig
         - A-macOS.modulemap
         - A-macOS.unit-tests.xcconfig
         - A-macOS.xcconfig
         - A-tvOS-App-frameworks.sh
         - A-tvOS-App-prefix.pch
-        - A-tvOS-App-resources.sh
         - A-tvOS-dummy.m
         - A-tvOS-Info.plist
         - A-tvOS-prefix.pch
@@ -179,14 +174,12 @@ File References:
         - A-tvOS-Unit-Tests-frameworks.sh
         - A-tvOS-Unit-Tests-Info.plist
         - A-tvOS-Unit-Tests-prefix.pch
-        - A-tvOS-Unit-Tests-resources.sh
         - A-tvOS.app.xcconfig
         - A-tvOS.modulemap
         - A-tvOS.unit-tests.xcconfig
         - A-tvOS.xcconfig
         - A-watchOS-App-frameworks.sh
         - A-watchOS-App-prefix.pch
-        - A-watchOS-App-resources.sh
         - A-watchOS-dummy.m
         - A-watchOS-Info.plist
         - A-watchOS-prefix.pch
@@ -194,7 +187,6 @@ File References:
         - A-watchOS-Unit-Tests-frameworks.sh
         - A-watchOS-Unit-Tests-Info.plist
         - A-watchOS-Unit-Tests-prefix.pch
-        - A-watchOS-Unit-Tests-resources.sh
         - A-watchOS.app.xcconfig
         - A-watchOS.modulemap
         - A-watchOS.unit-tests.xcconfig
@@ -357,9 +349,6 @@ Targets:
         Build Settings:
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
           CODE_SIGN_IDENTITY: iPhone Developer
-          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
-          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
-          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
           CODE_SIGNING_ALLOWED: YES
           CODE_SIGNING_REQUIRED: YES
           CURRENT_PROJECT_VERSION: '1'
@@ -378,9 +367,6 @@ Targets:
         Build Settings:
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
           CODE_SIGN_IDENTITY: iPhone Developer
-          "CODE_SIGN_IDENTITY[sdk=appletvos*]": ''
-          "CODE_SIGN_IDENTITY[sdk=iphoneos*]": ''
-          "CODE_SIGN_IDENTITY[sdk=watchos*]": ''
           CODE_SIGNING_ALLOWED: YES
           CODE_SIGNING_REQUIRED: YES
           CURRENT_PROJECT_VERSION: '1'
@@ -396,10 +382,18 @@ Targets:
           TARGETED_DEVICE_FAMILY: 1,2
           VALIDATE_PRODUCT: YES
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-iOS/A.framework"
+          - "${PODS_ROOT}/Target Support Files/A-iOS/A-iOS-App-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/A-iOS/A-iOS-App-frameworks.sh\"\n"
       - Frameworks:
         - A.framework
         - Foundation.framework
@@ -447,10 +441,18 @@ Targets:
           SWIFT_VERSION: '4.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-iOS/A.framework"
+          - "${PODS_ROOT}/Target Support Files/A-iOS/A-iOS-Unit-Tests-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/A-iOS/A-iOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
         - A.framework
         - Foundation.framework
@@ -589,10 +591,18 @@ Targets:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_VERSION: '4.0'
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-macOS/A.framework"
+          - "${PODS_ROOT}/Target Support Files/A-macOS/A-macOS-App-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/A-macOS/A-macOS-App-frameworks.sh\"\n"
       - Frameworks:
         - A.framework
         - Cocoa.framework
@@ -639,10 +649,18 @@ Targets:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) "
           SWIFT_VERSION: '4.0'
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-macOS/A.framework"
+          - "${PODS_ROOT}/Target Support Files/A-macOS/A-macOS-Unit-Tests-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/A-macOS/A-macOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
         - A.framework
         - Cocoa.framework
@@ -777,10 +795,18 @@ Targets:
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
+          - "${PODS_ROOT}/Target Support Files/A-tvOS/A-tvOS-App-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/A-tvOS/A-tvOS-App-frameworks.sh\"\n"
       - Frameworks:
         - A.framework
         - Foundation.framework
@@ -826,10 +852,18 @@ Targets:
           TVOS_DEPLOYMENT_TARGET: '9.0'
           VALIDATE_PRODUCT: YES
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
+          - "${PODS_ROOT}/Target Support Files/A-tvOS/A-tvOS-Unit-Tests-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/A-tvOS/A-tvOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
         - A.framework
         - Foundation.framework
@@ -964,10 +998,18 @@ Targets:
           VALIDATE_PRODUCT: YES
           WATCHOS_DEPLOYMENT_TARGET: '2.0'
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework"
+          - "${PODS_ROOT}/Target Support Files/A-watchOS/A-watchOS-App-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/A-watchOS/A-watchOS-App-frameworks.sh\"\n"
       - Frameworks:
         - A.framework
         - Foundation.framework
@@ -1013,10 +1055,18 @@ Targets:
           VALIDATE_PRODUCT: YES
           WATCHOS_DEPLOYMENT_TARGET: '2.0'
     Build Phases:
-      - "[CP] Copy Pods Resources":
-        []
       - "[CP] Embed Pods Frameworks":
-        []
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework"
+          - "${PODS_ROOT}/Target Support Files/A-watchOS/A-watchOS-Unit-Tests-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/A-watchOS/A-watchOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
         - A.framework
         - Foundation.framework
