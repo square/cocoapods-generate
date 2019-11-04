@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/CocoaPods/CocoaPods
-  revision: 59f16420e5bd638a54aa5318df7b806d8470118e
+  revision: a54efd344c95098aff6f497105d26d84544890a1
   specs:
     cocoapods (1.8.0.beta.2)
       activesupport (>= 4.0.2, < 5)
@@ -48,7 +48,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    algoliasearch (1.26.1)
+    algoliasearch (1.27.0)
       httpclient (~> 2.8, >= 2.8.3)
       json (>= 1.5.1)
     ast (2.4.0)
@@ -151,7 +151,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (>= 1.16, < 3)
   clintegracon (~> 0.9.0)
-  cocoapods (~> 1.6.a)!
+  cocoapods (~> 1.8.beta)!
   cocoapods-core!
   cocoapods-generate!
   inch_by_inch (~> 1.0.1)
