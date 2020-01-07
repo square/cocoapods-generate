@@ -142,7 +142,6 @@ module Pod
 
       def transitive_local_dependencies(spec, paths, found_podspecs: {}, include_non_library_subspecs: true)
         if include_non_library_subspecs
-          recursive_subspecs = spec.recursive_subspecs
           non_library_specs = spec.recursive_subspecs.select do |ss|
             ss.test_specification? || (ss.respond_to?(:app_specification?) && ss.app_specification?)
           end
