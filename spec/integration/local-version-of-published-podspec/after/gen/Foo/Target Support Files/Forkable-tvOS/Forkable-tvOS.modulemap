@@ -1,0 +1,6 @@
+framework module Forkable {
+  umbrella header "Forkable-tvOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

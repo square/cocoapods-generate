@@ -1,0 +1,31 @@
+{
+  "name": "Foo",
+  "version": "1.0.0",
+  "authors": [
+    "Square"
+  ],
+  "homepage": "https://github.com/Square/cocoapods-generate",
+  "source": {
+    "git": "https://github.com/Square/cocoapods-generate"
+  },
+  "summary": "Testing pod",
+  "platforms": {
+    "ios": "9.0",
+    "osx": "10.10",
+    "watchos": "4.0",
+    "tvos": "11.0"
+  },
+  "source_files": "Sources",
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "source_files": "Tests",
+      "dependencies": {
+        "Forkable": [
+
+        ]
+      }
+    }
+  ]
+}

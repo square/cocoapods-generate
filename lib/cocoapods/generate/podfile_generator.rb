@@ -128,7 +128,7 @@ module Pod
 
           # Implement local-sources option to set up dependencies to podspecs in the local filesystem.
           next if generator.configuration.local_sources.empty?
-          generator.transitive_local_dependencies(spec, generator.configuration.local_sources).each do |dependency, podspec_file|
+          generator.transitive_local_dependencies(spec, generator.configuration.local_sources).sort_by(&:first).each do |dependency, podspec_file|
             pod_options = generator.dependency_compilation_kwargs(dependency.name)
             pod_options[:path] = if podspec_file[0] == '/' # absolute path
                                    podspec_file
@@ -140,26 +140,31 @@ module Pod
         end
       end
 
-      def transitive_local_dependencies(spec, paths)
-        dependencies = spec.dependencies
-        return_list = []
-        dependencies.each do |dependency|
+      def transitive_local_dependencies(spec, paths, found_podspecs: {}, include_non_library_subspecs: true)
+        if include_non_library_subspecs
+          recursive_subspecs = spec.recursive_subspecs
+          non_library_specs = spec.recursive_subspecs.select do |ss|
+            ss.test_specification? || (ss.respond_to?(:app_specification?) && ss.app_specification?)
+          end
+          non_library_specs.each do |subspec|
+            transitive_local_dependencies(subspec, paths, found_podspecs: found_podspecs, include_non_library_subspecs: false)
+          end
+        end
+        spec.dependencies.each do |dependency|
+          next if found_podspecs.key?(dependency)
           found_podspec_file = nil
           name = dependency.name.split('/')[0]
           paths.each do |path|
-            podspec_file = path + '/' + name + '.podspec'
+            podspec_file = File.join(path, name + '.podspec')
             next unless File.file?(podspec_file)
             found_podspec_file = podspec_file
             break
           end
           next unless found_podspec_file
-          return_list << [dependency, found_podspec_file]
-          dep_spec = Pod::Specification.from_file(found_podspec_file)
-          dep_spec.dependencies.each do |d_dep|
-            dependencies << d_dep unless dependencies.include? d_dep
-          end
+          found_podspecs[dependency] = found_podspec_file
+          transitive_local_dependencies(Pod::Specification.from_file(found_podspec_file), paths, found_podspecs: found_podspecs)
         end
-        return_list
+        found_podspecs
       end
 
       # @return [Boolean]

@@ -1,0 +1,327 @@
+Build Configurations:
+  - Debug:
+    Build Settings:
+      ALWAYS_SEARCH_USER_PATHS: NO
+      CLANG_ANALYZER_NONNULL: YES
+      CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION: YES_AGGRESSIVE
+      CLANG_CXX_LANGUAGE_STANDARD: "gnu++14"
+      CLANG_CXX_LIBRARY: "libc++"
+      CLANG_ENABLE_MODULES: YES
+      CLANG_ENABLE_OBJC_ARC: YES
+      CLANG_ENABLE_OBJC_WEAK: YES
+      CLANG_WARN__DUPLICATE_METHOD_MATCH: YES
+      CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING: YES
+      CLANG_WARN_BOOL_CONVERSION: YES
+      CLANG_WARN_COMMA: YES
+      CLANG_WARN_CONSTANT_CONVERSION: YES
+      CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS: YES
+      CLANG_WARN_DIRECT_OBJC_ISA_USAGE: YES_ERROR
+      CLANG_WARN_DOCUMENTATION_COMMENTS: YES
+      CLANG_WARN_EMPTY_BODY: YES
+      CLANG_WARN_ENUM_CONVERSION: YES
+      CLANG_WARN_INFINITE_RECURSION: YES
+      CLANG_WARN_INT_CONVERSION: YES
+      CLANG_WARN_NON_LITERAL_NULL_CONVERSION: YES
+      CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF: YES
+      CLANG_WARN_OBJC_LITERAL_CONVERSION: YES
+      CLANG_WARN_OBJC_ROOT_CLASS: YES_ERROR
+      CLANG_WARN_RANGE_LOOP_ANALYSIS: YES
+      CLANG_WARN_STRICT_PROTOTYPES: YES
+      CLANG_WARN_SUSPICIOUS_MOVE: YES
+      CLANG_WARN_UNGUARDED_AVAILABILITY: YES_AGGRESSIVE
+      CLANG_WARN_UNREACHABLE_CODE: YES
+      COPY_PHASE_STRIP: NO
+      DEBUG_INFORMATION_FORMAT: dwarf
+      ENABLE_STRICT_OBJC_MSGSEND: YES
+      ENABLE_TESTABILITY: YES
+      GCC_C_LANGUAGE_STANDARD: gnu11
+      GCC_DYNAMIC_NO_PIC: NO
+      GCC_NO_COMMON_BLOCKS: YES
+      GCC_OPTIMIZATION_LEVEL: '0'
+      GCC_PREPROCESSOR_DEFINITIONS:
+        - "$(inherited)"
+        - DEBUG=1
+      GCC_WARN_64_TO_32_BIT_CONVERSION: YES
+      GCC_WARN_ABOUT_RETURN_TYPE: YES_ERROR
+      GCC_WARN_UNDECLARED_SELECTOR: YES
+      GCC_WARN_UNINITIALIZED_AUTOS: YES_AGGRESSIVE
+      GCC_WARN_UNUSED_FUNCTION: YES
+      GCC_WARN_UNUSED_VARIABLE: YES
+      MTL_ENABLE_DEBUG_INFO: INCLUDE_SOURCE
+      MTL_FAST_MATH: YES
+      ONLY_ACTIVE_ARCH: YES
+      PRODUCT_NAME: "$(TARGET_NAME)"
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+      SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+      SWIFT_VERSION: '5.0'
+  - Release:
+    Build Settings:
+      ALWAYS_SEARCH_USER_PATHS: NO
+      CLANG_ANALYZER_NONNULL: YES
+      CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION: YES_AGGRESSIVE
+      CLANG_CXX_LANGUAGE_STANDARD: "gnu++14"
+      CLANG_CXX_LIBRARY: "libc++"
+      CLANG_ENABLE_MODULES: YES
+      CLANG_ENABLE_OBJC_ARC: YES
+      CLANG_ENABLE_OBJC_WEAK: YES
+      CLANG_WARN__DUPLICATE_METHOD_MATCH: YES
+      CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING: YES
+      CLANG_WARN_BOOL_CONVERSION: YES
+      CLANG_WARN_COMMA: YES
+      CLANG_WARN_CONSTANT_CONVERSION: YES
+      CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS: YES
+      CLANG_WARN_DIRECT_OBJC_ISA_USAGE: YES_ERROR
+      CLANG_WARN_DOCUMENTATION_COMMENTS: YES
+      CLANG_WARN_EMPTY_BODY: YES
+      CLANG_WARN_ENUM_CONVERSION: YES
+      CLANG_WARN_INFINITE_RECURSION: YES
+      CLANG_WARN_INT_CONVERSION: YES
+      CLANG_WARN_NON_LITERAL_NULL_CONVERSION: YES
+      CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF: YES
+      CLANG_WARN_OBJC_LITERAL_CONVERSION: YES
+      CLANG_WARN_OBJC_ROOT_CLASS: YES_ERROR
+      CLANG_WARN_RANGE_LOOP_ANALYSIS: YES
+      CLANG_WARN_STRICT_PROTOTYPES: YES
+      CLANG_WARN_SUSPICIOUS_MOVE: YES
+      CLANG_WARN_UNGUARDED_AVAILABILITY: YES_AGGRESSIVE
+      CLANG_WARN_UNREACHABLE_CODE: YES
+      COPY_PHASE_STRIP: NO
+      DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+      ENABLE_NS_ASSERTIONS: NO
+      ENABLE_STRICT_OBJC_MSGSEND: YES
+      GCC_C_LANGUAGE_STANDARD: gnu11
+      GCC_NO_COMMON_BLOCKS: YES
+      GCC_WARN_64_TO_32_BIT_CONVERSION: YES
+      GCC_WARN_ABOUT_RETURN_TYPE: YES_ERROR
+      GCC_WARN_UNDECLARED_SELECTOR: YES
+      GCC_WARN_UNINITIALIZED_AUTOS: YES_AGGRESSIVE
+      GCC_WARN_UNUSED_FUNCTION: YES
+      GCC_WARN_UNUSED_VARIABLE: YES
+      MTL_ENABLE_DEBUG_INFO: NO
+      MTL_FAST_MATH: YES
+      PRODUCT_NAME: "$(TARGET_NAME)"
+      SWIFT_COMPILATION_MODE: wholemodule
+      SWIFT_OPTIMIZATION_LEVEL: "-O"
+      SWIFT_VERSION: '5.0'
+
+File References:
+  - App-iOS:
+    - Info.plist
+    - LaunchScreen.storyboard
+    - main.m
+  - App-macOS:
+    - main.m
+  - App-tvOS:
+    - main.m
+  - App-watchOS:
+    - main.m
+  - Frameworks:
+    - iOS:
+      - Foundation.framework
+    - OS X:
+      - Cocoa.framework
+    - Pods_App_iOS.framework
+    - Pods_App_macOS.framework
+    - Pods_App_tvOS.framework
+    - Pods_App_watchOS.framework
+    - tvOS:
+      - Foundation.framework
+    - watchOS:
+      - Foundation.framework
+  - Pods:
+    - Pods-App-iOS.debug.xcconfig
+    - Pods-App-iOS.release.xcconfig
+    - Pods-App-macOS.debug.xcconfig
+    - Pods-App-macOS.release.xcconfig
+    - Pods-App-tvOS.debug.xcconfig
+    - Pods-App-tvOS.release.xcconfig
+    - Pods-App-watchOS.debug.xcconfig
+    - Pods-App-watchOS.release.xcconfig
+  - Products:
+    - App-iOS.app
+    - App-macOS.app
+    - App-tvOS.app
+    - App-watchOS.app
+
+Targets:
+  - App-iOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Pods-App-iOS.debug.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CODE_SIGN_IDENTITY: iPhone Developer
+          INFOPLIST_FILE: "${SRCROOT}/App/iOS/Info.plist"
+          IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: iphoneos
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: 1,2
+      - Release:
+        Base Configuration: Pods-App-iOS.release.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CODE_SIGN_IDENTITY: iPhone Developer
+          INFOPLIST_FILE: "${SRCROOT}/App/iOS/Info.plist"
+          IPHONEOS_DEPLOYMENT_TARGET: '9.0'
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: iphoneos
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: 1,2
+          VALIDATE_PRODUCT: YES
+    Build Phases:
+      - "[CP] Embed Pods Frameworks":
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/Forkable-iOS/Forkable.framework"
+          - "${PODS_ROOT}/Target Support Files/Pods-App-iOS/Pods-App-iOS-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Forkable.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-iOS/Pods-App-iOS-frameworks.sh\"\n"
+      - Frameworks:
+        - Foundation.framework
+        - Pods_App_iOS.framework
+      - Resources:
+        - LaunchScreen.storyboard
+      - Sources:
+        - main.m
+  - App-macOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Pods-App-macOS.debug.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: "-"
+          COMBINE_HIDPI_IMAGES: YES
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+          MACOSX_DEPLOYMENT_TARGET: '10.10'
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: macosx
+          SWIFT_VERSION: '4.0'
+      - Release:
+        Base Configuration: Pods-App-macOS.release.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          CLANG_ENABLE_OBJC_WEAK: NO
+          CODE_SIGN_IDENTITY: "-"
+          COMBINE_HIDPI_IMAGES: YES
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+          MACOSX_DEPLOYMENT_TARGET: '10.10'
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: macosx
+          SWIFT_VERSION: '4.0'
+    Build Phases:
+      - "[CP] Embed Pods Frameworks":
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/Forkable-macOS/Forkable.framework"
+          - "${PODS_ROOT}/Target Support Files/Pods-App-macOS/Pods-App-macOS-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Forkable.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-macOS/Pods-App-macOS-frameworks.sh\"\n"
+      - Frameworks:
+        - Cocoa.framework
+        - Pods_App_macOS.framework
+      - Resources:
+        []
+      - Sources:
+        - main.m
+  - App-tvOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Pods-App-tvOS.debug.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
+          ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME: LaunchImage
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: appletvos
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: '3'
+          TVOS_DEPLOYMENT_TARGET: '11.0'
+      - Release:
+        Base Configuration: Pods-App-tvOS.release.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
+          ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME: LaunchImage
+          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: appletvos
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: '3'
+          TVOS_DEPLOYMENT_TARGET: '11.0'
+          VALIDATE_PRODUCT: YES
+    Build Phases:
+      - "[CP] Embed Pods Frameworks":
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/Forkable-tvOS/Forkable.framework"
+          - "${PODS_ROOT}/Target Support Files/Pods-App-tvOS/Pods-App-tvOS-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Forkable.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-tvOS/Pods-App-tvOS-frameworks.sh\"\n"
+      - Frameworks:
+        - Foundation.framework
+        - Pods_App_tvOS.framework
+      - Resources:
+        []
+      - Sources:
+        - main.m
+  - App-watchOS:
+    Build Configurations:
+      - Debug:
+        Base Configuration: Pods-App-watchOS.debug.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: watchos
+          SKIP_INSTALL: YES
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: '4'
+          WATCHOS_DEPLOYMENT_TARGET: '4.0'
+      - Release:
+        Base Configuration: Pods-App-watchOS.release.xcconfig
+        Build Settings:
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+          PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
+          SDKROOT: watchos
+          SKIP_INSTALL: YES
+          SWIFT_VERSION: '4.0'
+          TARGETED_DEVICE_FAMILY: '4'
+          VALIDATE_PRODUCT: YES
+          WATCHOS_DEPLOYMENT_TARGET: '4.0'
+    Build Phases:
+      - "[CP] Embed Pods Frameworks":
+        Input File List Paths:
+          []
+        Input Paths:
+          - "${BUILT_PRODUCTS_DIR}/Forkable-watchOS/Forkable.framework"
+          - "${PODS_ROOT}/Target Support Files/Pods-App-watchOS/Pods-App-watchOS-frameworks.sh"
+        Output File List Paths:
+          []
+        Output Paths:
+          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Forkable.framework"
+        Shell Path: "/bin/sh"
+        Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-watchOS/Pods-App-watchOS-frameworks.sh\"\n"
+      - Frameworks:
+        - Foundation.framework
+        - Pods_App_watchOS.framework
+      - Resources:
+        []
+      - Sources:
+        - main.m
