@@ -7,10 +7,10 @@ PODS:
 DEPENDENCIES:
   - Foo (from `../../Foo.podspec`)
   - Foo/Tests (from `../../Foo.podspec`)
-  - Forkable (from `../.././Forkable.podspec`)
+  - Forkable (from `../../Forkable.podspec`)
 
 EXTERNAL SOURCES:
   Foo:
     :path: "../../Foo.podspec"
   Forkable:
-    :path: "../.././Forkable.podspec"
+    :path: "../../Forkable.podspec"

@@ -305,7 +305,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           use_frameworks!(false)
 
           pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
-          pod 'B', path: '../.././relative/B.podspec'
+          pod 'B', path: '../../relative/B.podspec'
           pod 'D', path: '/absolute/D.podspec'
 
           abstract_target 'Transitive Dependencies' do

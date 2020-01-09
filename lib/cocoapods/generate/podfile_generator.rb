@@ -160,7 +160,7 @@ module Pod
             break
           end
           next unless found_podspec_file
-          found_podspecs[dependency] = found_podspec_file
+          found_podspecs[dependency] = found_podspec_file.sub(%r{\A\./}, '')
           transitive_local_dependencies(Pod::Specification.from_file(found_podspec_file), paths, found_podspecs: found_podspecs)
         end
         found_podspecs

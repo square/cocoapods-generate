@@ -32,7 +32,7 @@ target_definitions:
       - Foo/Tests:
         - :path: "../../Foo.podspec"
       - Forkable:
-        - :path: "../.././Forkable.podspec"
+        - :path: "../../Forkable.podspec"
     name: Pods
     user_project_path: Foo.xcodeproj
     uses_frameworks:
