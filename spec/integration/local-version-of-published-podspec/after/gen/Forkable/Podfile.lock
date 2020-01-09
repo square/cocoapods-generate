@@ -1,0 +1,11 @@
+PODS:
+  - Forkable (9.0.0)
+  - Forkable/Tests (9.0.0)
+
+DEPENDENCIES:
+  - Forkable (from `../../Forkable.podspec`)
+  - Forkable/Tests (from `../../Forkable.podspec`)
+
+EXTERNAL SOURCES:
+  Forkable:
+    :path: "../../Forkable.podspec"

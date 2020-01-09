@@ -1,0 +1,6 @@
+framework module Forkable {
+  umbrella header "Forkable-watchOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

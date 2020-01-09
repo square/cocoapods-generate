@@ -1,0 +1,50 @@
+CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP_XCODEBUILD=TRUE CP_REPOS_DIR=./spec/integration/specs-repos ./bin/cocoapods-gen --verbose --no-ansi 2>&1
+[pod gen] Running with `pod gen` configuration {
+  use_podfile: false,
+  use_podfile_plugins: false,
+  podfile_plugins: {},
+  use_lockfile: false,
+  use_lockfile_versions: false,
+  use_libraries: false,
+  generate_multiple_pod_projects: false,
+  incremental_installation: false,
+  gen_directory: ./spec/integration/tmp/local-version-of-published-podspec/transformed/gen,
+  auto_open: false,
+  clean: false,
+  podspec_paths: [],
+  podspecs: [#<Pod::Specification name="Foo">, #<Pod::Specification name="Forkable">],
+  sources: ["https://github.com/CocoaPods/Specs.git", "https://github.com/Private/SpecsForks.git", "https://cdn.cocoapods.org/"],
+  local_sources: ["."],
+  repo_update: false,
+  use_default_plugins: false,
+  deterministic_uuids: false,
+  share_schemes_for_development_pods: true,
+  warn_for_multiple_pod_sources: false,
+  use_modular_headers: false }
+
+Generating Foo in `gen/Foo`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Installing Foo (1.0.0)
+Installing Forkable (9.0.0)
+
+[!] Please close any current Xcode sessions and use `Foo.xcworkspace` for this project from now on.
+Pod installation complete! There are 3 dependencies from the Podfile and 2 total pods installed.
+
+Performing post-installation steps
+    Open `gen/Foo/Foo.xcworkspace` to work on Foo
+
+Generating Forkable in `gen/Forkable`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Installing Forkable (9.0.0)
+
+[!] Please close any current Xcode sessions and use `Forkable.xcworkspace` for this project from now on.
+Pod installation complete! There are 2 dependencies from the Podfile and 1 total pod installed.
+
+Performing post-installation steps
+    Open `gen/Forkable/Forkable.xcworkspace` to work on Forkable

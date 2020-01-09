@@ -340,7 +340,7 @@ module Pod
           elsif path.directory?
             glob = Pathname.glob(path + '*.podspec{.json,}')
             next StandardError.new "no specs found in #{UI.path path}" if glob.empty?
-            glob.map { |f| Pod::Specification.from_file(f) }
+            glob.map { |f| Pod::Specification.from_file(f) }.sort_by(&:name)
           else
             Pod::Specification.from_file(path)
           end
