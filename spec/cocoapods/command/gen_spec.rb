@@ -304,6 +304,27 @@ RSpec.describe Pod::Command::Gen, :tmpdir do
             )
           end
         end
+
+        describe 'when specifying :podspec_paths in configuration files and CLI args' do
+          let(:argv) { %w[C.podspec D.podspec] }
+          before do
+            Pathname('C.podspec').write('Pod::Spec.new')
+            Pathname('D.podspec').write('Pod::Spec.new')
+            local_config_path = Pathname.pwd.join('.gen_config.yml')
+            local_config = {
+              podspec_paths: ['SomePodspec.podspec', 'OtherPodspec.podspec'],
+              sources: %w[A B]
+            }
+            local_config_path.write Pod::YAMLHelper.convert(local_config)
+          end
+
+          it 'overrides config options with CLI args' do
+            should eq Pod::Generate::Configuration.new(
+              podspec_paths: [Pathname('C.podspec').expand_path, Pathname('D.podspec').expand_path], # local config
+              sources: %w[A B], # local config
+            )
+          end
+        end
       end
 
       it 'only loads the Podfile once' do
