@@ -86,10 +86,12 @@ module Pod
           path = dir + '.gen_config.yml'
           next unless path.file?
           Pod::Generate::Configuration.from_file(path)
-        end
+        end.compact
+
+        options.delete(:podspec_paths) if options[:podspec_paths].empty? && config_hashes.any? { |h| h.include?(:podspec_paths) }
 
         env = Generate::Configuration.from_env(ENV)
-        config_hashes.insert(-2, env)
+        config_hashes = [env] + config_hashes
         config_hashes << options
 
         configuration = config_hashes.compact.each_with_object({}) { |e, h| h.merge!(e) }

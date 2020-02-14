@@ -12,7 +12,7 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   auto_open: false,
   clean: true,
   app_host_source_dir: ./spec/integration/tmp/swift-objc-bridging-header/transformed/AppHost,
-  podspec_paths: [],
+  podspec_paths: [#<Pathname:./spec/integration/tmp/swift-objc-bridging-header/transformed/Foo.podspec>],
   podspecs: [#<Pod::Specification name="Foo">],
   sources: ["https://github.com/Private/SpecsForks.git", "https://github.com/CocoaPods/Specs.git"],
   local_sources: [],
