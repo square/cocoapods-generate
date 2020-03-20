@@ -89,7 +89,7 @@ GEM
     inch_by_inch (1.0.1)
       inch (~> 0.8.0)
       rake (~> 10.0)
-    json (2.2.0)
+    json (2.3.0)
     method_source (0.9.0)
     minitest (5.11.3)
     molinillo (0.6.6)
