@@ -316,6 +316,19 @@ module Pod
         !use_libraries?
       end
 
+      # @return [String] The project name to use for generating this workspace.
+      #
+      # @param [Specification] spec
+      #        the specification to generate project name for.
+      #
+      def project_name_for_spec(spec)
+        project_name = spec.name.dup
+        # When using multiple Xcode project the project name will collide with the actual .xcodeproj meant for the pod
+        # that we are generating the workspace for.
+        project_name << 'Sample' if generate_multiple_pod_projects?
+        project_name
+      end
+
       # @return [Array<Specification>] the podspecs found at the given paths.
       #         This method will download specs from URLs and traverse a directory's children.
       #
