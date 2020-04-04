@@ -51,7 +51,12 @@ module Pod
 
           installer = nil
           UI.section 'Installing...' do
-            configuration.pod_config.with_changes(installation_root: install_directory, podfile: podfile, lockfile: configuration.lockfile, sandbox: nil, sandbox_root: install_directory, podfile_path: podfile.defined_in_file, silent: !configuration.pod_config.verbose?, verbose: false, lockfile_path: nil) do
+            configuration.pod_config.with_changes(installation_root: install_directory, podfile: podfile,
+                                                  lockfile: configuration.lockfile, sandbox: nil,
+                                                  sandbox_root: install_directory + 'Pods',
+                                                  podfile_path: podfile.defined_in_file,
+                                                  silent: !configuration.pod_config.verbose?, verbose: false,
+                                                  lockfile_path: nil) do
               installer = ::Pod::Installer.new(configuration.pod_config.sandbox, podfile, configuration.lockfile)
               installer.use_default_plugins = configuration.use_default_plugins
               installer.install!
@@ -79,7 +84,7 @@ module Pod
       end
 
       def open_app_project(recreate: false)
-        app_project_path = install_directory.join("#{spec.name}.xcodeproj")
+        app_project_path = install_directory.join("#{configuration.project_name_for_spec(spec)}.xcodeproj")
         if !recreate && app_project_path.exist?
           Xcodeproj::Project.open(app_project_path)
         else
@@ -92,25 +97,29 @@ module Pod
       # @return [Xcodeproj::Project]
       #
       def create_app_project
-        app_project = open_app_project(recreate: true)
+        app_project = open_app_project(recreate: !configuration.incremental_installation?)
 
         spec_platforms = spec.available_platforms.flatten.reject do |platform|
           !configuration.platforms.nil? && !configuration.platforms.include?(platform.string_name.downcase)
         end
 
-        Pod::Command::Gen.help! Pod::StandardError.new "No available platforms in #{spec.name}.podspec match requested platforms: #{configuration.platforms}" if spec_platforms.empty?
+        if spec_platforms.empty?
+          Pod::Command::Gen.help! Pod::StandardError.new "No available platforms in #{spec.name}.podspec match requested platforms: #{configuration.platforms}"
+        end
 
         spec_platforms
           .map do |platform|
             consumer = spec.consumer(platform)
             target_name = "App-#{Platform.string_name(consumer.platform_name)}"
-            native_app_target = Pod::Generator::AppTargetHelper.add_app_target(app_project, consumer.platform_name, deployment_target(consumer), target_name)
+            next if app_project.targets.map(&:name).include? target_name
+            native_app_target = Pod::Generator::AppTargetHelper.add_app_target(app_project, consumer.platform_name,
+                                                                               deployment_target(consumer), target_name)
             # Temporarily set Swift version to pass validator checks for pods which do not specify Swift version.
             # It will then be re-set again within #perform_post_install_steps.
             Pod::Generator::AppTargetHelper.add_swift_version(native_app_target, Pod::Validator::DEFAULT_SWIFT_VERSION)
             native_app_target
           end
-          .tap do
+          .compact.tap do
             app_project.recreate_user_schemes do |scheme, target|
               installation_result = installation_result_from_target(target)
               next unless installation_result
@@ -329,7 +338,7 @@ module Pod
         Xcodeproj::Plist.write_to_path(info_plist_contents, info_plist_path)
 
         native_app_target.build_configurations.each do |bc|
-          bc.build_settings['INFOPLIST_FILE'] = "${SRCROOT}/App/#{platform_name}/Info.plist"
+          bc.build_settings['INFOPLIST_FILE'] = "${PODS_ROOT}/App/#{platform_name}/Info.plist"
         end
 
         group = app_project.main_group.find_subpath("App-#{platform_name}", true)

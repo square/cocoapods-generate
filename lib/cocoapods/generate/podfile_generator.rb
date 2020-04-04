@@ -30,9 +30,10 @@ module Pod
       def podfile_for_spec(spec)
         generator = self
         dir = configuration.gen_dir_for_pod(spec.name)
+        project_name = configuration.project_name_for_spec(spec)
 
         Pod::Podfile.new do
-          project "#{spec.name}.xcodeproj"
+          project "#{project_name}.xcodeproj"
           workspace "#{spec.name}.xcworkspace"
 
           plugin 'cocoapods-generate'
