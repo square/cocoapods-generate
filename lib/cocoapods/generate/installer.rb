@@ -64,7 +64,12 @@ module Pod
           end
 
           UI.section 'Performing post-installation steps' do
-            perform_post_install_steps(open_app_project, installer)
+            should_perform_post_install = if installer.respond_to?(:generated_aggregate_targets) # CocoaPods 1.7.0
+                                            !installer.generated_aggregate_targets.empty?
+                                          else
+                                            true
+                                          end
+            perform_post_install_steps(open_app_project, installer) if should_perform_post_install
           end
 
           print_post_install_message
@@ -148,7 +153,10 @@ module Pod
           remove_script_phase_from_target(native_app_target, 'Check Pods Manifest.lock')
 
           pod_target = installer.pod_targets.find { |pt| pt.platform.name == native_app_target.platform_name && pt.pod_name == spec.name }
-          raise "unable to find a pod target for #{native_app_target} / #{spec}" unless pod_target
+          raise "Unable to find a pod target for #{native_app_target} / #{spec}" unless pod_target
+
+          native_app_target.source_build_phase.clear
+          native_app_target.resources_build_phase.clear
 
           if (app_host_source_dir = configuration.app_host_source_dir)
             relative_app_host_source_dir = app_host_source_dir.relative_path_from(installer.sandbox.root)
@@ -182,9 +190,21 @@ module Pod
               native_app_target.add_file_references([source_file_ref])
             end
           elsif Pod::Generator::AppTargetHelper.method(:add_app_project_import).arity == -5 # CocoaPods >= 1.6
-            Pod::Generator::AppTargetHelper.add_app_project_import(app_project, native_app_target, pod_target, pod_target.platform.name, native_app_target.name)
+            # If we are doing incremental installation then the file might already be there.
+            platform_name = Platform.string_name(native_app_target.platform_name)
+            group = group_for_platform_name(app_project, platform_name)
+            main_file_ref = group.files.find { |f| f.display_name == 'main.m' }
+            if main_file_ref.nil?
+              Pod::Generator::AppTargetHelper.add_app_project_import(app_project, native_app_target, pod_target,
+                                                                     pod_target.platform.name, native_app_target.name)
+            else
+              native_app_target.add_file_references([main_file_ref])
+            end
           else
-            Pod::Generator::AppTargetHelper.add_app_project_import(app_project, native_app_target, pod_target, pod_target.platform.name, pod_target.requires_frameworks?, native_app_target.name)
+            Pod::Generator::AppTargetHelper.add_app_project_import(app_project, native_app_target, pod_target,
+                                                                   pod_target.platform.name,
+                                                                   pod_target.requires_frameworks?,
+                                                                   native_app_target.name)
           end
 
           # Set `PRODUCT_BUNDLE_IDENTIFIER`
@@ -194,7 +214,7 @@ module Pod
 
           case native_app_target.platform_name
           when :ios
-            make_ios_app_launchable(installer, app_project, native_app_target)
+            make_ios_app_launchable(app_project, native_app_target)
           end
 
           Pod::Generator::AppTargetHelper.add_swift_version(native_app_target, pod_target.swift_version) unless pod_target.swift_version.blank?
@@ -248,9 +268,10 @@ module Pod
           .flat_map(&:test_native_targets)
           .group_by(&:platform_name)
 
+        workspace_path = install_directory + "#{spec.name}.xcworkspace"
         Xcodeproj::Plist.write_to_path(
           { 'IDEWorkspaceSharedSettings_AutocreateContextsIfNeeded' => false },
-          app_project.path.sub_ext('.xcworkspace').join('xcshareddata').tap(&:mkpath).join('WorkspaceSettings.xcsettings')
+          workspace_path.join('xcshareddata').tap(&:mkpath).join('WorkspaceSettings.xcsettings')
         )
 
         test_native_targets.each do |platform_name, test_targets|
@@ -275,9 +296,9 @@ module Pod
         end
       end
 
-      def make_ios_app_launchable(installer, app_project, native_app_target)
+      def make_ios_app_launchable(app_project, native_app_target)
         platform_name = Platform.string_name(native_app_target.platform_name)
-        generated_source_dir = installer.sandbox.root.join('App', platform_name).tap(&:mkpath)
+        generated_source_dir = install_directory.join("App-#{platform_name}").tap(&:mkpath)
 
         # Add `LaunchScreen.storyboard`
         launch_storyboard = generated_source_dir.join('LaunchScreen.storyboard')
@@ -338,12 +359,17 @@ module Pod
         Xcodeproj::Plist.write_to_path(info_plist_contents, info_plist_path)
 
         native_app_target.build_configurations.each do |bc|
-          bc.build_settings['INFOPLIST_FILE'] = "${PODS_ROOT}/App/#{platform_name}/Info.plist"
+          bc.build_settings['INFOPLIST_FILE'] = "${SRCROOT}/App-#{platform_name}/Info.plist"
         end
 
-        group = app_project.main_group.find_subpath("App-#{platform_name}", true)
-        group.new_file(info_plist_path)
-        native_app_target.resources_build_phase.add_file_reference group.new_file(launch_storyboard)
+        group = group_for_platform_name(app_project, platform_name)
+        group.files.find { |f| f.display_name == 'Info.plist' } || group.new_file(info_plist_path)
+        launch_storyboard_file_ref = group.files.find { |f| f.display_name == 'LaunchScreen.storyboard' } || group.new_file(launch_storyboard)
+        native_app_target.resources_build_phase.add_file_reference(launch_storyboard_file_ref)
+      end
+
+      def group_for_platform_name(project, platform_name, should_create = true)
+        project.main_group.find_subpath("App-#{platform_name}", should_create)
       end
 
       def print_post_install_message
