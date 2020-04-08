@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/CocoaPods/CocoaPods
-  revision: adb92760b3d96af74c7f3021eed8135968b4c933
+  revision: 2050bfa93bc1a9630154cbcba61218cde60dd349
   specs:
     cocoapods (1.9.1)
       activesupport (>= 4.0.2, < 5)
@@ -111,7 +111,7 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    public_suffix (4.0.3)
+    public_suffix (3.1.1)
     rainbow (3.0.0)
     rake (10.5.0)
     rspec (3.9.0)
