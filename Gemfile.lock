@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/CocoaPods/Core
-  revision: 24caf8e1103aded6cab8332007921f92c67e426f
+  revision: 8923c0cdca68d4bc7126cd64106a5fc1e9217ced
   specs:
     cocoapods-core (1.9.1)
       activesupport (>= 4.0.2, < 6)
@@ -33,6 +33,7 @@ GIT
       fuzzy_match (~> 2.0.4)
       nap (~> 1.0)
       netrc (~> 0.11)
+      public_suffix (~> 2.0)
       typhoeus (~> 1.0)
 
 PATH
@@ -111,7 +112,7 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    public_suffix (3.1.1)
+    public_suffix (2.0.5)
     rainbow (3.0.0)
     rake (10.5.0)
     rspec (3.9.0)
