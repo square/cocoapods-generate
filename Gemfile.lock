@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/CocoaPods/CocoaPods
-  revision: c75c4a6dd226c45e0ad876caa926bff51a3f00d9
+  revision: 2b774aa58f1edc2c3b90b4f854577daf8a989ea0
   specs:
     cocoapods (1.9.1)
       activesupport (>= 4.0.2, < 5)
@@ -72,7 +72,7 @@ GEM
     cocoapods-trunk (1.4.1)
       nap (>= 0.8, < 2.0)
       netrc (~> 0.11)
-    cocoapods-try (1.1.0)
+    cocoapods-try (1.2.0)
     coderay (1.1.2)
     colored2 (3.1.2)
     concurrent-ruby (1.1.6)
