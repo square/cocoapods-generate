@@ -19,6 +19,8 @@ mkdir -p "${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
 
 COCOAPODS_PARALLEL_CODE_SIGN="${COCOAPODS_PARALLEL_CODE_SIGN:-false}"
 SWIFT_STDLIB_PATH="${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}"
+BCSYMBOLMAP_DIR="BCSymbolMaps"
+
 
 # This protects against multiple targets copying the same framework dependency at the same time. The solution
 # was originally proposed here: https://lists.samba.org/archive/rsync/2008-February/020158.html
@@ -40,6 +42,16 @@ install_framework()
   if [ -L "${source}" ]; then
     echo "Symlinked..."
     source="$(readlink "${source}")"
+  fi
+
+  if [ -d "${source}/${BCSYMBOLMAP_DIR}" ]; then
+    # Locate and install any .bcsymbolmaps if present, and remove them from the .framework before the framework is copied
+    find "${source}/${BCSYMBOLMAP_DIR}" -name "*.bcsymbolmap"|while read f; do
+      echo "Installing $f"
+      install_bcsymbolmap "$f" "$destination"
+      rm "$f"
+    done
+    rmdir "${source}/${BCSYMBOLMAP_DIR}"
   fi
 
   # Use filter instead of exclude so missing patterns don't throw errors.
@@ -162,46 +174,14 @@ code_sign_if_enabled() {
   fi
 }
 
-install_artifact() {
-  artifact="$1"
-  base="$(basename "$artifact")"
-  case $base in
-  *.framework)
-    install_framework "$artifact"
-    ;;
-  *.dSYM)
-    # Suppress arch warnings since XCFrameworks will include many dSYM files
-    install_dsym "$artifact" "false"
-    ;;
-  *.bcsymbolmap)
-    install_bcsymbolmap "$artifact"
-    ;;
-  *)
-    echo "error: Unrecognized artifact "$artifact""
-    ;;
-  esac
-}
-
-copy_artifacts() {
-  file_list="$1"
-  while read artifact; do
-    install_artifact "$artifact"
-  done <$file_list
-}
-
-ARTIFACT_LIST_FILE="${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt"
-if [ -r "${ARTIFACT_LIST_FILE}" ]; then
-  copy_artifacts "${ARTIFACT_LIST_FILE}"
-fi
-
-if [[ "$CONFIGURATION" == "Release" ]]; then
+if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/D-tvOS/D.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/C-tvOS/C.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/B-tvOS/B.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/E-tvOS/E.framework"
 fi
-if [[ "$CONFIGURATION" == "Debug" ]]; then
+if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/D-tvOS/D.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/C-tvOS/C.framework"
