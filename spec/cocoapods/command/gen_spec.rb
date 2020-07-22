@@ -47,6 +47,7 @@ RSpec.describe Pod::Command::Gen, :tmpdir do
 
               Options:
 
+                  --allow-root                           Allows CocoaPods to run as root
                   --silent                               Show nothing
                   --verbose                              Show more debugging information
                   --no-ansi                              Show output without ANSI codes
