@@ -19,9 +19,10 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   local_sources: ["Frameworks/a", "Frameworks/b", "Frameworks/c"],
   repo_update: false,
   use_default_plugins: false,
-  deterministic_uuids: false,
-  share_schemes_for_development_pods: true,
-  warn_for_multiple_pod_sources: false,
+  deterministic_uuids: true,
+  disable_input_output_paths: false,
+  share_schemes_for_development_pods: false,
+  warn_for_multiple_pod_sources: true,
   use_modular_headers: false }
 
 Generating E in `gen/E`

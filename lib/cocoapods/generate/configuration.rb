@@ -199,9 +199,10 @@ module Pod
              ->(platforms) { Array(platforms).flat_map { |s| s.split(',') } }
       option :repo_update, BOOLEAN, 'false', 'Force running `pod repo update` before install', nil, nil, coerce_to_bool
       option :use_default_plugins, BOOLEAN, 'false', 'Whether installation should activate default plugins', nil, nil, coerce_to_bool
-      option :deterministic_uuids, BOOLEAN, 'false', 'Whether installation should use deterministic UUIDs for pods projects', nil, nil, coerce_to_bool
-      option :share_schemes_for_development_pods, BOOLEAN, 'true', 'Whether installation should share schemes for development pods', nil, nil, coerce_to_bool
-      option :warn_for_multiple_pod_sources, BOOLEAN, 'false', 'Whether installation should warn when a pod is found in multiple sources', nil, nil, coerce_to_bool
+      option :deterministic_uuids, BOOLEAN, '(use_podfile && podfile) ? podfile.installation_options.deterministic_uuids : false', 'Whether installation should use deterministic UUIDs for pods projects', nil, nil, coerce_to_bool
+      option :disable_input_output_paths, BOOLEAN, '(use_podfile && podfile) ? podfile.installation_options.disable_input_output_paths : false', 'Whether to disable the input & output paths of the CocoaPods script phases (Copy Frameworks & Copy Resources)', nil, nil, coerce_to_bool
+      option :share_schemes_for_development_pods, [TrueClass, FalseClass, Array], '(use_podfile && podfile) ? podfile.installation_options.share_schemes_for_development_pods : true', 'Whether installation should share schemes for development pods', nil, nil
+      option :warn_for_multiple_pod_sources, BOOLEAN, '(use_podfile && podfile) ? podfile.installation_options.warn_for_multiple_pod_sources : false', 'Whether installation should warn when a pod is found in multiple sources', nil, nil, coerce_to_bool
       option :use_modular_headers, BOOLEAN, 'false', 'Whether the target should be generated as a clang module, treating dependencies as modules, as if `use_modular_headers!` were specified. Will error if both this option and a podfile are specified', nil, nil, coerce_to_bool
 
       options.freeze

@@ -325,7 +325,7 @@ module Pod
       def installation_options
         installation_options = {
           deterministic_uuids: configuration.deterministic_uuids?,
-          share_schemes_for_development_pods: configuration.share_schemes_for_development_pods?,
+          share_schemes_for_development_pods: configuration.share_schemes_for_development_pods,
           warn_for_multiple_pod_sources: configuration.warn_for_multiple_pod_sources?
         }
 
@@ -335,6 +335,10 @@ module Pod
 
         if Pod::Installer::InstallationOptions.all_options.include?('incremental_installation')
           installation_options[:incremental_installation] = configuration.incremental_installation?
+        end
+
+        if Pod::Installer::InstallationOptions.all_options.include?('disable_input_output_paths')
+          installation_options[:disable_input_output_paths] = configuration.disable_input_output_paths
         end
 
         installation_options
