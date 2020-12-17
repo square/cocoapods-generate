@@ -12,6 +12,7 @@ RSpec.describe Pod::Generate::Configuration do
         auto_open: false,
         clean: false,
         deterministic_uuids: false,
+        disable_input_output_paths: false,
         gen_directory: Pathname('gen').expand_path,
         podfile_plugins: {},
         pod_config: Pod::Config.instance,
@@ -56,6 +57,7 @@ RSpec.describe Pod::Generate::Configuration do
               repo_update: false,
               use_default_plugins: false,
               deterministic_uuids: false,
+              disable_input_output_paths: false,
               share_schemes_for_development_pods: true,
               warn_for_multiple_pod_sources: false,
               use_modular_headers: false }
@@ -112,7 +114,11 @@ RSpec.describe Pod::Generate::Configuration do
           'Error computing podfile, no implicit conversion of NoMethodError into String',
           "Error computing podfile_plugins, undefined method `plugins' for #<TypeError: no implicit conversion of NoMethodError into String>",
           "Error computing lockfile, undefined method `lockfile' for #{object.inspect}",
-          "Error computing sources, undefined method `installation_options' for #<TypeError: no implicit conversion of NoMethodError into String>"
+          "Error computing sources, undefined method `installation_options' for #<TypeError: no implicit conversion of NoMethodError into String>",
+          "Error computing deterministic_uuids, undefined method `installation_options' for #<TypeError: no implicit conversion of NoMethodError into String>",
+          "Error computing disable_input_output_paths, undefined method `installation_options' for #<TypeError: no implicit conversion of NoMethodError into String>",
+          "Error computing share_schemes_for_development_pods, undefined method `installation_options' for #<TypeError: no implicit conversion of NoMethodError into String>",
+          "Error computing warn_for_multiple_pod_sources, undefined method `installation_options' for #<TypeError: no implicit conversion of NoMethodError into String>"
         ]
       }
     end

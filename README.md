@@ -89,6 +89,9 @@ Options:
                                            default plugins
     --deterministic-uuids                  Whether installation should use
                                            deterministic UUIDs for pods projects
+    --disable-input-output-paths           Whether to disable the input & output paths
+                                           of the CocoaPods script phases (Copy
+                                           Frameworks & Copy Resources)
     --share-schemes-for-development-pods   Whether installation should share schemes
                                            for development pods
     --warn-for-multiple-pod-sources        Whether installation should warn when a pod

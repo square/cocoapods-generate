@@ -133,11 +133,12 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         plugin 'cocoapods-generate'
 
         install! 'cocoapods',
-                 deterministic_uuids: false,
+                 deterministic_uuids: true,
+                 disable_input_output_paths: false,
                  generate_multiple_pod_projects: false,
                  incremental_installation: false,
-                 share_schemes_for_development_pods: true,
-                 warn_for_multiple_pod_sources: false
+                 share_schemes_for_development_pods: false,
+                 warn_for_multiple_pod_sources: true
 
         use_frameworks!(false)
 
@@ -181,11 +182,12 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           source 'https://cdn.cocoapods.org/'
 
           install! 'cocoapods',
-                   deterministic_uuids: false,
+                   deterministic_uuids: true,
+                   disable_input_output_paths: false,
                    generate_multiple_pod_projects: false,
                    incremental_installation: false,
-                   share_schemes_for_development_pods: true,
-                   warn_for_multiple_pod_sources: false
+                   share_schemes_for_development_pods: false,
+                   warn_for_multiple_pod_sources: true
 
           use_frameworks!(false)
 
@@ -234,11 +236,12 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           source 'https://cdn.cocoapods.org/'
 
           install! 'cocoapods',
-                   deterministic_uuids: false,
+                   deterministic_uuids: true,
+                   disable_input_output_paths: false,
                    generate_multiple_pod_projects: false,
                    incremental_installation: false,
-                   share_schemes_for_development_pods: true,
-                   warn_for_multiple_pod_sources: false
+                   share_schemes_for_development_pods: false,
+                   warn_for_multiple_pod_sources: true
 
           use_frameworks!(false)
 
@@ -296,11 +299,12 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           source 'https://cdn.cocoapods.org/'
 
           install! 'cocoapods',
-                   deterministic_uuids: false,
+                   deterministic_uuids: true,
+                   disable_input_output_paths: false,
                    generate_multiple_pod_projects: false,
                    incremental_installation: false,
-                   share_schemes_for_development_pods: true,
-                   warn_for_multiple_pod_sources: false
+                   share_schemes_for_development_pods: false,
+                   warn_for_multiple_pod_sources: true
 
           use_frameworks!(false)
 
@@ -352,11 +356,12 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           source 'https://cdn.cocoapods.org/'
 
           install! 'cocoapods',
-                   deterministic_uuids: false,
+                   deterministic_uuids: true,
+                   disable_input_output_paths: false,
                    generate_multiple_pod_projects: false,
                    incremental_installation: false,
-                   share_schemes_for_development_pods: true,
-                   warn_for_multiple_pod_sources: false
+                   share_schemes_for_development_pods: false,
+                   warn_for_multiple_pod_sources: true
 
           use_frameworks!(false)
 
@@ -406,11 +411,12 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           source 'https://cdn.cocoapods.org/'
 
           install! 'cocoapods',
-                   deterministic_uuids: false,
+                   deterministic_uuids: true,
+                   disable_input_output_paths: false,
                    generate_multiple_pod_projects: false,
                    incremental_installation: false,
-                   share_schemes_for_development_pods: true,
-                   warn_for_multiple_pod_sources: false
+                   share_schemes_for_development_pods: false,
+                   warn_for_multiple_pod_sources: true
 
           use_frameworks!(false)
 
@@ -457,11 +463,12 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           plugin 'cocoapods-generate'
 
           install! 'cocoapods',
-                   deterministic_uuids: false,
+                   deterministic_uuids: true,
+                   disable_input_output_paths: false,
                    generate_multiple_pod_projects: false,
                    incremental_installation: false,
-                   share_schemes_for_development_pods: true,
-                   warn_for_multiple_pod_sources: false
+                   share_schemes_for_development_pods: false,
+                   warn_for_multiple_pod_sources: true
 
           use_frameworks!(false)
 
@@ -508,11 +515,12 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           plugin 'cocoapods-generate'
 
           install! 'cocoapods',
-                   deterministic_uuids: false,
+                   deterministic_uuids: true,
+                   disable_input_output_paths: false,
                    generate_multiple_pod_projects: false,
                    incremental_installation: false,
-                   share_schemes_for_development_pods: true,
-                   warn_for_multiple_pod_sources: false
+                   share_schemes_for_development_pods: false,
+                   warn_for_multiple_pod_sources: true
 
           use_frameworks!(false)
 
@@ -563,11 +571,12 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           source 'https://cdn.cocoapods.org/'
 
           install! 'cocoapods',
-                   deterministic_uuids: false,
+                   deterministic_uuids: true,
+                   disable_input_output_paths: false,
                    generate_multiple_pod_projects: false,
                    incremental_installation: false,
-                   share_schemes_for_development_pods: true,
-                   warn_for_multiple_pod_sources: false
+                   share_schemes_for_development_pods: false,
+                   warn_for_multiple_pod_sources: true
 
           use_frameworks!(true)
 
@@ -616,11 +625,12 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           source 'https://cdn.cocoapods.org/'
 
           install! 'cocoapods',
-                   deterministic_uuids: false,
+                   deterministic_uuids: true,
+                   disable_input_output_paths: false,
                    generate_multiple_pod_projects: false,
                    incremental_installation: false,
-                   share_schemes_for_development_pods: true,
-                   warn_for_multiple_pod_sources: false
+                   share_schemes_for_development_pods: false,
+                   warn_for_multiple_pod_sources: true
 
           use_frameworks!(linkage: :static)
 

@@ -2,11 +2,12 @@
 installation_method:
   name: cocoapods
   options:
-    :deterministic_uuids: false
+    :deterministic_uuids: true
+    :disable_input_output_paths: false
     :generate_multiple_pod_projects: false
     :incremental_installation: false
-    :share_schemes_for_development_pods: true
-    :warn_for_multiple_pod_sources: false
+    :share_schemes_for_development_pods: false
+    :warn_for_multiple_pod_sources: true
 workspace: Foo.xcworkspace
 sources:
   - https://github.com/CocoaPods/Specs.git
