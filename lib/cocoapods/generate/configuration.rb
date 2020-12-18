@@ -169,7 +169,7 @@ module Pod
              ->(paths) { ('paths do not exist' unless paths.all? { |p| p.is_a?(URI) || p.exist? }) },
              ->(paths) { paths && paths.map { |path| path.to_s =~ %r{https?://} ? URI(path) : Pathname(path).expand_path } }
       option :podspecs, ArrayOf.new(Pod::Specification),
-             'self.class.podspecs_from_paths(podspec_paths)',
+             'self.class.podspecs_from_paths(podspec_paths, gen_directory)',
              nil,
              nil,
              ->(specs) { 'no podspecs found' if specs.empty? },
@@ -204,6 +204,7 @@ module Pod
       option :share_schemes_for_development_pods, [TrueClass, FalseClass, Array], '(use_podfile && podfile) ? podfile.installation_options.share_schemes_for_development_pods : true', 'Whether installation should share schemes for development pods', nil, nil
       option :warn_for_multiple_pod_sources, BOOLEAN, '(use_podfile && podfile) ? podfile.installation_options.warn_for_multiple_pod_sources : false', 'Whether installation should warn when a pod is found in multiple sources', nil, nil, coerce_to_bool
       option :use_modular_headers, BOOLEAN, 'false', 'Whether the target should be generated as a clang module, treating dependencies as modules, as if `use_modular_headers!` were specified. Will error if both this option and a podfile are specified', nil, nil, coerce_to_bool
+      option :single_workspace, BOOLEAN, 'false', 'Whether to produce a single workspace for all podspecs specified.', nil, nil, coerce_to_bool
 
       options.freeze
       options.each do |o|
@@ -303,12 +304,13 @@ module Pod
         end << ' }'
       end
 
-      # @return [Pathname] the directory for installation of the generated workspace
+      # @return [Pathname] the directory for installation of the generated workspace.
       #
-      # @param  [String] name the name of the pod
+      # @param  [Array<Specification>] specs The specs to get a directory name for.
       #
-      def gen_dir_for_pod(name)
-        gen_directory.join(name)
+      def gen_dir_for_specs(specs)
+        basename = specs.count == 1 ? specs.first.name : 'Workspace'
+        gen_directory.join(basename)
       end
 
       # @return [Boolean] whether gen should install with dynamic frameworks
@@ -319,14 +321,14 @@ module Pod
 
       # @return [String] The project name to use for generating this workspace.
       #
-      # @param [Specification] spec
-      #        the specification to generate project name for.
+      # @param [Array<Specification>] specs
+      #        the specifications to generate project name for.
       #
-      def project_name_for_spec(spec)
-        project_name = spec.name.dup
+      def project_name_for_specs(specs)
+        project_name = specs.count == 1 ? +specs.first.name.dup : +'Workspace'
         # When using multiple Xcode project the project name will collide with the actual .xcodeproj meant for the pod
         # that we are generating the workspace for.
-        project_name << 'Sample' if generate_multiple_pod_projects?
+        project_name << 'Sample' if generate_multiple_pod_projects? && specs.count == 1
         project_name
       end
 
@@ -336,7 +338,10 @@ module Pod
       # @param  [Array<Pathname,URI>] paths
       #         the paths to search for podspecs
       #
-      def self.podspecs_from_paths(paths)
+      # @param  [Pathname] gen_directory
+      #         the directory that the gen installation would occur into.
+      #
+      def self.podspecs_from_paths(paths, gen_directory)
         paths = [Pathname('.')] if paths.empty?
         paths.flat_map do |path|
           if path.is_a?(URI)
@@ -352,7 +357,7 @@ module Pod
                 $ERROR_INFO
               end
           elsif path.directory?
-            glob = Pathname.glob(path + '*.podspec{.json,}')
+            glob = Pathname.glob(path.expand_path + '**/*.podspec{.json,}').select { |f| f.relative_path_from(gen_directory).to_s.start_with?('..') }
             next StandardError.new "no specs found in #{UI.path path}" if glob.empty?
             glob.map { |f| Pod::Specification.from_file(f) }.sort_by(&:name)
           else

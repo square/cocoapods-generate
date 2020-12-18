@@ -1,0 +1,79 @@
+PODS:
+  - A (1.0.0.LOCAL)
+  - A/Tests (1.0.0.LOCAL)
+  - B (1.0.0.LOCAL):
+    - A
+  - B/Tests (1.0.0.LOCAL):
+    - A
+  - C (1.0.0.LOCAL):
+    - A (= 1.0.0.LOCAL)
+    - B
+  - C/Tests (1.0.0.LOCAL):
+    - A (= 1.0.0.LOCAL)
+    - B
+  - D (1.0.0.LOCAL):
+    - A
+    - C
+    - Public
+  - D/Tests (1.0.0.LOCAL):
+    - A
+    - C
+    - E
+    - Public
+  - E (1.0.0.LOCAL):
+    - A
+    - C (= 1.0.0.LOCAL)
+  - E/Tests (1.0.0.LOCAL):
+    - A
+    - C (= 1.0.0.LOCAL)
+  - F (1.0.0.LOCAL):
+    - C
+    - OnlyPre
+  - F/Tests (1.0.0.LOCAL):
+    - C
+    - OnlyPre
+  - G (1.0.0.LOCAL):
+    - OnlyPre (= 1.0.0.pre.1)
+    - Public
+  - G/Tests (1.0.0.LOCAL):
+    - OnlyPre (= 1.0.0.pre.1)
+    - Public
+  - OnlyPre (1.0.0.pre.1)
+  - Public (3.0.0)
+
+DEPENDENCIES:
+  - A (from `Frameworks/a/A.podspec`)
+  - A/Tests (from `Frameworks/a/A.podspec`)
+  - B (from `Frameworks/b/B.podspec`)
+  - B/Tests (from `Frameworks/b/B.podspec`)
+  - C (from `Frameworks/c/C.podspec`)
+  - C/Tests (from `Frameworks/c/C.podspec`)
+  - D (from `Frameworks/d/D.podspec`)
+  - D/Tests (from `Frameworks/d/D.podspec`)
+  - E (from `Frameworks/e/E.podspec`)
+  - E/Tests (from `Frameworks/e/E.podspec`)
+  - F (from `Frameworks/f/F.podspec`)
+  - F/Tests (from `Frameworks/f/F.podspec`)
+  - G (from `Frameworks/g/G.podspec`)
+  - G/Tests (from `Frameworks/g/G.podspec`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - OnlyPre
+    - Public
+
+EXTERNAL SOURCES:
+  A:
+    :path: Frameworks/a/A.podspec
+  B:
+    :path: Frameworks/b/B.podspec
+  C:
+    :path: Frameworks/c/C.podspec
+  D:
+    :path: Frameworks/d/D.podspec
+  E:
+    :path: Frameworks/e/E.podspec
+  F:
+    :path: Frameworks/f/F.podspec
+  G:
+    :path: Frameworks/g/G.podspec

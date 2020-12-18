@@ -30,3 +30,4 @@ Style/Documentation:
 Style/DoubleNegation:
   Exclude:
     - 'spec/cocoapods/generate/podfile_generator_spec.rb'
+    - 'spec/cocoapods/generate/installer_spec.rb'

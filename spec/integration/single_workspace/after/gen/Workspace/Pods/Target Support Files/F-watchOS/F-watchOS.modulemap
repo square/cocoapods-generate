@@ -1,0 +1,6 @@
+framework module F {
+  umbrella header "F-watchOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -108,13 +108,13 @@ File References:
   - App-iOS:
     - Info.plist
     - LaunchScreen.storyboard
-    - main.swift
+    - main.m
   - App-macOS:
-    - main.swift
+    - main.m
   - App-tvOS:
-    - main.swift
+    - main.m
   - App-watchOS:
-    - main.swift
+    - main.m
   - Frameworks:
     - iOS:
       - Foundation.framework
@@ -192,7 +192,7 @@ Targets:
       - Resources:
         - LaunchScreen.storyboard
       - Sources:
-        - main.swift
+        - main.m
   - App-macOS:
     Build Configurations:
       - Debug:
@@ -236,7 +236,7 @@ Targets:
       - Resources:
         []
       - Sources:
-        - main.swift
+        - main.m
   - App-tvOS:
     Build Configurations:
       - Debug:
@@ -281,7 +281,7 @@ Targets:
       - Resources:
         []
       - Sources:
-        - main.swift
+        - main.m
   - App-watchOS:
     Build Configurations:
       - Debug:
@@ -324,4 +324,4 @@ Targets:
       - Resources:
         []
       - Sources:
-        - main.swift
+        - main.m

@@ -23,9 +23,10 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   disable_input_output_paths: false,
   share_schemes_for_development_pods: false,
   warn_for_multiple_pod_sources: true,
-  use_modular_headers: false }
+  use_modular_headers: false,
+  single_workspace: false }
 
-Generating Foo in `gen/Foo`
+Generating workspace in `gen/Foo`
     Cleaning gen install directory
     Creating stub application
     Writing Podfile
@@ -39,4 +40,4 @@ Installing UsesForkable (1.0.0)
 Pod installation complete! There are 2 dependencies from the Podfile and 3 total pods installed.
 
 Performing post-installation steps
-    Open `gen/Foo/Foo.xcworkspace` to work on Foo
+    Open `gen/Foo/Foo.xcworkspace` to work on it!

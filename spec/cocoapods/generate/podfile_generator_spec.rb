@@ -5,7 +5,10 @@ RSpec.describe Pod::Generate::PodfileGenerator do
   let(:lockfile_specs) { [] }
   let(:lockfile) { Pod::Lockfile.generate(podfile, lockfile_specs, {}) }
   let(:use_modular_headers) { false }
-  let(:config_options) { { podfile: podfile, lockfile: lockfile, use_podfile: !!podfile, use_lockfile_versions: !!lockfile, use_modular_headers: use_modular_headers } }
+  let(:config_options) do
+    { podfile: podfile, lockfile: lockfile, use_podfile: !!podfile,
+      use_lockfile_versions: !!lockfile, use_modular_headers: use_modular_headers }
+  end
   let(:config) { Pod::Generate::Configuration.new(**config_options) }
 
   subject(:podfile_generator) { described_class.new(config) }
@@ -57,15 +60,26 @@ RSpec.describe Pod::Generate::PodfileGenerator do
     end
   end
 
-  describe_method 'podfiles_by_spec' do
-    let(:config_options) { { podspecs: [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] } }
-    before do
-      expect(podfile_generator).to receive(:podfile_for_spec).twice.and_wrap_original do |_original_method, spec, &_|
-        "Podfile for #{spec.name}"
+  describe_method 'podfiles_by_specs' do
+    context 'without single workspace' do
+      let(:config_options) { { podspecs: [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] } }
+      before do
+        expect(podfile_generator).to receive(:podfile_for_specs).twice.and_wrap_original do |_original_method, specs, &_|
+          "Podfile for #{specs.map(&:name).to_sentence}"
+        end
       end
+      it { should eq [Pod::Spec.new(nil, 'A')] => 'Podfile for A', [Pod::Spec.new(nil, 'B')] => 'Podfile for B' }
     end
 
-    it { should eq Pod::Spec.new(nil, 'A') => 'Podfile for A', Pod::Spec.new(nil, 'B') => 'Podfile for B' }
+    context 'with single workspace' do
+      let(:config_options) { { podspecs: [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')], single_workspace: true } }
+      before do
+        expect(podfile_generator).to receive(:podfile_for_specs).and_wrap_original do |_original_method, specs, &_|
+          "Podfile for #{specs.map(&:name).to_sentence}"
+        end
+      end
+      it { should eq [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] => 'Podfile for A and B' }
+    end
   end
 
   describe_method 'pod_args_for_dependency' do
@@ -101,7 +115,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
     end
   end
 
-  describe_method 'podfile_for_spec' do
+  describe_method 'podfile_for_specs' do
     let(:spec) do
       Pod::Spec.new do |s|
         s.name = 'A'
@@ -117,14 +131,14 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         s.defined_in_file = Pathname('Frameworks/A/A.podspec').expand_path
       end
     end
-    let(:method_args) { [spec] }
+    let(:method_args) { [[spec]] }
 
     it { should be_instance_of Pod::Podfile }
 
     it 'generates the expected podfile' do
       test = self
       expected = Pod::Podfile.new do
-        self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+        self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
 
         workspace 'A.xcworkspace'
         project 'A.xcodeproj'
@@ -153,7 +167,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         target 'App-watchOS'
       end
 
-      expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+      expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
     end
 
     context 'when there are transitive dependencies that are in the podfile' do
@@ -170,7 +184,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       it 'generates the expected podfile' do
         test = self
         expected = Pod::Podfile.new do
-          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
 
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
@@ -204,7 +218,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           target 'App-watchOS'
         end
 
-        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
       end
     end
 
@@ -224,7 +238,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       it 'generates the expected podfile' do
         test = self
         expected = Pod::Podfile.new do
-          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
 
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
@@ -262,7 +276,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         expected.target_definitions['Pods'].send(:internal_hash)['use_modular_headers']['for_pods'] = %w[A A B]
         expected.target_definitions['Pods'].send(:internal_hash)['inhibit_warnings']['for_pods'] = %w[A A B]
 
-        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
       end
     end
 
@@ -287,7 +301,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         allow(Pod::Specification).to receive(:dependencies).and_return(nil)
         test = self
         expected = Pod::Podfile.new do
-          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
 
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
@@ -321,7 +335,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           target 'App-watchOS'
         end
 
-        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
       end
     end
 
@@ -344,7 +358,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         allow(Pod::Specification).to receive(:dependencies).and_return(nil)
         test = self
         expected = Pod::Podfile.new do
-          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
 
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
@@ -373,7 +387,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           target 'App-iOS'
         end
 
-        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
       end
     end
 
@@ -400,7 +414,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       it 'generates the expected podfile' do
         test = self
         expected = Pod::Podfile.new do
-          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
 
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
@@ -438,7 +452,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
         expected.target_definitions['Transitive Dependencies'].send(:internal_hash).delete('inhibit_warnings')
         expected.target_definitions['Pods'].send(:internal_hash)['inhibit_warnings']['not_for_pods'] = %w[B]
 
-        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
       end
     end
 
@@ -454,7 +468,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       it 'generates the expected podfile' do
         test = self
         expected = Pod::Podfile.new do
-          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
 
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
@@ -491,7 +505,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           end
         end
 
-        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
       end
     end
 
@@ -506,7 +520,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       it 'generates the expected podfile' do
         test = self
         expected = Pod::Podfile.new do
-          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
 
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
@@ -541,7 +555,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           end
         end
 
-        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
       end
     end
 
@@ -560,7 +574,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       it 'generates the expected podfile' do
         test = self
         expected = Pod::Podfile.new do
-          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
 
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
@@ -595,7 +609,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           end
         end
 
-        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
       end
     end
 
@@ -614,7 +628,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
       it 'generates the expected podfile' do
         test = self
         expected = Pod::Podfile.new do
-          self.defined_in_file = test.config.gen_dir_for_pod('A').join('Podfile.yaml')
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
 
           workspace 'A.xcworkspace'
           project 'A.xcodeproj'
@@ -649,7 +663,87 @@ RSpec.describe Pod::Generate::PodfileGenerator do
           end
         end
 
-        expect(podfile_for_spec.to_yaml).to eq expected.to_yaml
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
+      end
+
+      describe 'single workspace podfile' do
+        let(:spec_a) do
+          Pod::Spec.new do |s|
+            s.name = 'A'
+            s.version = '1'
+
+            s.dependency 'B'
+            s.dependency 'D'
+
+            s.test_spec 'Tests' do |ts|
+              ts.dependency 'C'
+            end
+
+            s.defined_in_file = Pathname('Frameworks/A/A.podspec').expand_path
+          end
+        end
+
+        let(:spec_b) do
+          Pod::Spec.new do |s|
+            s.name = 'B'
+            s.version = '1'
+
+            s.dependency 'E'
+            s.dependency 'F'
+
+            s.test_spec 'Tests' do |ts|
+              ts.dependency 'G'
+            end
+
+            s.app_spec 'App'
+
+            s.defined_in_file = Pathname('Frameworks/B/B.podspec').expand_path
+          end
+        end
+
+        let(:method_args) { [[spec_a, spec_b]] }
+
+        it 'generates the expected podfile' do
+          test = self
+          expected = Pod::Podfile.new do
+            self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')]).join('Podfile.yaml')
+
+            plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
+            plugin 'cocoapods-generate'
+
+            workspace 'Workspace.xcworkspace'
+            project 'Workspace.xcodeproj'
+
+            source 'https://cdn.cocoapods.org/'
+
+            install! 'cocoapods',
+                     deterministic_uuids: true,
+                     disable_input_output_paths: false,
+                     generate_multiple_pod_projects: false,
+                     incremental_installation: false,
+                     share_schemes_for_development_pods: false,
+                     warn_for_multiple_pod_sources: true
+
+            use_frameworks!(linkage: :static)
+
+            pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
+            pod 'B', path: '../../Frameworks/B/B.podspec', testspecs: %w[Tests], appspecs: %w[App]
+
+            abstract_target 'Transitive Dependencies' do
+            end
+
+            target 'App-iOS' do
+            end
+            target 'App-macOS' do
+            end
+            target 'App-tvOS' do
+            end
+            target 'App-watchOS' do
+            end
+          end
+
+          expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
+        end
       end
     end
   end
