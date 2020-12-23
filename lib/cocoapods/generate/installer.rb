@@ -9,19 +9,19 @@ module Pod
       #
       attr_reader :configuration
 
-      # @return [Specification]
+      # @return [Array<Specification>]
       #         the spec whose workspace is being created
       #
-      attr_reader :spec
+      attr_reader :specs
 
       # @return [Podfile]
       #         the podfile to install
       #
       attr_reader :podfile
 
-      def initialize(configuration, spec, podfile)
+      def initialize(configuration, specs, podfile)
         @configuration = configuration
-        @spec = spec
+        @specs = specs
         @podfile = podfile
       end
 
@@ -37,7 +37,7 @@ module Pod
       # @return [void]
       #
       def install!
-        UI.title "Generating #{spec.name} in #{UI.path install_directory}" do
+        UI.title "Generating workspace in #{UI.path install_directory}" do
           clean! if configuration.clean?
           install_directory.mkpath
 
@@ -89,7 +89,7 @@ module Pod
       end
 
       def open_app_project(recreate: false)
-        app_project_path = install_directory.join("#{configuration.project_name_for_spec(spec)}.xcodeproj")
+        app_project_path = install_directory.join("#{configuration.project_name_for_specs(specs)}.xcodeproj")
         if !recreate && app_project_path.exist?
           Xcodeproj::Project.open(app_project_path)
         else
@@ -104,7 +104,7 @@ module Pod
       def create_app_project
         app_project = open_app_project(recreate: !configuration.incremental_installation?)
 
-        spec_platforms = spec.available_platforms.flatten.reject do |platform|
+        spec_platforms = specs.flat_map(&:available_platforms).flatten.uniq.reject do |platform|
           !configuration.platforms.nil? && !configuration.platforms.include?(platform.string_name.downcase)
         end
 
@@ -114,7 +114,7 @@ module Pod
 
         spec_platforms
           .map do |platform|
-            consumer = spec.consumer(platform)
+            consumer = specs.first.consumer(platform)
             target_name = "App-#{Platform.string_name(consumer.platform_name)}"
             next if app_project.targets.map(&:name).include? target_name
             native_app_target = Pod::Generator::AppTargetHelper.add_app_target(app_project, consumer.platform_name,
@@ -152,8 +152,10 @@ module Pod
         app_project.native_targets.each do |native_app_target|
           remove_script_phase_from_target(native_app_target, 'Check Pods Manifest.lock')
 
-          pod_target = installer.pod_targets.find { |pt| pt.platform.name == native_app_target.platform_name && pt.pod_name == spec.name }
-          raise "Unable to find a pod target for #{native_app_target} / #{spec}" unless pod_target
+          spec_names = specs.map(&:name)
+          pod_targets = installer.pod_targets.select do |pt|
+            pt.platform.name == native_app_target.platform_name && spec_names.include?(pt.pod_name)
+          end
 
           native_app_target.source_build_phase.clear
           native_app_target.resources_build_phase.clear
@@ -189,22 +191,18 @@ module Pod
               source_file_ref = group.new_file(file.basename)
               native_app_target.add_file_references([source_file_ref])
             end
-          elsif Pod::Generator::AppTargetHelper.method(:add_app_project_import).arity == -5 # CocoaPods >= 1.6
-            # If we are doing incremental installation then the file might already be there.
+          else
             platform_name = Platform.string_name(native_app_target.platform_name)
             group = group_for_platform_name(app_project, platform_name)
             main_file_ref = group.files.find { |f| f.display_name == 'main.m' }
             if main_file_ref.nil?
-              Pod::Generator::AppTargetHelper.add_app_project_import(app_project, native_app_target, pod_target,
-                                                                     pod_target.platform.name, native_app_target.name)
+              source_file = create_main_source_file(app_project, pod_targets, native_app_target.name)
+              group = app_project[group.name] || app_project.new_group(group.name, group.name)
+              source_file_ref = group.new_file(source_file)
+              native_app_target.add_file_references([source_file_ref])
             else
               native_app_target.add_file_references([main_file_ref])
             end
-          else
-            Pod::Generator::AppTargetHelper.add_app_project_import(app_project, native_app_target, pod_target,
-                                                                   pod_target.platform.name,
-                                                                   pod_target.requires_frameworks?,
-                                                                   native_app_target.name)
           end
 
           # Set `PRODUCT_BUNDLE_IDENTIFIER`
@@ -217,18 +215,22 @@ module Pod
             make_ios_app_launchable(app_project, native_app_target)
           end
 
-          Pod::Generator::AppTargetHelper.add_swift_version(native_app_target, pod_target.swift_version) unless pod_target.swift_version.blank?
+          swift_version = pod_targets.map { |pt| Pod::Version.new(pt.swift_version) }.max.to_s
+
+          Pod::Generator::AppTargetHelper.add_swift_version(native_app_target, swift_version) unless swift_version.blank?
           if installer.pod_targets.any? { |pt| pt.spec_consumers.any? { |c| c.frameworks.include?('XCTest') } }
             Pod::Generator::AppTargetHelper.add_xctest_search_paths(native_app_target)
           end
 
-          # Share the pods xcscheme only if it exists. For pre-built vendored pods there is no xcscheme generated.
-          if installer.respond_to?(:generated_projects) # CocoaPods 1.7.0
-            installer.generated_projects.each do |project|
-              Xcodeproj::XCScheme.share_scheme(project.path, pod_target.label) if File.exist?(project.path + pod_target.label)
+          pod_targets.each do |pod_target|
+            result = installer.target_installation_results.pod_target_installation_results[pod_target.name]
+            share_scheme(result.native_target.project, pod_target.label)
+            pod_target.test_specs.each do |test_spec|
+              share_scheme(result.native_target.project, pod_target.test_target_label(test_spec))
             end
-          elsif File.exist?(installer.pods_project.path + pod_target.label)
-            Xcodeproj::XCScheme.share_scheme(installer.pods_project.path, pod_target.label)
+            pod_target.app_specs.each do |app_spec|
+              share_scheme(result.native_target.project, pod_target.app_target_label(app_spec))
+            end
           end
 
           add_test_spec_schemes_to_app_scheme(installer, app_project)
@@ -252,23 +254,19 @@ module Pod
       end
 
       def add_test_spec_schemes_to_app_scheme(installer, app_project)
+        spec_root_names = Set.new(specs.map { |s| s.root.name })
+
         test_native_targets =
-          if installer.respond_to?(:target_installation_results) # CocoaPods >= 1.6
-            installer
-              .target_installation_results
-              .pod_target_installation_results
-              .values
-              .flatten(1)
-              .select { |installation_result| installation_result.target.pod_name == spec.root.name }
-          else
-            installer
-              .pod_targets
-              .select { |pod_target| pod_target.pod_name == spec.root.name }
-          end
+          installer
+          .target_installation_results
+          .pod_target_installation_results
+          .values
+          .flatten(1)
+          .select { |installation_result| spec_root_names.include?(installation_result.target.pod_name) }
           .flat_map(&:test_native_targets)
           .group_by(&:platform_name)
 
-        workspace_path = install_directory + "#{spec.name}.xcworkspace"
+        workspace_path = install_directory + (configuration.project_name_for_specs(specs) + '.xcworkspace')
         Xcodeproj::Plist.write_to_path(
           { 'IDEWorkspaceSharedSettings_AutocreateContextsIfNeeded' => false },
           workspace_path.join('xcshareddata').tap(&:mkpath).join('WorkspaceSettings.xcsettings')
@@ -287,7 +285,7 @@ module Pod
 
             testable = Xcodeproj::XCScheme::TestAction::TestableReference.new(target)
             testable.buildable_references.each do |buildable|
-              buildable.xml_element.attributes['ReferencedContainer'] = 'container:Pods.xcodeproj'
+              buildable.xml_element.attributes['ReferencedContainer'] = "container:Pods/#{File.basename(target.project.path)}"
             end
             test_action.add_testable(testable)
           end
@@ -380,8 +378,36 @@ module Pod
             Executable.execute_command 'open', [workspace_path]
           end
         else
-          UI.info "Open #{UI.path workspace_path} to work on #{spec.name}"
+          UI.info "Open #{UI.path workspace_path} to work on it!"
         end
+      end
+
+      def share_scheme(project, scheme_name)
+        scheme = Xcodeproj::XCScheme.user_data_dir(project.path) + "#{scheme_name}.xcscheme"
+        return unless File.exist?(scheme)
+        Xcodeproj::XCScheme.share_scheme(project.path, scheme_name)
+      end
+
+      def create_main_source_file(project, pod_targets, name)
+        source_file = project.path.dirname.+("#{name}/main.m")
+        source_file.parent.mkpath
+
+        import_statements = pod_targets.map do |pod_target|
+          if pod_target.should_build? && pod_target.defines_module?
+            "@import #{pod_target.product_module_name};"
+          else
+            header_name = "#{pod_target.product_module_name}/#{pod_target.product_module_name}.h"
+            "#import <#{header_name}>" if pod_target.sandbox.public_headers.root.+(header_name).file?
+          end
+        end.compact
+
+        source_file.open('w') do |f|
+          f << import_statements.join("\n")
+          f << "\n" unless import_statements.empty?
+          f << "int main() {}\n"
+        end
+
+        source_file
       end
     end
   end

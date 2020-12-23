@@ -1,0 +1,2 @@
+@import E;
+int main() {}

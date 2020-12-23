@@ -1,0 +1,2 @@
+@import F;
+int main() {}

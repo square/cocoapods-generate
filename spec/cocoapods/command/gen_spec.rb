@@ -101,6 +101,8 @@ RSpec.describe Pod::Command::Gen, :tmpdir do
                                                          modules, as if `use_modular_headers!` were
                                                          specified. Will error if both this option
                                                          and a podfile are specified
+                  --single-workspace                     Whether to produce a single workspace for
+                                                         all podspecs specified.
             HELP
     end
   end

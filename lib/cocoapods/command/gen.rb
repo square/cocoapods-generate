@@ -64,8 +64,8 @@ module Pod
         # even if there are multiple podspecs
         update_sources if configuration.repo_update?
 
-        Generate::PodfileGenerator.new(configuration).podfiles_by_spec.each do |spec, podfile|
-          Generate::Installer.new(configuration, spec, podfile).install!
+        Generate::PodfileGenerator.new(configuration).podfiles_by_specs.each do |specs, podfile|
+          Generate::Installer.new(configuration, specs, podfile).install!
         end
 
         remove_warnings(UI.warnings)

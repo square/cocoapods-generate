@@ -24,9 +24,10 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   disable_input_output_paths: false,
   share_schemes_for_development_pods: false,
   warn_for_multiple_pod_sources: true,
-  use_modular_headers: false }
+  use_modular_headers: false,
+  single_workspace: false }
 
-Generating A in `gen/A`
+Generating workspace in `gen/A`
     Creating stub application
     Writing Podfile
 
@@ -37,9 +38,9 @@ Installing A (1.0.0.LOCAL)
 Pod installation complete! There are 3 dependencies from the Podfile and 1 total pod installed.
 
 Performing post-installation steps
-    Open `gen/A/A.xcworkspace` to work on A
+    Open `gen/A/A.xcworkspace` to work on it!
 
-Generating B in `gen/B`
+Generating workspace in `gen/B`
     Creating stub application
     Writing Podfile
 
@@ -51,9 +52,9 @@ Installing B (1.0.0.LOCAL)
 Pod installation complete! There are 4 dependencies from the Podfile and 2 total pods installed.
 
 Performing post-installation steps
-    Open `gen/B/B.xcworkspace` to work on B
+    Open `gen/B/B.xcworkspace` to work on it!
 
-Generating C in `gen/C`
+Generating workspace in `gen/C`
     Creating stub application
     Writing Podfile
 
@@ -66,9 +67,9 @@ Installing C (1.0.0.LOCAL)
 Pod installation complete! There are 5 dependencies from the Podfile and 3 total pods installed.
 
 Performing post-installation steps
-    Open `gen/C/C.xcworkspace` to work on C
+    Open `gen/C/C.xcworkspace` to work on it!
 
-Generating D in `gen/D`
+Generating workspace in `gen/D`
     Creating stub application
     Writing Podfile
 
@@ -84,9 +85,9 @@ Installing Public (3.0.0)
 Pod installation complete! There are 8 dependencies from the Podfile and 6 total pods installed.
 
 Performing post-installation steps
-    Open `gen/D/D.xcworkspace` to work on D
+    Open `gen/D/D.xcworkspace` to work on it!
 
-Generating E in `gen/E`
+Generating workspace in `gen/E`
     Creating stub application
     Writing Podfile
 
@@ -100,9 +101,9 @@ Installing E (1.0.0.LOCAL)
 Pod installation complete! There are 6 dependencies from the Podfile and 4 total pods installed.
 
 Performing post-installation steps
-    Open `gen/E/E.xcworkspace` to work on E
+    Open `gen/E/E.xcworkspace` to work on it!
 
-Generating F in `gen/F`
+Generating workspace in `gen/F`
     Creating stub application
     Writing Podfile
 
@@ -117,9 +118,9 @@ Installing OnlyPre (1.0.0.pre.1)
 Pod installation complete! There are 7 dependencies from the Podfile and 5 total pods installed.
 
 Performing post-installation steps
-    Open `gen/F/F.xcworkspace` to work on F
+    Open `gen/F/F.xcworkspace` to work on it!
 
-Generating G in `gen/G`
+Generating workspace in `gen/G`
     Creating stub application
     Writing Podfile
 
@@ -133,4 +134,4 @@ Installing Public (3.0.0)
 Pod installation complete! There are 6 dependencies from the Podfile and 4 total pods installed.
 
 Performing post-installation steps
-    Open `gen/G/G.xcworkspace` to work on G
+    Open `gen/G/G.xcworkspace` to work on it!

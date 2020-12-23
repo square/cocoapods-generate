@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Pod::Generate::Configuration do
-  let(:kwargs) { {} }
+  let(:kwargs) { { podspec_paths: [Pathname('./spec/cocoapods/generate')] } }
   subject(:config) { described_class.new(**kwargs) }
 
   it { should_not be_nil }
@@ -16,8 +16,8 @@ RSpec.describe Pod::Generate::Configuration do
         gen_directory: Pathname('gen').expand_path,
         podfile_plugins: {},
         pod_config: Pod::Config.instance,
-        podspec_paths: [Pathname('.')],
-        podspecs: [Pod::StandardError.new('no specs found in `.`')],
+        podspec_paths: [Pathname('./spec/cocoapods/generate')],
+        podspecs: [Pod::StandardError.new('no specs found in `./spec/cocoapods/generate`')],
         repo_update: false,
         share_schemes_for_development_pods: true,
         sources: %w[https://github.com/CocoaPods/Specs.git https://github.com/Private/SpecsForks.git https://cdn.cocoapods.org/],
@@ -29,6 +29,7 @@ RSpec.describe Pod::Generate::Configuration do
         use_lockfile_versions: false,
         use_lockfile: false,
         use_modular_headers: false,
+        single_workspace: false,
         use_podfile: false,
         use_podfile_plugins: false,
         warn_for_multiple_pod_sources: false
@@ -50,8 +51,8 @@ RSpec.describe Pod::Generate::Configuration do
               gen_directory: #{File.expand_path 'gen'},
               auto_open: false,
               clean: false,
-              podspec_paths: [#<Pathname:.>],
-              podspecs: [#<Pod::StandardError: no specs found in `.`>],
+              podspec_paths: [#<Pathname:./spec/cocoapods/generate>],
+              podspecs: [#<Pod::StandardError: no specs found in `./spec/cocoapods/generate`>],
               sources: ["https://github.com/CocoaPods/Specs.git", "https://github.com/Private/SpecsForks.git", "https://cdn.cocoapods.org/"],
               local_sources: [],
               repo_update: false,
@@ -60,7 +61,8 @@ RSpec.describe Pod::Generate::Configuration do
               disable_input_output_paths: false,
               share_schemes_for_development_pods: true,
               warn_for_multiple_pod_sources: false,
-              use_modular_headers: false }
+              use_modular_headers: false,
+              single_workspace: false }
         TO_S
   end
 
@@ -69,43 +71,43 @@ RSpec.describe Pod::Generate::Configuration do
       expect { subject }.to raise_error(*args, &blk)
     end
 
-    let(:podspec_path) { Pathname('A.podspec').expand_path }
-    before { podspec_path.write 'Pod::Spec.new' }
+    let(:podspec_path) { Pathname('./spec/cocoapods/generate/A.podspec').expand_path }
+    before { podspec_path.write "Pod::Spec.new do |spec| spec.name = 'A' end" }
     after { FileUtils.rm_f podspec_path }
 
     context 'with invalid types' do
-      let(:kwargs) { { use_podfile_plugins: [] } }
+      let(:kwargs) { { use_podfile_plugins: [], podspec_paths: [Pathname('./spec/cocoapods/generate')] } }
 
       it { should eq ['[] invalid for use_podfile_plugins, got type Array, expected object of type TrueClass|FalseClass'] }
     end
 
     context 'with invalid types in an array' do
-      let(:kwargs) { { sources: {} } }
+      let(:kwargs) { { sources: {}, podspec_paths: [Pathname('./spec/cocoapods/generate')] } }
 
       it { should eq ['{} invalid for sources, got type Hash, expected object of type Array<String>'] }
     end
 
     context 'custom validation errors' do
-      let(:kwargs) { { podspecs: [] } }
+      let(:kwargs) { { podspecs: [], podspec_paths: [Pathname('./spec/cocoapods/generate')] } }
 
       it { should eq ['[] invalid for podspecs, no podspecs found'] }
     end
 
     context 'pass validation with boolean nested in hash' do
-      let(:kwargs) { { podfile_plugins: { 'stuff' => { 'things' => true } } } }
+      let(:kwargs) { { podfile_plugins: { 'stuff' => { 'things' => true } }, podspec_paths: [Pathname('./spec/cocoapods/generate')] } }
 
       it { should eq [] }
     end
 
     context 'platform validation errors' do
-      let(:kwargs) { { platforms: ['invalid-os'] } }
+      let(:kwargs) { { platforms: ['invalid-os'], podspec_paths: [Pathname('./spec/cocoapods/generate')] } }
 
       it { should eq ['["invalid-os"] invalid for platforms, ios, macos, watchos, tvos'] }
     end
 
     context 'evaluating a default fails' do
       let(:object) { Object.new }
-      let(:kwargs) { { pod_config: object } }
+      let(:kwargs) { { pod_config: object, podspec_paths: [Pathname('./spec/cocoapods/generate')] } }
 
       it {
         should eq [
@@ -156,6 +158,42 @@ RSpec.describe Pod::Generate::Configuration do
     end
   end
 
+  describe_class_method :podspecs_from_paths do
+    describe 'with directory paths' do
+      context 'returns all podspecs recursively' do
+        let(:paths) { [Pathname('./spec/cocoapods/sample_podspecs')] }
+        let(:gen_directory) { Pathname('gen').expand_path }
+        let(:method_args) { [paths, gen_directory] }
+
+        it 'should return all podspecs found recursively' do
+          expect(subject.map(&:name)).to eq(%w[A B C D])
+        end
+      end
+
+      context 'excludes podspecs from gen folder' do
+        let(:paths) { [Pathname('./spec/cocoapods/sample_podspecs')] }
+        let(:gen_directory) { Pathname('./spec/cocoapods/sample_podspecs/gen').expand_path }
+        let(:method_args) { [paths, gen_directory] }
+
+        it 'should return all podspecs found recursively except the ones inside the gen directory' do
+          expect(subject.map(&:name)).to eq(%w[A B C])
+        end
+      end
+    end
+
+    describe 'with single podspec' do
+      context 'returns the podspec specified' do
+        let(:paths) { [Pathname('./spec/cocoapods/sample_podspecs/A.podspec')] }
+        let(:gen_directory) { Pathname('gen').expand_path }
+        let(:method_args) { [paths, gen_directory] }
+
+        it 'should return all podspecs found recursively' do
+          expect(subject.map(&:name)).to eq(%w[A])
+        end
+      end
+    end
+  end
+
   describe_class_method :from_file, :tmpdir do
     let(:file) { Pathname('.gen_config.yml').expand_path }
     let(:yaml) { '' }
@@ -183,6 +221,48 @@ RSpec.describe Pod::Generate::Configuration do
       let(:yaml) { 'podfile_path: abc.rb' }
 
       it { should eq(podfile_path: dir.join('abc.rb')) }
+    end
+  end
+
+  describe_method :gen_dir_for_specs do
+    context 'single podspec' do
+      let(:specs) { [Pod::Spec.new(nil, 'A')] }
+      let(:method_args) { [specs] }
+      it { should eq(Pathname.new('./gen/A').expand_path) }
+    end
+
+    context 'multiple podspecs' do
+      let(:specs) { [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] }
+      let(:method_args) { [specs] }
+      it { should eq(Pathname.new('./gen/Workspace').expand_path) }
+    end
+  end
+
+  describe_method :project_name_for_specs do
+    context 'single podspec' do
+      let(:specs) { [Pod::Spec.new(nil, 'A')] }
+      let(:method_args) { [specs] }
+      it { should eq('A') }
+    end
+
+    context 'multiple podspecs' do
+      let(:specs) { [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] }
+      let(:method_args) { [specs] }
+      it { should eq('Workspace') }
+    end
+
+    context 'multiple podspecs and multiple project generation' do
+      let(:kwargs) { { podspec_paths: [Pathname('./spec/cocoapods/generate')], generate_multiple_pod_projects: true } }
+      let(:specs) { [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] }
+      let(:method_args) { [specs] }
+      it { should eq('Workspace') }
+    end
+
+    context 'single podspec and multiple project generation' do
+      let(:kwargs) { { podspec_paths: [Pathname('./spec/cocoapods/generate')], generate_multiple_pod_projects: true } }
+      let(:specs) { [Pod::Spec.new(nil, 'A')] }
+      let(:method_args) { [specs] }
+      it { should eq('ASample') }
     end
   end
 

@@ -14,27 +14,27 @@ module Pod
         @configuration = configuration
       end
 
-      # @return [Hash<Specification, Podfile>]
-      #         a hash of specifications to generated podfiles
+      # @return [Hash<Array<Specification>, Podfile>] the podfiles keyed by the specs that are part of each.
       #
-      def podfiles_by_spec
+      def podfiles_by_specs
+        return { configuration.podspecs => podfile_for_specs(configuration.podspecs) } if configuration.single_workspace?
         Hash[configuration.podspecs.map do |spec|
-          [spec, podfile_for_spec(spec)]
+          [[spec], podfile_for_specs([spec])]
         end]
       end
 
       # @return [Podfile] a podfile suitable for installing the given spec
       #
-      # @param  [Specification] spec
+      # @param  [Array<Specification>] specs
       #
-      def podfile_for_spec(spec)
+      def podfile_for_specs(specs)
         generator = self
-        dir = configuration.gen_dir_for_pod(spec.name)
-        project_name = configuration.project_name_for_spec(spec)
+        dir = configuration.gen_dir_for_specs(specs)
+        project_name = configuration.project_name_for_specs(specs)
 
         Pod::Podfile.new do
           project "#{project_name}.xcodeproj"
-          workspace "#{spec.name}.xcworkspace"
+          workspace "#{project_name}.xcworkspace"
 
           plugin 'cocoapods-generate'
 
@@ -57,24 +57,32 @@ module Pod
 
           self.defined_in_file = dir.join('CocoaPods.podfile.yaml')
 
-          test_specs = spec.recursive_subspecs.select(&:test_specification?)
-          app_specs = if spec.respond_to?(:app_specification?)
-                        spec.recursive_subspecs.select(&:app_specification?)
-                      else
-                        []
-                      end
+          test_specs_by_spec = Hash[specs.map do |spec|
+            [spec, spec.recursive_subspecs.select(&:test_specification?)]
+          end]
+          app_specs_by_spec = Hash[specs.map do |spec|
+            app_specs = if spec.respond_to?(:app_specification?)
+                          spec.recursive_subspecs.select(&:app_specification?)
+                        else
+                          []
+                        end
+            [spec, app_specs]
+          end]
 
           # Stick all of the transitive dependencies in an abstract target.
           # This allows us to force CocoaPods to use the versions / sources / external sources
           # that we want.
-          # By using an abstract target,
           abstract_target 'Transitive Dependencies' do
-            pods_for_transitive_dependencies = [spec.name]
-                                               .concat(test_specs.map(&:name))
-                                               .concat(test_specs.flat_map { |ts| ts.dependencies.flat_map(&:name) })
-                                               .concat(app_specs.map(&:name))
-                                               .concat(app_specs.flat_map { |as| as.dependencies.flat_map(&:name) })
+            pods_for_transitive_dependencies = specs.flat_map do |spec|
+              [spec.name]
+                .concat(test_specs_by_spec.keys.map(&:name))
+                .concat(test_specs_by_spec.values.flatten.flat_map { |ts| ts.dependencies.flat_map(&:name) })
+                .concat(app_specs_by_spec.keys.map(&:name))
+                .concat(app_specs_by_spec.values.flatten.flat_map { |as| as.dependencies.flat_map(&:name) })
+            end
+            pods_for_transitive_dependencies.uniq!
 
+            spec_names = specs.map { |s| s.root.name }
             dependencies = generator
                            .transitive_dependencies_by_pod
                            .values_at(*pods_for_transitive_dependencies)
@@ -82,7 +90,7 @@ module Pod
                            .flatten(1)
                            .uniq
                            .sort_by(&:name)
-                           .reject { |d| d.root_name == spec.root.name }
+                           .reject { |d| spec_names.include?(d.root_name) }
 
             dependencies.each do |dependency|
               pod_args = generator.pod_args_for_dependency(self, dependency)
@@ -90,9 +98,8 @@ module Pod
             end
           end
 
-          # Add platform-specific concrete targets that inherit the
-          # `pod` declaration for the local pod.
-          spec_platform_names = spec.available_platforms.map(&:string_name).flatten.each.reject do |platform_name|
+          # Add platform-specific concrete targets that inherit the `pod` declaration for the local pod.
+          spec_platform_names = specs.flat_map { |s| s.available_platforms.map(&:string_name) }.uniq.each.reject do |platform_name|
             !generator.configuration.platforms.nil? && !generator.configuration.platforms.include?(platform_name.downcase)
           end
 
@@ -117,26 +124,31 @@ module Pod
           inhibit_all_warnings! if generator.inhibit_all_warnings?
           use_modular_headers! if generator.use_modular_headers?
 
-          # This is the pod declaration for the local pod,
-          # it will be inherited by the concrete target definitions below
-          pod_options = generator.dependency_compilation_kwargs(spec.name)
-          pod_options[:path] = spec.defined_in_file.relative_path_from(dir).to_s
-          { testspecs: test_specs, appspecs: app_specs }.each do |key, specs|
-            pod_options[key] = specs.map { |s| s.name.sub(%r{^#{Regexp.escape spec.root.name}/}, '') }.sort unless specs.empty?
-          end
+          specs.each do |spec|
+            # This is the pod declaration for the local pod,
+            # it will be inherited by the concrete target definitions below
+            pod_options = generator.dependency_compilation_kwargs(spec.name)
 
-          pod spec.name, **pod_options
+            path = spec.defined_in_file.relative_path_from(dir).to_s
+            pod_options[:path] = path
+            { testspecs: test_specs_by_spec[spec], appspecs: app_specs_by_spec[spec] }.each do |key, subspecs|
+              pod_options[key] = subspecs.map { |s| s.name.sub(%r{^#{Regexp.escape spec.root.name}/}, '') }.sort unless subspecs.blank?
+            end
+            pod spec.name, **pod_options
+          end
 
           # Implement local-sources option to set up dependencies to podspecs in the local filesystem.
           next if generator.configuration.local_sources.empty?
-          generator.transitive_local_dependencies(spec, generator.configuration.local_sources).sort_by(&:first).each do |dependency, podspec_file|
-            pod_options = generator.dependency_compilation_kwargs(dependency.name)
-            pod_options[:path] = if podspec_file[0] == '/' # absolute path
-                                   podspec_file
-                                 else
-                                   '../../' + podspec_file
-                                 end
-            pod dependency.name, **pod_options
+          specs.each do |spec|
+            generator.transitive_local_dependencies(spec, generator.configuration.local_sources).sort_by(&:first).each do |dependency, podspec_file|
+              pod_options = generator.dependency_compilation_kwargs(dependency.name)
+              pod_options[:path] = if podspec_file[0] == '/' # absolute path
+                                     podspec_file
+                                   else
+                                     '../../' + podspec_file
+                                   end
+              pod dependency.name, **pod_options
+            end
           end
         end
       end
