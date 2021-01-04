@@ -410,7 +410,7 @@ module Pod
         source_file.open('w') do |f|
           f << import_statements.join("\n")
           f << "\n" unless import_statements.empty?
-          f << "int main() {}\n"
+          f << "int main() { return 0; }\n"
         end
 
         source_file

@@ -82,7 +82,7 @@ module Pod
             end
             pods_for_transitive_dependencies.uniq!
 
-            spec_names = specs.map { |s| s.root.name }
+            spec_names = specs.map { |s| s.root.name }.to_set
             dependencies = generator
                            .transitive_dependencies_by_pod
                            .values_at(*pods_for_transitive_dependencies)

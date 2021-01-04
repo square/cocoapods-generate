@@ -1,2 +1,2 @@
 @import Forkable;
-int main() {}
+int main() { return 0; }

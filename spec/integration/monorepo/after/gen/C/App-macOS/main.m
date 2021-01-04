@@ -1,2 +1,2 @@
 @import C;
-int main() {}
+int main() { return 0; }

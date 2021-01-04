@@ -1,2 +1,2 @@
 @import A;
-int main() {}
+int main() { return 0; }
