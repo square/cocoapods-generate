@@ -1,0 +1,49 @@
+CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP_XCODEBUILD=TRUE CP_REPOS_DIR=./spec/integration/specs-repos ./bin/cocoapods-gen Frameworks/*/*.podspec --single-workspace --verbose --no-ansi 2>&1
+[pod gen] Running with `pod gen` configuration {
+  podfile_path: ./spec/integration/tmp/single_workspace/transformed/Podfile,
+  podfile: Podfile,
+  use_podfile: true,
+  use_podfile_plugins: true,
+  podfile_plugins: {},
+  lockfile: #<Pod::Lockfile>,
+  use_lockfile: true,
+  use_lockfile_versions: true,
+  use_libraries: false,
+  generate_multiple_pod_projects: false,
+  incremental_installation: false,
+  gen_directory: ./spec/integration/tmp/single_workspace/transformed/gen,
+  auto_open: false,
+  clean: false,
+  podspec_paths: [#<Pathname:./spec/integration/tmp/single_workspace/transformed/Frameworks/a/A.podspec>, #<Pathname:./spec/integration/tmp/single_workspace/transformed/Frameworks/b/B.podspec>, #<Pathname:./spec/integration/tmp/single_workspace/transformed/Frameworks/c/C.podspec>, #<Pathname:./spec/integration/tmp/single_workspace/transformed/Frameworks/d/D.podspec>, #<Pathname:./spec/integration/tmp/single_workspace/transformed/Frameworks/e/E.podspec>, #<Pathname:./spec/integration/tmp/single_workspace/transformed/Frameworks/f/F.podspec>, #<Pathname:./spec/integration/tmp/single_workspace/transformed/Frameworks/g/G.podspec>],
+  podspecs: [#<Pod::Specification name="A">, #<Pod::Specification name="B">, #<Pod::Specification name="C">, #<Pod::Specification name="D">, #<Pod::Specification name="E">, #<Pod::Specification name="F">, #<Pod::Specification name="G">],
+  sources: ["https://github.com/CocoaPods/Specs.git"],
+  local_sources: [],
+  repo_update: false,
+  use_default_plugins: false,
+  deterministic_uuids: true,
+  disable_input_output_paths: false,
+  share_schemes_for_development_pods: false,
+  warn_for_multiple_pod_sources: true,
+  use_modular_headers: false,
+  single_workspace: true }
+
+Generating workspace in `gen/Workspace`
+    Creating stub application
+    Writing Podfile
+
+Installing...
+Installing A (1.0.0.LOCAL)
+Installing B (1.0.0.LOCAL)
+Installing C (1.0.0.LOCAL)
+Installing D (1.0.0.LOCAL)
+Installing E (1.0.0.LOCAL)
+Installing F (1.0.0.LOCAL)
+Installing G (1.0.0.LOCAL)
+Installing OnlyPre (1.0.0.pre.1)
+Installing Public (3.0.0)
+
+[!] Please close any current Xcode sessions and use `Workspace.xcworkspace` for this project from now on.
+Pod installation complete! There are 23 dependencies from the Podfile and 9 total pods installed.
+
+Performing post-installation steps
+    Open `gen/Workspace/Workspace.xcworkspace` to work on it!

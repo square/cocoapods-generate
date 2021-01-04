@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+ENV['COCOAPODS_DISABLE_STATS'] = '1'
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+
+install! 'cocoapods',
+         integrate_targets: false
+
+target 'App' do
+  platform :ios, '9.0'
+
+  %w[a b c d f g].each { |n| pod n.upcase, path: "Frameworks/#{n}/#{n.upcase}.podspec", testspecs: %w[Tests], appspecs: %w[App] }
+
+  target 'AppTests' do
+    inherit! :search_paths
+
+    pod 'E', path: 'Frameworks/e/E.podspec', testspecs: %w[Tests]
+  end
+end

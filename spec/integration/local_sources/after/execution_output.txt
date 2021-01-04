@@ -23,9 +23,10 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   disable_input_output_paths: false,
   share_schemes_for_development_pods: false,
   warn_for_multiple_pod_sources: true,
-  use_modular_headers: false }
+  use_modular_headers: false,
+  single_workspace: false }
 
-Generating E in `gen/E`
+Generating workspace in `gen/E`
     Creating stub application
     Writing Podfile
 
@@ -39,4 +40,4 @@ Installing E (1.0.0.LOCAL)
 Pod installation complete! There are 6 dependencies from the Podfile and 4 total pods installed.
 
 Performing post-installation steps
-    Open `gen/E/E.xcworkspace` to work on E
+    Open `gen/E/E.xcworkspace` to work on it!

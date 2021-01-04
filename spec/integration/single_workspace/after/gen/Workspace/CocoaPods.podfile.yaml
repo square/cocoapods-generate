@@ -1,0 +1,80 @@
+---
+installation_method:
+  name: cocoapods
+  options:
+    :deterministic_uuids: true
+    :disable_input_output_paths: false
+    :generate_multiple_pod_projects: false
+    :incremental_installation: false
+    :share_schemes_for_development_pods: false
+    :warn_for_multiple_pod_sources: true
+workspace: Workspace.xcworkspace
+sources:
+  - https://github.com/CocoaPods/Specs.git
+plugins:
+  cocoapods-disable-podfile-validations:
+    no_abstract_only_pods: true
+  cocoapods-generate:
+    {}
+target_definitions:
+  - abstract: true
+    children:
+      - abstract: true
+        dependencies:
+          - OnlyPre:
+            - "= 1.0.0.pre.1"
+          - Public:
+            - "= 3.0.0"
+        name: Transitive Dependencies
+      - name: App-iOS
+      - name: App-macOS
+      - name: App-tvOS
+      - name: App-watchOS
+    dependencies:
+      - A:
+        - :path: "../../Frameworks/a/A.podspec"
+      - A/App:
+        - :path: "../../Frameworks/a/A.podspec"
+      - A/Tests:
+        - :path: "../../Frameworks/a/A.podspec"
+      - B:
+        - :path: "../../Frameworks/b/B.podspec"
+      - B/App:
+        - :path: "../../Frameworks/b/B.podspec"
+      - B/Tests:
+        - :path: "../../Frameworks/b/B.podspec"
+      - C:
+        - :path: "../../Frameworks/c/C.podspec"
+      - C/App:
+        - :path: "../../Frameworks/c/C.podspec"
+      - C/Tests:
+        - :path: "../../Frameworks/c/C.podspec"
+      - D:
+        - :path: "../../Frameworks/d/D.podspec"
+      - D/App:
+        - :path: "../../Frameworks/d/D.podspec"
+      - D/Tests:
+        - :path: "../../Frameworks/d/D.podspec"
+      - E:
+        - :path: "../../Frameworks/e/E.podspec"
+      - E/App:
+        - :path: "../../Frameworks/e/E.podspec"
+      - E/Tests:
+        - :path: "../../Frameworks/e/E.podspec"
+      - F:
+        - :path: "../../Frameworks/f/F.podspec"
+      - F/App:
+        - :path: "../../Frameworks/f/F.podspec"
+      - F/Tests:
+        - :path: "../../Frameworks/f/F.podspec"
+      - G:
+        - :path: "../../Frameworks/g/G.podspec"
+      - G/App:
+        - :path: "../../Frameworks/g/G.podspec"
+      - G/Tests:
+        - :path: "../../Frameworks/g/G.podspec"
+    name: Pods
+    user_project_path: Workspace.xcodeproj
+    uses_frameworks:
+      :linkage: :dynamic
+      :packaging: :framework

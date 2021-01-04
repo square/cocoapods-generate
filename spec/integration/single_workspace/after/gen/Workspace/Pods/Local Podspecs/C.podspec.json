@@ -1,0 +1,41 @@
+{
+  "name": "C",
+  "version": "1.0.0.LOCAL",
+  "authors": [
+    "Square"
+  ],
+  "homepage": "https://github.com/Square/cocoapods-generate",
+  "source": {
+    "git": "https://github.com/Square/cocoapods-generate"
+  },
+  "summary": "Testing pod",
+  "source_files": "Sources/**/*.{h,m,swift}",
+  "private_header_files": "Sources/Internal/**/*.h",
+  "dependencies": {
+    "A": [
+      "1.0.0.LOCAL"
+    ],
+    "B": [
+
+    ]
+  },
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  },
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "source_files": "Tests/**/*.{h,m,swift}"
+    }
+  ],
+  "appspecs": [
+    {
+      "name": "App",
+      "source_files": "App/**/*.{h,m,swift}"
+    }
+  ]
+}

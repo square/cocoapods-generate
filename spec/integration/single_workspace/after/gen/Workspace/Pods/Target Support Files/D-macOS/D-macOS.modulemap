@@ -1,0 +1,6 @@
+framework module D {
+  umbrella header "D-macOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

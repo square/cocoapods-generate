@@ -1,0 +1,6 @@
+module G [system] {
+  umbrella header "G-umbrella.h"
+
+  export *
+  module * { export * }
+}
