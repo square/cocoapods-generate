@@ -5,4 +5,4 @@
 @import E;
 @import F;
 @import G;
-int main() {}
+int main() { return 0; }
