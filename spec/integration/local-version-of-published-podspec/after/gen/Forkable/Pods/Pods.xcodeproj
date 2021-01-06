@@ -264,7 +264,10 @@ Targets:
           INFOPLIST_FILE: Target Support Files/Forkable-iOS/Forkable-iOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
           IPHONEOS_DEPLOYMENT_TARGET: '9.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/Forkable-iOS/Forkable-iOS.modulemap
           PRODUCT_MODULE_NAME: Forkable
           PRODUCT_NAME: Forkable
@@ -291,7 +294,10 @@ Targets:
           INFOPLIST_FILE: Target Support Files/Forkable-iOS/Forkable-iOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
           IPHONEOS_DEPLOYMENT_TARGET: '9.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/Forkable-iOS/Forkable-iOS.modulemap
           PRODUCT_MODULE_NAME: Forkable
           PRODUCT_NAME: Forkable
@@ -353,14 +359,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/Forkable-iOS/Forkable-iOS-Unit-Tests-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/Forkable-iOS/Forkable.framework"
-          - "${PODS_ROOT}/Target Support Files/Forkable-iOS/Forkable-iOS-Unit-Tests-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/Forkable-iOS/Forkable-iOS-Unit-Tests-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Forkable.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/Forkable-iOS/Forkable-iOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
@@ -391,7 +396,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/Forkable-macOS/Forkable-macOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/Forkable-macOS/Forkable-macOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
+            - "@loader_path/Frameworks"
           MACOSX_DEPLOYMENT_TARGET: '10.10'
           MODULEMAP_FILE: Target Support Files/Forkable-macOS/Forkable-macOS.modulemap
           PRODUCT_MODULE_NAME: Forkable
@@ -421,7 +429,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/Forkable-macOS/Forkable-macOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/Forkable-macOS/Forkable-macOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
+            - "@loader_path/Frameworks"
           MACOSX_DEPLOYMENT_TARGET: '10.10'
           MODULEMAP_FILE: Target Support Files/Forkable-macOS/Forkable-macOS.modulemap
           PRODUCT_MODULE_NAME: Forkable
@@ -481,14 +492,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/Forkable-macOS/Forkable-macOS-Unit-Tests-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/Forkable-macOS/Forkable.framework"
-          - "${PODS_ROOT}/Target Support Files/Forkable-macOS/Forkable-macOS-Unit-Tests-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/Forkable-macOS/Forkable-macOS-Unit-Tests-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Forkable.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/Forkable-macOS/Forkable-macOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
@@ -515,7 +525,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/Forkable-tvOS/Forkable-tvOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/Forkable-tvOS/Forkable-tvOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/Forkable-tvOS/Forkable-tvOS.modulemap
           PRODUCT_MODULE_NAME: Forkable
           PRODUCT_NAME: Forkable
@@ -542,7 +555,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/Forkable-tvOS/Forkable-tvOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/Forkable-tvOS/Forkable-tvOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/Forkable-tvOS/Forkable-tvOS.modulemap
           PRODUCT_MODULE_NAME: Forkable
           PRODUCT_NAME: Forkable
@@ -603,14 +619,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/Forkable-tvOS/Forkable-tvOS-Unit-Tests-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/Forkable-tvOS/Forkable.framework"
-          - "${PODS_ROOT}/Target Support Files/Forkable-tvOS/Forkable-tvOS-Unit-Tests-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/Forkable-tvOS/Forkable-tvOS-Unit-Tests-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Forkable.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/Forkable-tvOS/Forkable-tvOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
@@ -638,7 +653,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/Forkable-watchOS/Forkable-watchOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/Forkable-watchOS/Forkable-watchOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/Forkable-watchOS/Forkable-watchOS.modulemap
           PRODUCT_MODULE_NAME: Forkable
           PRODUCT_NAME: Forkable
@@ -666,7 +684,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/Forkable-watchOS/Forkable-watchOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/Forkable-watchOS/Forkable-watchOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/Forkable-watchOS/Forkable-watchOS.modulemap
           PRODUCT_MODULE_NAME: Forkable
           PRODUCT_NAME: Forkable
@@ -727,14 +748,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/Forkable-watchOS/Forkable-watchOS-Unit-Tests-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/Forkable-watchOS/Forkable.framework"
-          - "${PODS_ROOT}/Target Support Files/Forkable-watchOS/Forkable-watchOS-Unit-Tests-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/Forkable-watchOS/Forkable-watchOS-Unit-Tests-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Forkable.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/Forkable-watchOS/Forkable-watchOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
@@ -762,7 +782,10 @@ Targets:
           INFOPLIST_FILE: Target Support Files/Pods-App-iOS/Pods-App-iOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
           IPHONEOS_DEPLOYMENT_TARGET: '9.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-iOS/Pods-App-iOS.modulemap
           OTHER_LDFLAGS: ''
@@ -791,7 +814,10 @@ Targets:
           INFOPLIST_FILE: Target Support Files/Pods-App-iOS/Pods-App-iOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
           IPHONEOS_DEPLOYMENT_TARGET: '9.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-iOS/Pods-App-iOS.modulemap
           OTHER_LDFLAGS: ''
@@ -837,7 +863,10 @@ Targets:
           FRAMEWORK_VERSION: A
           INFOPLIST_FILE: Target Support Files/Pods-App-macOS/Pods-App-macOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MACOSX_DEPLOYMENT_TARGET: '10.10'
           MODULEMAP_FILE: Target Support Files/Pods-App-macOS/Pods-App-macOS.modulemap
@@ -869,7 +898,10 @@ Targets:
           FRAMEWORK_VERSION: A
           INFOPLIST_FILE: Target Support Files/Pods-App-macOS/Pods-App-macOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MACOSX_DEPLOYMENT_TARGET: '10.10'
           MODULEMAP_FILE: Target Support Files/Pods-App-macOS/Pods-App-macOS.modulemap
@@ -910,7 +942,10 @@ Targets:
           DYLIB_INSTALL_NAME_BASE: "@rpath"
           INFOPLIST_FILE: Target Support Files/Pods-App-tvOS/Pods-App-tvOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-tvOS/Pods-App-tvOS.modulemap
           OTHER_LDFLAGS: ''
@@ -939,7 +974,10 @@ Targets:
           DYLIB_INSTALL_NAME_BASE: "@rpath"
           INFOPLIST_FILE: Target Support Files/Pods-App-tvOS/Pods-App-tvOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-tvOS/Pods-App-tvOS.modulemap
           OTHER_LDFLAGS: ''
@@ -983,7 +1021,10 @@ Targets:
           DYLIB_INSTALL_NAME_BASE: "@rpath"
           INFOPLIST_FILE: Target Support Files/Pods-App-watchOS/Pods-App-watchOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-watchOS/Pods-App-watchOS.modulemap
           OTHER_LDFLAGS: ''
@@ -1013,7 +1054,10 @@ Targets:
           DYLIB_INSTALL_NAME_BASE: "@rpath"
           INFOPLIST_FILE: Target Support Files/Pods-App-watchOS/Pods-App-watchOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-watchOS/Pods-App-watchOS.modulemap
           OTHER_LDFLAGS: ''

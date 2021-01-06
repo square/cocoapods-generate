@@ -153,7 +153,9 @@ Targets:
           CODE_SIGN_IDENTITY: iPhone Developer
           INFOPLIST_FILE: "${SRCROOT}/App-iOS/Info.plist"
           IPHONEOS_DEPLOYMENT_TARGET: '8.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: iphoneos
           SWIFT_VERSION: '4.0'
@@ -165,7 +167,9 @@ Targets:
           CODE_SIGN_IDENTITY: iPhone Developer
           INFOPLIST_FILE: "${SRCROOT}/App-iOS/Info.plist"
           IPHONEOS_DEPLOYMENT_TARGET: '8.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: iphoneos
           SWIFT_VERSION: '4.0'
@@ -174,20 +178,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/Pods-App-iOS/Pods-App-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-iOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-iOS/B.framework"
-          - "${BUILT_PRODUCTS_DIR}/C-iOS/C.framework"
-          - "${BUILT_PRODUCTS_DIR}/E-iOS/E.framework"
-          - "${PODS_ROOT}/Target Support Files/Pods-App-iOS/Pods-App-iOS-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/Pods-App-iOS/Pods-App-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/E.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-iOS/Pods-App-iOS-frameworks.sh\"\n"
       - Frameworks:
@@ -205,7 +202,9 @@ Targets:
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
           CODE_SIGN_IDENTITY: "-"
           COMBINE_HIDPI_IMAGES: YES
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: macosx
           SWIFT_VERSION: '4.0'
@@ -215,27 +214,22 @@ Targets:
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
           CODE_SIGN_IDENTITY: "-"
           COMBINE_HIDPI_IMAGES: YES
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: macosx
           SWIFT_VERSION: '4.0'
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/Pods-App-macOS/Pods-App-macOS-frameworks-${CONFIGURATION}-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-macOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-macOS/B.framework"
-          - "${BUILT_PRODUCTS_DIR}/C-macOS/C.framework"
-          - "${BUILT_PRODUCTS_DIR}/E-macOS/E.framework"
-          - "${PODS_ROOT}/Target Support Files/Pods-App-macOS/Pods-App-macOS-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/Pods-App-macOS/Pods-App-macOS-frameworks-${CONFIGURATION}-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/E.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-macOS/Pods-App-macOS-frameworks.sh\"\n"
       - Frameworks:
@@ -252,7 +246,9 @@ Targets:
         Build Settings:
           ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
           ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME: LaunchImage
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: appletvos
           SWIFT_VERSION: '4.0'
@@ -262,7 +258,9 @@ Targets:
         Build Settings:
           ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
           ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME: LaunchImage
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}"
           SDKROOT: appletvos
           SWIFT_VERSION: '4.0'
@@ -271,20 +269,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/Pods-App-tvOS/Pods-App-tvOS-frameworks-${CONFIGURATION}-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-tvOS/B.framework"
-          - "${BUILT_PRODUCTS_DIR}/C-tvOS/C.framework"
-          - "${BUILT_PRODUCTS_DIR}/E-tvOS/E.framework"
-          - "${PODS_ROOT}/Target Support Files/Pods-App-tvOS/Pods-App-tvOS-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/Pods-App-tvOS/Pods-App-tvOS-frameworks-${CONFIGURATION}-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/E.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-tvOS/Pods-App-tvOS-frameworks.sh\"\n"
       - Frameworks:
@@ -318,20 +309,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/Pods-App-watchOS/Pods-App-watchOS-frameworks-${CONFIGURATION}-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-watchOS/B.framework"
-          - "${BUILT_PRODUCTS_DIR}/C-watchOS/C.framework"
-          - "${BUILT_PRODUCTS_DIR}/E-watchOS/E.framework"
-          - "${PODS_ROOT}/Target Support Files/Pods-App-watchOS/Pods-App-watchOS-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/Pods-App-watchOS/Pods-App-watchOS-frameworks-${CONFIGURATION}-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/C.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/E.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/Pods-App-watchOS/Pods-App-watchOS-frameworks.sh\"\n"
       - Frameworks:

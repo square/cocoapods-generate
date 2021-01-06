@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-App-tvOS/Pods-App-tvOS-frameworks.sh
+${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework
+${BUILT_PRODUCTS_DIR}/B-tvOS/B.framework
+${BUILT_PRODUCTS_DIR}/C-tvOS/C.framework

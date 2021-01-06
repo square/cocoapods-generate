@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/D-watchOS/D-watchOS-Unit-Tests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/D-watchOS/D.framework
+${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework
+${BUILT_PRODUCTS_DIR}/C-watchOS/C.framework
+${BUILT_PRODUCTS_DIR}/B-watchOS/B.framework
+${BUILT_PRODUCTS_DIR}/E-watchOS/E.framework

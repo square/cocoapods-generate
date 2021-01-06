@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/F-watchOS/F-watchOS-App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/F-watchOS/F.framework
+${BUILT_PRODUCTS_DIR}/C-watchOS/C.framework
+${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework
+${BUILT_PRODUCTS_DIR}/B-watchOS/B.framework

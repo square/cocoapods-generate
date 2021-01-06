@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/F-tvOS/F-tvOS-Unit-Tests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/F-tvOS/F.framework
+${BUILT_PRODUCTS_DIR}/C-tvOS/C.framework
+${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework
+${BUILT_PRODUCTS_DIR}/B-tvOS/B.framework

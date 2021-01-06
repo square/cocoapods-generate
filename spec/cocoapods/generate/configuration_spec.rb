@@ -32,7 +32,8 @@ RSpec.describe Pod::Generate::Configuration do
         single_workspace: false,
         use_podfile: false,
         use_podfile_plugins: false,
-        warn_for_multiple_pod_sources: false
+        warn_for_multiple_pod_sources: false,
+        xcode_version: Pod::Version.new('9.3')
       )
     end
   end
@@ -62,7 +63,8 @@ RSpec.describe Pod::Generate::Configuration do
               share_schemes_for_development_pods: true,
               warn_for_multiple_pod_sources: false,
               use_modular_headers: false,
-              single_workspace: false }
+              single_workspace: false,
+              xcode_version: 9.3 }
         TO_S
   end
 

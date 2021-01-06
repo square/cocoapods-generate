@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/F-iOS/F-iOS-App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/F-iOS/F.framework
+${BUILT_PRODUCTS_DIR}/C-iOS/C.framework
+${BUILT_PRODUCTS_DIR}/A-iOS/A.framework
+${BUILT_PRODUCTS_DIR}/B-iOS/B.framework

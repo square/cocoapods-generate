@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/D-macOS/D-macOS-App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/D-macOS/D.framework
+${BUILT_PRODUCTS_DIR}/A-macOS/A.framework
+${BUILT_PRODUCTS_DIR}/C-macOS/C.framework
+${BUILT_PRODUCTS_DIR}/B-macOS/B.framework

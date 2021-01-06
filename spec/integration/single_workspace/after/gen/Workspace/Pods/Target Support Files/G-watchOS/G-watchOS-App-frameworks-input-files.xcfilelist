@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/G-watchOS/G-watchOS-App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/G-watchOS/G.framework
+${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework

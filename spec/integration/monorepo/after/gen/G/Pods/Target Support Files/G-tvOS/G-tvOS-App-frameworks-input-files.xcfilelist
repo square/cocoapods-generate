@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/G-tvOS/G-tvOS-App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/G-tvOS/G.framework
+${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework

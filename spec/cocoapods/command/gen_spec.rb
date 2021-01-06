@@ -103,6 +103,8 @@ RSpec.describe Pod::Command::Gen, :tmpdir do
                                                          and a podfile are specified
                   --single-workspace                     Whether to produce a single workspace for
                                                          all podspecs specified.
+                  --xcode-version=xcode_version          The Xcode version to use for producing the
+                                                         consumer sample project
             HELP
     end
   end

@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-App-macOS/Pods-App-macOS-frameworks.sh
+${BUILT_PRODUCTS_DIR}/A-macOS/A.framework
+${BUILT_PRODUCTS_DIR}/B-macOS/B.framework

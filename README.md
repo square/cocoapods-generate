@@ -103,6 +103,8 @@ Options:
                                            and a podfile are specified
     --single-workspace                     Whether to produce a single workspace for
                                            all podspecs specified.
+    --xcode-version=xcode_version          The Xcode version to use for producing the
+                                           consumer sample project
 ```
 <!-- end cli usage -->
 

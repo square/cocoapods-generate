@@ -338,7 +338,10 @@ Targets:
           INFOPLIST_FILE: Target Support Files/A-iOS/A-iOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
           IPHONEOS_DEPLOYMENT_TARGET: '8.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/A-iOS/A-iOS.modulemap
           PRODUCT_MODULE_NAME: A
           PRODUCT_NAME: A
@@ -365,7 +368,10 @@ Targets:
           INFOPLIST_FILE: Target Support Files/A-iOS/A-iOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
           IPHONEOS_DEPLOYMENT_TARGET: '8.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/A-iOS/A-iOS.modulemap
           PRODUCT_MODULE_NAME: A
           PRODUCT_NAME: A
@@ -419,7 +425,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/A-macOS/A-macOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/A-macOS/A-macOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
+            - "@loader_path/Frameworks"
           MACOSX_DEPLOYMENT_TARGET: '10.6'
           MODULEMAP_FILE: Target Support Files/A-macOS/A-macOS.modulemap
           PRODUCT_MODULE_NAME: A
@@ -449,7 +458,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/A-macOS/A-macOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/A-macOS/A-macOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
+            - "@loader_path/Frameworks"
           MACOSX_DEPLOYMENT_TARGET: '10.6'
           MODULEMAP_FILE: Target Support Files/A-macOS/A-macOS.modulemap
           PRODUCT_MODULE_NAME: A
@@ -498,7 +510,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/A-tvOS/A-tvOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/A-tvOS/A-tvOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/A-tvOS/A-tvOS.modulemap
           PRODUCT_MODULE_NAME: A
           PRODUCT_NAME: A
@@ -525,7 +540,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/A-tvOS/A-tvOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/A-tvOS/A-tvOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/A-tvOS/A-tvOS.modulemap
           PRODUCT_MODULE_NAME: A
           PRODUCT_NAME: A
@@ -577,7 +595,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/A-watchOS/A-watchOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/A-watchOS/A-watchOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/A-watchOS/A-watchOS.modulemap
           PRODUCT_MODULE_NAME: A
           PRODUCT_NAME: A
@@ -605,7 +626,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/A-watchOS/A-watchOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/A-watchOS/A-watchOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/A-watchOS/A-watchOS.modulemap
           PRODUCT_MODULE_NAME: A
           PRODUCT_NAME: A
@@ -657,7 +681,10 @@ Targets:
           INFOPLIST_FILE: Target Support Files/B-iOS/B-iOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
           IPHONEOS_DEPLOYMENT_TARGET: '8.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/B-iOS/B-iOS.modulemap
           PRODUCT_MODULE_NAME: B
           PRODUCT_NAME: B
@@ -684,7 +711,10 @@ Targets:
           INFOPLIST_FILE: Target Support Files/B-iOS/B-iOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
           IPHONEOS_DEPLOYMENT_TARGET: '8.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/B-iOS/B-iOS.modulemap
           PRODUCT_MODULE_NAME: B
           PRODUCT_NAME: B
@@ -731,7 +761,9 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/B-iOS/B-iOS-App-prefix.pch
           INFOPLIST_FILE: App/B-iOS-App-Info.plist
           IPHONEOS_DEPLOYMENT_TARGET: '8.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
           PRODUCT_NAME: B-iOS-App
           SDKROOT: iphoneos
@@ -749,7 +781,9 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/B-iOS/B-iOS-App-prefix.pch
           INFOPLIST_FILE: App/B-iOS-App-Info.plist
           IPHONEOS_DEPLOYMENT_TARGET: '8.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
           PRODUCT_NAME: B-iOS-App
           SDKROOT: iphoneos
@@ -760,16 +794,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/B-iOS/B-iOS-App-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-iOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-iOS/B.framework"
-          - "${PODS_ROOT}/Target Support Files/B-iOS/B-iOS-App-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/B-iOS/B-iOS-App-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/B-iOS/B-iOS-App-frameworks.sh\"\n"
       - Frameworks:
@@ -821,16 +852,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/B-iOS/B-iOS-Unit-Tests-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-iOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-iOS/B.framework"
-          - "${PODS_ROOT}/Target Support Files/B-iOS/B-iOS-Unit-Tests-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/B-iOS/B-iOS-Unit-Tests-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/B-iOS/B-iOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
@@ -864,7 +892,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/B-macOS/B-macOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/B-macOS/B-macOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
+            - "@loader_path/Frameworks"
           MACOSX_DEPLOYMENT_TARGET: '10.6'
           MODULEMAP_FILE: Target Support Files/B-macOS/B-macOS.modulemap
           PRODUCT_MODULE_NAME: B
@@ -894,7 +925,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/B-macOS/B-macOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/B-macOS/B-macOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
+            - "@loader_path/Frameworks"
           MACOSX_DEPLOYMENT_TARGET: '10.6'
           MODULEMAP_FILE: Target Support Files/B-macOS/B-macOS.modulemap
           PRODUCT_MODULE_NAME: B
@@ -943,7 +977,9 @@ Targets:
           CURRENT_PROJECT_VERSION: '1'
           GCC_PREFIX_HEADER: Target Support Files/B-macOS/B-macOS-App-prefix.pch
           INFOPLIST_FILE: App/B-macOS-App-Info.plist
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
           MACOSX_DEPLOYMENT_TARGET: '10.6'
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
           PRODUCT_NAME: B-macOS-App
@@ -964,7 +1000,9 @@ Targets:
           CURRENT_PROJECT_VERSION: '1'
           GCC_PREFIX_HEADER: Target Support Files/B-macOS/B-macOS-App-prefix.pch
           INFOPLIST_FILE: App/B-macOS-App-Info.plist
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
           MACOSX_DEPLOYMENT_TARGET: '10.6'
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
           PRODUCT_NAME: B-macOS-App
@@ -974,16 +1012,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/B-macOS/B-macOS-App-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-macOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-macOS/B.framework"
-          - "${PODS_ROOT}/Target Support Files/B-macOS/B-macOS-App-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/B-macOS/B-macOS-App-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/B-macOS/B-macOS-App-frameworks.sh\"\n"
       - Frameworks:
@@ -1034,16 +1069,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/B-macOS/B-macOS-Unit-Tests-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-macOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-macOS/B.framework"
-          - "${PODS_ROOT}/Target Support Files/B-macOS/B-macOS-Unit-Tests-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/B-macOS/B-macOS-Unit-Tests-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/B-macOS/B-macOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
@@ -1073,7 +1105,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/B-tvOS/B-tvOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/B-tvOS/B-tvOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/B-tvOS/B-tvOS.modulemap
           PRODUCT_MODULE_NAME: B
           PRODUCT_NAME: B
@@ -1100,7 +1135,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/B-tvOS/B-tvOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/B-tvOS/B-tvOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/B-tvOS/B-tvOS.modulemap
           PRODUCT_MODULE_NAME: B
           PRODUCT_NAME: B
@@ -1150,7 +1188,9 @@ Targets:
           CURRENT_PROJECT_VERSION: '1'
           GCC_PREFIX_HEADER: Target Support Files/B-tvOS/B-tvOS-App-prefix.pch
           INFOPLIST_FILE: App/B-tvOS-App-Info.plist
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
           PRODUCT_NAME: B-tvOS-App
           SDKROOT: appletvos
@@ -1171,7 +1211,9 @@ Targets:
           CURRENT_PROJECT_VERSION: '1'
           GCC_PREFIX_HEADER: Target Support Files/B-tvOS/B-tvOS-App-prefix.pch
           INFOPLIST_FILE: App/B-tvOS-App-Info.plist
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
           PRODUCT_BUNDLE_IDENTIFIER: "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}"
           PRODUCT_NAME: B-tvOS-App
           SDKROOT: appletvos
@@ -1183,16 +1225,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/B-tvOS/B-tvOS-App-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-tvOS/B.framework"
-          - "${PODS_ROOT}/Target Support Files/B-tvOS/B-tvOS-App-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/B-tvOS/B-tvOS-App-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/B-tvOS/B-tvOS-App-frameworks.sh\"\n"
       - Frameworks:
@@ -1242,16 +1281,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/B-tvOS/B-tvOS-Unit-Tests-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-tvOS/B.framework"
-          - "${PODS_ROOT}/Target Support Files/B-tvOS/B-tvOS-Unit-Tests-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/B-tvOS/B-tvOS-Unit-Tests-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/B-tvOS/B-tvOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
@@ -1282,7 +1318,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/B-watchOS/B-watchOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/B-watchOS/B-watchOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/B-watchOS/B-watchOS.modulemap
           PRODUCT_MODULE_NAME: B
           PRODUCT_NAME: B
@@ -1310,7 +1349,10 @@ Targets:
           GCC_PREFIX_HEADER: Target Support Files/B-watchOS/B-watchOS-prefix.pch
           INFOPLIST_FILE: Target Support Files/B-watchOS/B-watchOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MODULEMAP_FILE: Target Support Files/B-watchOS/B-watchOS.modulemap
           PRODUCT_MODULE_NAME: B
           PRODUCT_NAME: B
@@ -1391,16 +1433,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/B-watchOS/B-watchOS-App-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-watchOS/B.framework"
-          - "${PODS_ROOT}/Target Support Files/B-watchOS/B-watchOS-App-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/B-watchOS/B-watchOS-App-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/B-watchOS/B-watchOS-App-frameworks.sh\"\n"
       - Frameworks:
@@ -1450,16 +1489,13 @@ Targets:
     Build Phases:
       - "[CP] Embed Pods Frameworks":
         Input File List Paths:
-          []
+          - "${PODS_ROOT}/Target Support Files/B-watchOS/B-watchOS-Unit-Tests-frameworks-input-files.xcfilelist"
         Input Paths:
-          - "${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework"
-          - "${BUILT_PRODUCTS_DIR}/B-watchOS/B.framework"
-          - "${PODS_ROOT}/Target Support Files/B-watchOS/B-watchOS-Unit-Tests-frameworks.sh"
-        Output File List Paths:
           []
+        Output File List Paths:
+          - "${PODS_ROOT}/Target Support Files/B-watchOS/B-watchOS-Unit-Tests-frameworks-output-files.xcfilelist"
         Output Paths:
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/A.framework"
-          - "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/B.framework"
+          []
         Shell Path: "/bin/sh"
         Shell Script: "\"${PODS_ROOT}/Target Support Files/B-watchOS/B-watchOS-Unit-Tests-frameworks.sh\"\n"
       - Frameworks:
@@ -1490,7 +1526,10 @@ Targets:
           INFOPLIST_FILE: Target Support Files/Pods-App-iOS/Pods-App-iOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
           IPHONEOS_DEPLOYMENT_TARGET: '8.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-iOS/Pods-App-iOS.modulemap
           OTHER_LDFLAGS: ''
@@ -1519,7 +1558,10 @@ Targets:
           INFOPLIST_FILE: Target Support Files/Pods-App-iOS/Pods-App-iOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
           IPHONEOS_DEPLOYMENT_TARGET: '8.0'
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-iOS/Pods-App-iOS.modulemap
           OTHER_LDFLAGS: ''
@@ -1565,7 +1607,10 @@ Targets:
           FRAMEWORK_VERSION: A
           INFOPLIST_FILE: Target Support Files/Pods-App-macOS/Pods-App-macOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MACOSX_DEPLOYMENT_TARGET: ''
           MODULEMAP_FILE: Target Support Files/Pods-App-macOS/Pods-App-macOS.modulemap
@@ -1597,7 +1642,10 @@ Targets:
           FRAMEWORK_VERSION: A
           INFOPLIST_FILE: Target Support Files/Pods-App-macOS/Pods-App-macOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/../Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MACOSX_DEPLOYMENT_TARGET: ''
           MODULEMAP_FILE: Target Support Files/Pods-App-macOS/Pods-App-macOS.modulemap
@@ -1638,7 +1686,10 @@ Targets:
           DYLIB_INSTALL_NAME_BASE: "@rpath"
           INFOPLIST_FILE: Target Support Files/Pods-App-tvOS/Pods-App-tvOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-tvOS/Pods-App-tvOS.modulemap
           OTHER_LDFLAGS: ''
@@ -1667,7 +1718,10 @@ Targets:
           DYLIB_INSTALL_NAME_BASE: "@rpath"
           INFOPLIST_FILE: Target Support Files/Pods-App-tvOS/Pods-App-tvOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-tvOS/Pods-App-tvOS.modulemap
           OTHER_LDFLAGS: ''
@@ -1711,7 +1765,10 @@ Targets:
           DYLIB_INSTALL_NAME_BASE: "@rpath"
           INFOPLIST_FILE: Target Support Files/Pods-App-watchOS/Pods-App-watchOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-watchOS/Pods-App-watchOS.modulemap
           OTHER_LDFLAGS: ''
@@ -1741,7 +1798,10 @@ Targets:
           DYLIB_INSTALL_NAME_BASE: "@rpath"
           INFOPLIST_FILE: Target Support Files/Pods-App-watchOS/Pods-App-watchOS-Info.plist
           INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
-          LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+          LD_RUNPATH_SEARCH_PATHS:
+            - "$(inherited)"
+            - "@executable_path/Frameworks"
+            - "@loader_path/Frameworks"
           MACH_O_TYPE: staticlib
           MODULEMAP_FILE: Target Support Files/Pods-App-watchOS/Pods-App-watchOS.modulemap
           OTHER_LDFLAGS: ''
