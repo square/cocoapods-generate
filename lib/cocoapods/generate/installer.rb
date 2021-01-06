@@ -4,6 +4,20 @@ module Pod
     # given a configuration and a generated podfile.
     #
     class Installer
+      DEFAULT_XCODE_VERSION = '9.3'.freeze
+
+      XCODE_VERSION_TO_OBJECT_VERSION = {
+        '12.0' => 54,
+        '11.4' => 53,
+        '11.0' => 52,
+        '10.0' => 51,
+        '9.3' => 50,
+        '8.0' => 48,
+        '6.3' => 47,
+        '3.2' => 46,
+        '3.1' => 45
+      }.freeze
+
       # @return [Configuration]
       #         the configuration to use when installing
       #
@@ -93,7 +107,11 @@ module Pod
         if !recreate && app_project_path.exist?
           Xcodeproj::Project.open(app_project_path)
         else
-          Xcodeproj::Project.new(app_project_path)
+          version_key = XCODE_VERSION_TO_OBJECT_VERSION.keys.find do |k|
+            configuration.xcode_version >= Pod::Version.new(k)
+          end || DEFAULT_XCODE_VERSION
+          object_version = XCODE_VERSION_TO_OBJECT_VERSION[version_key]
+          Xcodeproj::Project.new(app_project_path, false, object_version)
         end
       end
 

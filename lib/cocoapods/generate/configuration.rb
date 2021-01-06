@@ -123,6 +123,10 @@ module Pod
         value
       end
 
+      coerce_to_version = lambda do |value|
+        Pod::Version.new(value)
+      end
+
       coerce_to_pathname = lambda do |path|
         path && Pathname(path).expand_path
       end
@@ -205,6 +209,7 @@ module Pod
       option :warn_for_multiple_pod_sources, BOOLEAN, '(use_podfile && podfile) ? podfile.installation_options.warn_for_multiple_pod_sources : false', 'Whether installation should warn when a pod is found in multiple sources', nil, nil, coerce_to_bool
       option :use_modular_headers, BOOLEAN, 'false', 'Whether the target should be generated as a clang module, treating dependencies as modules, as if `use_modular_headers!` were specified. Will error if both this option and a podfile are specified', nil, nil, coerce_to_bool
       option :single_workspace, BOOLEAN, 'false', 'Whether to produce a single workspace for all podspecs specified.', nil, nil, coerce_to_bool
+      option :xcode_version, Pod::Version, 'Pod::Version.new(\'9.3\')', 'The Xcode version to use for producing the consumer sample project', 'xcode_version', nil, coerce_to_version
 
       options.freeze
       options.each do |o|

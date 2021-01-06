@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-App-watchOS/Pods-App-watchOS-frameworks.sh
+${BUILT_PRODUCTS_DIR}/A-watchOS/A.framework
+${BUILT_PRODUCTS_DIR}/B-watchOS/B.framework
+${BUILT_PRODUCTS_DIR}/C-watchOS/C.framework

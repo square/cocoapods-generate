@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/E-tvOS/E-tvOS-App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/E-tvOS/E.framework
+${BUILT_PRODUCTS_DIR}/A-tvOS/A.framework
+${BUILT_PRODUCTS_DIR}/C-tvOS/C.framework
+${BUILT_PRODUCTS_DIR}/B-tvOS/B.framework

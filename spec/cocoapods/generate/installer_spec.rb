@@ -16,15 +16,15 @@ RSpec.describe Pod::Generate::Installer do
 
   it { should_not be_nil }
 
+  before do
+    podfile.defined_in_file = config.gen_dir_for_specs(podspecs).join('Podfile.yaml')
+  end
+
+  after do
+    FileUtils.rm_rf gen_directory
+  end
+
   describe_method 'create_app_project' do
-    before do
-      podfile.defined_in_file = config.gen_dir_for_specs(podspecs).join('Podfile.yaml')
-    end
-
-    after do
-      FileUtils.rm_rf gen_directory
-    end
-
     it 'should create all targets across all specs for app project' do
       expect(subject.targets.map(&:name)).to eq(%w[App-macOS App-iOS App-tvOS App-watchOS])
     end
@@ -52,6 +52,44 @@ RSpec.describe Pod::Generate::Installer do
           expect(error).to be_a(CLAide::Help)
           expect(error.message).to start_with('[!] No available platforms for podspecs A match requested platforms: ios')
         end
+      end
+    end
+  end
+
+  describe_method 'open_app_project' do
+    context 'without specifying xcode-version parameter' do
+      it 'sets correct default object version' do
+        expect(subject.object_version).to eq '50'
+      end
+    end
+
+    context 'with specifying xcode version parameter' do
+      let(:config_options) do
+        { podfile: podfile, lockfile: lockfile, use_podfile: !!podfile,
+          use_lockfile_versions: !!lockfile, gen_directory: gen_directory, xcode_version: Pod::Version.new('10.0') }
+      end
+      it 'sets correct object version' do
+        expect(subject.object_version).to eq '51'
+      end
+    end
+
+    context 'with specifying an unknown xcode version parameter' do
+      let(:config_options) do
+        { podfile: podfile, lockfile: lockfile, use_podfile: !!podfile,
+          use_lockfile_versions: !!lockfile, gen_directory: gen_directory, xcode_version: Pod::Version.new('1.0') }
+      end
+      it 'sets correct object version' do
+        expect(subject.object_version).to eq '50'
+      end
+    end
+
+    context 'with specifying the closest xcode version parameter' do
+      let(:config_options) do
+        { podfile: podfile, lockfile: lockfile, use_podfile: !!podfile,
+          use_lockfile_versions: !!lockfile, gen_directory: gen_directory, xcode_version: Pod::Version.new('10.1') }
+      end
+      it 'sets correct object version' do
+        expect(subject.object_version).to eq '51'
       end
     end
   end

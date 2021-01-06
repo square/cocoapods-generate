@@ -25,7 +25,8 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   share_schemes_for_development_pods: false,
   warn_for_multiple_pod_sources: true,
   use_modular_headers: false,
-  single_workspace: true }
+  single_workspace: true,
+  xcode_version: 9.3 }
 
 Generating workspace in `gen/Workspace`
     Creating stub application

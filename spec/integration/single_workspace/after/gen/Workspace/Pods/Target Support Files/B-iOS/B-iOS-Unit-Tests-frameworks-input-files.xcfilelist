@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/B-iOS/B-iOS-Unit-Tests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/B-iOS/B.framework
+${BUILT_PRODUCTS_DIR}/A-iOS/A.framework

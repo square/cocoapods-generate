@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/G-iOS/G-iOS-App-frameworks.sh
+${BUILT_PRODUCTS_DIR}/G-iOS/G.framework
+${BUILT_PRODUCTS_DIR}/A-iOS/A.framework

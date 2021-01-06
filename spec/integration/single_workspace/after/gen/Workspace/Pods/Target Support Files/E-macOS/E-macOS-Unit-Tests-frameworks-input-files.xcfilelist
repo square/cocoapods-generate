@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/E-macOS/E-macOS-Unit-Tests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/E-macOS/E.framework
+${BUILT_PRODUCTS_DIR}/A-macOS/A.framework
+${BUILT_PRODUCTS_DIR}/C-macOS/C.framework
+${BUILT_PRODUCTS_DIR}/B-macOS/B.framework
