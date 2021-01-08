@@ -248,6 +248,7 @@ module Pod
 
           pod_targets.each do |pod_target|
             result = installer.target_installation_results.pod_target_installation_results[pod_target.name]
+            next unless result
             share_scheme(result.native_target.project, pod_target.label)
             pod_target.test_specs.each do |test_spec|
               share_scheme(result.native_target.project, pod_target.test_target_label(test_spec))

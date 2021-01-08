@@ -1,6 +1,28 @@
 # frozen_string_literal: true
 
 RSpec.describe Pod::Generate::Installer do
+  def pod_target_double(name, platform = Pod::Platform.ios, test_specs = [], app_specs = [], swift_version = nil)
+    pod_target = double("pod_target_double (#{name})")
+    allow(pod_target).to receive(:platform).and_return(platform)
+    allow(pod_target).to receive(:name).and_return(name)
+    allow(pod_target).to receive(:pod_name).and_return(name)
+    allow(pod_target).to receive(:label).and_return(name)
+    allow(pod_target).to receive(:spec_consumers).and_return([])
+    allow(pod_target).to receive(:product_module_name).and_return(name)
+    allow(pod_target).to receive(:should_build?).and_return(true)
+    allow(pod_target).to receive(:defines_module?).and_return(true)
+    allow(pod_target).to receive(:swift_version).and_return(swift_version)
+    allow(pod_target).to receive(:test_specs).and_return(test_specs)
+    allow(pod_target).to receive(:app_specs).and_return(app_specs)
+    pod_target
+  end
+
+  def native_target_double(name, project)
+    native_target = double("native_target_double (#{name})")
+    allow(native_target).to receive(:project).and_return(project)
+    native_target
+  end
+
   let(:podspecs) { [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] }
   let(:lockfile_specs) { [] }
   let(:gen_directory) { Pathname('./spec/cocoapods/generate/gen') }
@@ -22,6 +44,65 @@ RSpec.describe Pod::Generate::Installer do
 
   after do
     FileUtils.rm_rf gen_directory
+  end
+
+  describe_method 'perform_post_install_steps' do
+    let(:app_project) do
+      app_project = Xcodeproj::Project.new(Pathname.new(gen_directory + 'AppProject.xcodeproj'))
+      app_project.new_target(:application, 'App-iOS', :ios)
+      app_project
+    end
+    let(:pods_project) do
+      Xcodeproj::Project.new(Pathname.new(gen_directory + 'Pods/Pods.xcodeproj'))
+    end
+    let(:pod_target_a) { pod_target_double('A') }
+    let(:pod_target_b) { pod_target_double('B') }
+    let(:native_target_a) { native_target_double('A', pods_project) }
+    let(:native_target_b) { native_target_double('B', pods_project) }
+    let(:pod_target_installation_results) do
+      pod_target_installation_result_a = Pod::Installer::Xcode::PodsProjectGenerator::TargetInstallationResult.new(pod_target_a, native_target_a)
+      pod_target_installation_result_b = Pod::Installer::Xcode::PodsProjectGenerator::TargetInstallationResult.new(pod_target_b, native_target_b)
+      { 'A' => pod_target_installation_result_a, 'B' => pod_target_installation_result_b }
+    end
+    let(:cocoapods_installer) do
+      installer = double('cocoapods_installer')
+      allow(installer).to receive(:pod_targets).and_return([pod_target_a, pod_target_b])
+      allow(installer).to receive(:target_installation_results).and_return(
+        Pod::Installer::Xcode::PodsProjectGenerator::InstallationResults.new(pod_target_installation_results)
+      )
+      installer
+    end
+    let(:method_args) { [app_project, cocoapods_installer] }
+
+    context 'scheme sharing' do
+      it 'shares all schemes if they are present' do
+        allow(File).to receive(:exist?).with(Xcodeproj::XCScheme.user_data_dir(pods_project.path) + 'A.xcscheme').and_return(true)
+        allow(File).to receive(:exist?).with(Xcodeproj::XCScheme.user_data_dir(pods_project.path) + 'B.xcscheme').and_return(true)
+        expect(Xcodeproj::XCScheme).to receive(:share_scheme).with(pods_project.path, 'A')
+        expect(Xcodeproj::XCScheme).to receive(:share_scheme).with(pods_project.path, 'B')
+        subject
+      end
+
+      it 'shares only schemes that exist' do
+        allow(File).to receive(:exist?).with(Xcodeproj::XCScheme.user_data_dir(pods_project.path) + 'A.xcscheme').and_return(true)
+        allow(File).to receive(:exist?).with(Xcodeproj::XCScheme.user_data_dir(pods_project.path) + 'B.xcscheme').and_return(false)
+        expect(Xcodeproj::XCScheme).to receive(:share_scheme).with(pods_project.path, 'A')
+        expect(Xcodeproj::XCScheme).to receive(:share_scheme).with(pods_project.path, 'B').never
+        subject
+      end
+
+      context 'with incremental installation' do
+        let(:pod_target_installation_results) do
+          pod_target_installation_result_a = Pod::Installer::Xcode::PodsProjectGenerator::TargetInstallationResult.new(pod_target_a, native_target_a)
+          { 'A' => pod_target_installation_result_a }
+        end
+        it 'shares schemes of pod targets that were installed' do
+          allow(File).to receive(:exist?).with(Xcodeproj::XCScheme.user_data_dir(pods_project.path) + 'A.xcscheme').and_return(true)
+          expect(Xcodeproj::XCScheme).to receive(:share_scheme).with(pods_project.path, 'A')
+          subject
+        end
+      end
+    end
   end
 
   describe_method 'create_app_project' do
