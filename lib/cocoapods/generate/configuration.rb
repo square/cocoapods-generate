@@ -363,8 +363,15 @@ module Pod
               end
           elsif path.directory?
             glob = Pathname.glob(path.expand_path + '**/*.podspec{.json,}').select { |f| f.relative_path_from(gen_directory).to_s.start_with?('..') }
+            glob.reject! { |f| File.basename(f.dirname) == 'Local Podspecs' && f.parent.parent.join('Manifest.lock').file? }
             next StandardError.new "no specs found in #{UI.path path}" if glob.empty?
-            glob.map { |f| Pod::Specification.from_file(f) }.sort_by(&:name)
+            podspecs = glob.map { |f| Pod::Specification.from_file(f) }
+            podspecs.group_by(&:name).sort_by(&:first).flat_map do |name, specs|
+              if specs.size != 1
+                Pod::UI.warn("Multiple podspecs found for pod #{name}, which one will be used is undefined:#{specs.map { |s| "\n    - #{s.defined_in_file}" }.join}")
+              end
+              specs
+            end
           else
             Pod::Specification.from_file(path)
           end
