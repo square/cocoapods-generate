@@ -314,7 +314,7 @@ module Pod
       # @param  [Array<Specification>] specs The specs to get a directory name for.
       #
       def gen_dir_for_specs(specs)
-        basename = specs.count == 1 ? specs.first.name : 'Workspace'
+        basename = specs.count == 1 ? specs.first.name : "#{specs.first.name}_Unified"
         gen_directory.join(basename)
       end
 
@@ -330,7 +330,8 @@ module Pod
       #        the specifications to generate project name for.
       #
       def project_name_for_specs(specs)
-        project_name = specs.count == 1 ? +specs.first.name.dup : +'Workspace'
+        project_name = specs.count == 1 ? +specs.first.name.dup : +"#{specs.first.name.dup}_Unified"
+
         # When using multiple Xcode project the project name will collide with the actual .xcodeproj meant for the pod
         # that we are generating the workspace for.
         project_name << 'Sample' if generate_multiple_pod_projects? && specs.count == 1

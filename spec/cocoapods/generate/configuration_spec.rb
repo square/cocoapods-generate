@@ -236,7 +236,7 @@ RSpec.describe Pod::Generate::Configuration do
     context 'multiple podspecs' do
       let(:specs) { [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] }
       let(:method_args) { [specs] }
-      it { should eq(Pathname.new('./gen/Workspace').expand_path) }
+      it { should eq(Pathname.new('./gen/A_Unified').expand_path) }
     end
   end
 
@@ -250,14 +250,14 @@ RSpec.describe Pod::Generate::Configuration do
     context 'multiple podspecs' do
       let(:specs) { [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] }
       let(:method_args) { [specs] }
-      it { should eq('Workspace') }
+      it { should eq('A_Unified') }
     end
 
     context 'multiple podspecs and multiple project generation' do
       let(:kwargs) { { podspec_paths: [Pathname('./spec/cocoapods/generate')], generate_multiple_pod_projects: true } }
       let(:specs) { [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] }
       let(:method_args) { [specs] }
-      it { should eq('Workspace') }
+      it { should eq('A_Unified') }
     end
 
     context 'single podspec and multiple project generation' do
