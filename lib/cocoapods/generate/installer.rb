@@ -234,9 +234,11 @@ module Pod
             bc.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = 'org.cocoapods-generate.${PRODUCT_NAME:rfc1034identifier}'
           end
 
-          case native_app_target.platform_name
+          case native_app_target.platform_name.to_sym
           when :ios
             make_ios_app_launchable(app_project, native_app_target)
+          when :osx
+            make_macos_app_launchable(app_project, native_app_target)
           end
 
           swift_version = pod_targets.map { |pt| Pod::Version.new(pt.swift_version) }.max.to_s
@@ -389,6 +391,15 @@ module Pod
         group.files.find { |f| f.display_name == 'Info.plist' } || group.new_file(info_plist_path)
         launch_storyboard_file_ref = group.files.find { |f| f.display_name == 'LaunchScreen.storyboard' } || group.new_file(launch_storyboard)
         native_app_target.resources_build_phase.add_file_reference(launch_storyboard_file_ref)
+      end
+
+      def make_macos_app_launchable(app_project, native_app_target)
+        # Starting in Xcode 14, there is an error when you build the macOS app
+        # that is generated from cocoapods-generate. This implements the
+        # suggested change.
+        native_app_target.build_configurations.each do |bc|
+          bc.build_settings['GENERATE_INFOPLIST_FILE'] = "YES"
+        end
       end
 
       def group_for_platform_name(project, platform_name, should_create = true)
