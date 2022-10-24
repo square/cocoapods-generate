@@ -238,7 +238,9 @@ module Pod
           when :ios
             make_ios_app_launchable(app_project, native_app_target)
           when :osx
-            make_macos_app_launchable(app_project, native_app_target)
+            generate_infoplist_file(app_project, native_app_target)
+          when :tvos
+            generate_infoplist_file(app_project, native_app_target)
           end
 
           swift_version = pod_targets.map { |pt| Pod::Version.new(pt.swift_version) }.max.to_s
@@ -393,10 +395,10 @@ module Pod
         native_app_target.resources_build_phase.add_file_reference(launch_storyboard_file_ref)
       end
 
-      def make_macos_app_launchable(app_project, native_app_target)
-        # Starting in Xcode 14, there is an error when you build the macOS app
-        # that is generated from cocoapods-generate. This implements the
-        # suggested change.
+      def generate_infoplist_file(app_project, native_app_target)
+        # Starting in Xcode 14, there is an error when you build the macOS or
+        # tvOS app that is generated from cocoapods-generate. This implements
+        # the suggested change.
         native_app_target.build_configurations.each do |bc|
           bc.build_settings['GENERATE_INFOPLIST_FILE'] = "YES"
         end
