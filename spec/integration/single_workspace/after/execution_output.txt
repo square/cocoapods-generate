@@ -28,7 +28,7 @@ CLAIDE_DISABLE_AUTO_WRAP=TRUE COCOAPODS_SKIP_CACHE=TRUE COCOAPODS_VALIDATOR_SKIP
   single_workspace: true,
   xcode_version: 9.3 }
 
-Generating workspace in `gen/Workspace`
+Generating workspace in `gen/A_Unified`
     Creating stub application
     Writing Podfile
 
@@ -43,8 +43,8 @@ Installing G (1.0.0.LOCAL)
 Installing OnlyPre (1.0.0.pre.1)
 Installing Public (3.0.0)
 
-[!] Please close any current Xcode sessions and use `Workspace.xcworkspace` for this project from now on.
+[!] Please close any current Xcode sessions and use `A_Unified.xcworkspace` for this project from now on.
 Pod installation complete! There are 23 dependencies from the Podfile and 9 total pods installed.
 
 Performing post-installation steps
-    Open `gen/Workspace/Workspace.xcworkspace` to work on it!
+    Open `gen/A_Unified/A_Unified.xcworkspace` to work on it!

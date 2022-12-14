@@ -8,7 +8,7 @@ installation_method:
     :incremental_installation: false
     :share_schemes_for_development_pods: false
     :warn_for_multiple_pod_sources: true
-workspace: Workspace.xcworkspace
+workspace: A_Unified.xcworkspace
 sources:
   - https://github.com/CocoaPods/Specs.git
 plugins:
@@ -74,7 +74,7 @@ target_definitions:
       - G/Tests:
         - :path: "../../Frameworks/g/G.podspec"
     name: Pods
-    user_project_path: Workspace.xcodeproj
+    user_project_path: A_Unified.xcodeproj
     uses_frameworks:
       :linkage: :dynamic
       :packaging: :framework
