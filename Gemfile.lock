@@ -40,7 +40,7 @@ PATH
   remote: .
   specs:
     cocoapods-generate (2.2.2)
-      cocoapods-disable-podfile-validations (~> 0.1.1)
+      cocoapods-disable-podfile-validations (>= 0.1.1, < 0.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -64,7 +64,7 @@ GEM
       colored2 (~> 3.1)
       diffy
     cocoapods-deintegrate (1.0.4)
-    cocoapods-disable-podfile-validations (0.1.1)
+    cocoapods-disable-podfile-validations (0.2.0)
     cocoapods-downloader (1.4.0)
     cocoapods-plugins (1.0.0)
       nap
