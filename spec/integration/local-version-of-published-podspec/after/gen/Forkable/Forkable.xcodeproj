@@ -203,6 +203,7 @@ Targets:
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: "-"
           COMBINE_HIDPI_IMAGES: YES
+          GENERATE_INFOPLIST_FILE: YES
           LD_RUNPATH_SEARCH_PATHS:
             - "$(inherited)"
             - "@executable_path/../Frameworks"
@@ -217,6 +218,7 @@ Targets:
           CLANG_ENABLE_OBJC_WEAK: NO
           CODE_SIGN_IDENTITY: "-"
           COMBINE_HIDPI_IMAGES: YES
+          GENERATE_INFOPLIST_FILE: YES
           LD_RUNPATH_SEARCH_PATHS:
             - "$(inherited)"
             - "@executable_path/../Frameworks"
@@ -250,6 +252,7 @@ Targets:
         Build Settings:
           ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
           ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME: LaunchImage
+          GENERATE_INFOPLIST_FILE: YES
           LD_RUNPATH_SEARCH_PATHS:
             - "$(inherited)"
             - "@executable_path/Frameworks"
@@ -263,6 +266,7 @@ Targets:
         Build Settings:
           ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
           ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME: LaunchImage
+          GENERATE_INFOPLIST_FILE: YES
           LD_RUNPATH_SEARCH_PATHS:
             - "$(inherited)"
             - "@executable_path/Frameworks"
