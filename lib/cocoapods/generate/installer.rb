@@ -395,12 +395,12 @@ module Pod
         native_app_target.resources_build_phase.add_file_reference(launch_storyboard_file_ref)
       end
 
-      def generate_infoplist_file(app_project, native_app_target)
+      def generate_infoplist_file(_app_project, native_app_target)
         # Starting in Xcode 14, there is an error when you build the macOS or
         # tvOS app that is generated from cocoapods-generate. This implements
         # the suggested change.
         native_app_target.build_configurations.each do |bc|
-          bc.build_settings['GENERATE_INFOPLIST_FILE'] = "YES"
+          bc.build_settings['GENERATE_INFOPLIST_FILE'] = 'YES'
         end
       end
 
