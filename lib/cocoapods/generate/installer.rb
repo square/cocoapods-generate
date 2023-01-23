@@ -7,6 +7,8 @@ module Pod
       DEFAULT_XCODE_VERSION = '9.3'.freeze
 
       XCODE_VERSION_TO_OBJECT_VERSION = {
+        '14.0' => 56,
+        '13.0' => 55,
         '12.0' => 54,
         '11.4' => 53,
         '11.0' => 52,

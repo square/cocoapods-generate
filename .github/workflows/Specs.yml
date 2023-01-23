@@ -7,7 +7,7 @@ jobs:
       matrix:
         task: [SPECS]
         ruby: [2.6, 2.7]
-        os: [ubuntu-18.04]
+        os: [ubuntu-20.04]
 
     name: ${{ matrix.task }} / ${{ matrix.os }} / Ruby ${{ matrix.ruby }}
     runs-on: ${{ matrix.os }}

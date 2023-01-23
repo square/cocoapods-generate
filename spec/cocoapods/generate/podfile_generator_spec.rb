@@ -82,7 +82,7 @@ RSpec.describe Pod::Generate::PodfileGenerator do
     end
   end
 
-  describe_method 'pod_args_for_dependency' do
+  describe_method 'pod_args_for_podfile_dependency' do
     let(:lockfile_versions) { { 'A' => '= 1' } }
     let(:podfile_dependencies) { { 'A' => [Pod::Dependency.new('A')] } }
 
@@ -593,6 +593,97 @@ RSpec.describe Pod::Generate::PodfileGenerator do
                    warn_for_multiple_pod_sources: true
 
           use_frameworks!(true)
+
+          pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
+
+          abstract_target 'Transitive Dependencies' do
+          end
+
+          target 'App-iOS' do
+          end
+          target 'App-macOS' do
+          end
+          target 'App-tvOS' do
+          end
+          target 'App-watchOS' do
+          end
+        end
+
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
+      end
+    end
+
+    context 'with external source pods specified' do
+      let(:config_options) { super().merge(external_source_pods: ['B' => [{ 'git' => 'https://github.com/pod.git' }]], use_podfile: false, use_lockfile: false, lockfile: nil, use_lockfile_versions: false) }
+
+      it 'generates the expected podfile' do
+        test = self
+        expected = Pod::Podfile.new do
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
+
+          workspace 'A.xcworkspace'
+          project 'A.xcodeproj'
+
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
+          plugin 'cocoapods-generate'
+
+          source 'https://cdn.cocoapods.org/'
+          source 'https://github.com/CocoaPods/Specs.git'
+          source 'https://github.com/Private/SpecsForks.git'
+
+          install! 'cocoapods',
+                   deterministic_uuids: false,
+                   disable_input_output_paths: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
+                   share_schemes_for_development_pods: true,
+                   warn_for_multiple_pod_sources: false
+
+          use_frameworks!(true)
+
+          pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
+
+          abstract_target 'Transitive Dependencies' do
+            pod 'B', git: 'https://github.com/pod.git'
+          end
+
+          target 'App-iOS' do
+          end
+          target 'App-macOS' do
+          end
+          target 'App-tvOS' do
+          end
+          target 'App-watchOS' do
+          end
+        end
+
+        expect(podfile_for_specs.to_yaml).to eq expected.to_yaml
+      end
+    end
+
+    context 'with external source pods specified as part of the ones being generated' do
+      let(:config_options) { super().merge(external_source_pods: ['A' => [{ 'git' => 'https://github.com/pod.git' }]]) }
+
+      it 'generates the expected podfile' do
+        test = self
+        expected = Pod::Podfile.new do
+          self.defined_in_file = test.config.gen_dir_for_specs([Pod::Spec.new(nil, 'A')]).join('Podfile.yaml')
+
+          workspace 'A.xcworkspace'
+          project 'A.xcodeproj'
+
+          plugin 'cocoapods-disable-podfile-validations', 'no_abstract_only_pods' => true
+          plugin 'cocoapods-generate'
+
+          install! 'cocoapods',
+                   deterministic_uuids: true,
+                   disable_input_output_paths: false,
+                   generate_multiple_pod_projects: false,
+                   incremental_installation: false,
+                   share_schemes_for_development_pods: false,
+                   warn_for_multiple_pod_sources: true
+
+          use_frameworks!(false)
 
           pod 'A', path: '../../Frameworks/A/A.podspec', testspecs: %w[Tests]
 

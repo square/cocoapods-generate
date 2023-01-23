@@ -31,6 +31,7 @@ module Pod
         generator = self
         dir = configuration.gen_dir_for_specs(specs)
         project_name = configuration.project_name_for_specs(specs)
+        external_source_pods = configuration.external_source_pods
 
         Pod::Podfile.new do
           project "#{project_name}.xcodeproj"
@@ -93,8 +94,18 @@ module Pod
                            .reject { |d| spec_names.include?(d.root_name) }
 
             dependencies.each do |dependency|
-              pod_args = generator.pod_args_for_dependency(self, dependency)
+              pod_args = generator.pod_args_for_podfile_dependency(self, dependency)
               pod(*pod_args)
+            end
+
+            external_source_pods.each do |hash|
+              hash.each do |name, attrs|
+                next if spec_names.include?(name)
+
+                dependency = Dependency.new(name, attrs.first.deep_symbolize_keys)
+                pod_args = generator.pod_args_for_dependency(nil, dependency)
+                pod(*pod_args)
+              end
             end
           end
 
@@ -291,12 +302,23 @@ module Pod
       #
       # @param  [Dependency] dependency
       #
-      def pod_args_for_dependency(podfile, dependency)
+      def pod_args_for_podfile_dependency(podfile, dependency)
         dependency = podfile_dependencies[dependency.root_name]
                      .map { |dep| dep.dup.tap { |d| d.name = dependency.name } }
                      .push(dependency)
                      .reduce(&:merge)
+        pod_args_for_dependency(podfile, dependency)
+      end
 
+      # @return [Hash<String,Array<Dependency>>]
+      #         returns the arguments that should be passed to the Podfile DSL's
+      #         `pod` method.
+      #
+      # @param  [Podfile] podfile
+      #
+      # @param  [Dependency] dependency
+      #
+      def pod_args_for_dependency(podfile, dependency)
         options = dependency_compilation_kwargs(dependency.name)
         options[:source] = dependency.podspec_repo if dependency.podspec_repo
         options.update(dependency.external_source) if dependency.external_source
