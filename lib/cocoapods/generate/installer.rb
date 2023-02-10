@@ -187,7 +187,7 @@ module Pod
           native_app_target.resources_build_phase.clear
 
           if (app_host_source_dir = configuration.app_host_source_dir)
-            relative_app_host_source_dir = app_host_source_dir.relative_path_from(installer.sandbox.root)
+            relative_app_host_source_dir = app_host_source_dir.relative_path_from(install_directory)
             groups = {}
 
             app_host_source_dir.find do |file|
