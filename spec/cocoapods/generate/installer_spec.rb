@@ -25,7 +25,8 @@ RSpec.describe Pod::Generate::Installer do
 
   let(:podspecs) { [Pod::Spec.new(nil, 'A'), Pod::Spec.new(nil, 'B')] }
   let(:lockfile_specs) { [] }
-  let(:gen_directory) { Pathname('./spec/cocoapods/generate/gen') }
+  let(:repo_root) { Pathname('./spec/cocoapods').expand_path }
+  let(:gen_directory) { repo_root + Pathname('generate/gen') }
   let(:lockfile) { Pod::Lockfile.generate(podfile, lockfile_specs, {}) }
   let(:config_options) do
     { podfile: podfile, lockfile: lockfile, use_podfile: !!podfile,
@@ -47,8 +48,10 @@ RSpec.describe Pod::Generate::Installer do
   end
 
   describe_method 'perform_post_install_steps' do
+    let(:project_root) { gen_directory + 'Workspace' }
+    let(:project_path) { project_root + 'AppProject.xcodeproj' }
     let(:app_project) do
-      app_project = Xcodeproj::Project.new(Pathname.new(gen_directory + 'AppProject.xcodeproj'))
+      app_project = Xcodeproj::Project.new(project_path)
       app_project.new_target(:application, 'App-iOS', :ios)
       app_project
     end
@@ -67,6 +70,7 @@ RSpec.describe Pod::Generate::Installer do
     let(:cocoapods_installer) do
       installer = double('cocoapods_installer')
       allow(installer).to receive(:pod_targets).and_return([pod_target_a, pod_target_b])
+      allow(installer).to receive(:sandbox).and_return(double('sandbox', root: project_root + 'Pods'))
       allow(installer).to receive(:target_installation_results).and_return(
         Pod::Installer::Xcode::PodsProjectGenerator::InstallationResults.new(pod_target_installation_results)
       )
@@ -101,6 +105,36 @@ RSpec.describe Pod::Generate::Installer do
           expect(Xcodeproj::XCScheme).to receive(:share_scheme).with(pods_project.path, 'A')
           subject
         end
+      end
+    end
+
+    context 'with app_host_source_dir' do
+      let(:app_host_source_dir) { repo_root + Pathname('sample_app_host') }
+      let(:app_target_name) { 'App-iOS' }
+      let(:config_options) do
+        { podfile: podfile, lockfile: lockfile, use_podfile: !!podfile,
+          use_lockfile_versions: !!lockfile, gen_directory: gen_directory,
+          app_host_source_dir: app_host_source_dir}
+      end
+
+      it 'places the sources relative to the project root' do
+        allow(File).to receive(:exist?).with(Xcodeproj::XCScheme.user_data_dir(pods_project.path) + 'A.xcscheme').and_return(true)
+        allow(File).to receive(:exist?).with(Xcodeproj::XCScheme.user_data_dir(pods_project.path) + 'B.xcscheme').and_return(true)
+        allow(Xcodeproj::XCScheme).to receive(:share_scheme).with(pods_project.path, 'A')
+        allow(Xcodeproj::XCScheme).to receive(:share_scheme).with(pods_project.path, 'B')
+
+        allow(File).to receive(:exist?).with(app_host_source_dir.to_s).and_return(true)
+
+        subject
+
+        app_target = app_project.groups.find { |g| g.name == app_target_name }
+        expect(app_project.path).to eq project_path
+        expect(app_target.real_path).to eq app_host_source_dir
+        expect(app_target.children.map { |c| c.real_path }).to contain_exactly(
+          app_host_source_dir + 'AppDelegate.swift',
+          project_root + app_target_name + 'Info.plist',
+          project_root + app_target_name + 'LaunchScreen.storyboard'
+        )
       end
     end
   end
