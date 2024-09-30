@@ -71,7 +71,8 @@ module Pod
                                                   lockfile: configuration.lockfile, sandbox: nil,
                                                   sandbox_root: install_directory + 'Pods',
                                                   podfile_path: podfile.defined_in_file,
-                                                  silent: !configuration.pod_config.verbose?, verbose: false,
+                                                  silent: !configuration.pod_config.verbose?,
+                                                  verbose: configuration.pod_config.verbose?,
                                                   lockfile_path: nil) do
               installer = ::Pod::Installer.new(configuration.pod_config.sandbox, podfile, configuration.lockfile)
               installer.use_default_plugins = configuration.use_default_plugins
